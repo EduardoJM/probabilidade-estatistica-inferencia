@@ -1,0 +1,22 @@
+*.bib
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.idx
+*.ilg
+*.ind
+*.log
+*.ptc
+*.run.xml
+*.synctex*gz
+*.toc
+
+# gnuplot files (tkz-fct
+*.gnuplot
+*.table
+# remove only the production pdf
+# (no remove the pictures pdf's)
+src/*.pdf
