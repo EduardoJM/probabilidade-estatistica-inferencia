@@ -28,7 +28,7 @@
 \usepackage{pgfplots}
 \pgfplotsset{width=7cm,compat=1.8}
 \usepackage{tkz-fct}
-\usetikzlibrary{matrix, calc, arrows}
+\usetikzlibrary{matrix, calc, arrows, patterns}
 
 \usepackage{float} % for H float
 \usepackage{wrapfig}
@@ -626,5 +626,6 @@ addtohook={%
 \newcommand{\makeord}[2]{#1\textsuperscript{#2}}
 
 \usepackage{multicol}
+\usepackage{multirow}
 
 \newcommand\gauss[3]{(1/(#2 * 2.5)) * exp((-(x*#3 - #1)**2)/(2 * (#2 ** 2)))}

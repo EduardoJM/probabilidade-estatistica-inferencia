@@ -158,6 +158,8 @@
    \end{tikzpicture}
 }
 
+\newcounter{apendix}
+
 \begin{document}
 \nosidepicturearea
 %----------------------------------------------------------------------------------------
@@ -349,6 +351,8 @@ São amostras em que a seleção é aleatória de tal forma, que cada elemento d
 \subsubsection{Amostra Aleatória}
 
 Nessa amostragem, cada elemento da população tem a mesma probabilidade de pertencer à amostra.
+
+\todo{falar sobre a tabela de números aleatórios}
 
 \begin{sidepicture}{5cm}{table}{AAA}
 	\label{table:funcionarios_exemplo}
@@ -573,6 +577,7 @@ Conhecendo o tamanho $N$ da população, podemos corrigir o cálculo acima por
 	Perceba que quando $N\to\infty$, o valor de $n_0\to n$.
 \end{remark}
 
+\begin{pageWidthArea}
 \begin{example}
 	Planeja-se um levantamento por amostragem para avaliar diversas características da população das 200 famílias moradoras de um bairro. Qual deve ser o tamanho mínimo de uma amostra aleatória simples, tal que, possamos admitir, com alta confiança, que os erros amostrais não ultrapassem 4\%.\\
 	
@@ -591,14 +596,69 @@ Conhecendo o tamanho $N$ da população, podemos corrigir o cálculo acima por
 		n=\frac{200.000\cdot 625}{200.000+625}=623\text{.}
 	\]
 \end{example}
+\end{pageWidthArea}
 
 \begin{note}{Arredondamentos}
 	Uma observação a ser feita é que não se deve reduzir ou truncar a aproximação. Use sempre o próximo inteiro de modo a garantir que esteja dentro da margem de erro desejada.
 \end{note}
 
+\todo{fazer os dois exemplos das folhas}
+
 \section{Distribuição de Frequências}
 
 Quando se estuda uma variável, o maior interesse do pesquisador é conhecer a sua distribuição, ou seja, o comportamento dessa variável.
+
+\begin{pageWidthArea}
+	\begin{pageWidthAreaPicture}{table}{Grau de instrução dos funcionários da empresa Milsa.}
+		\label{table:grau_instrucao_milsa}
+		\hspace{-15pt}
+		\resizebox{\textwidth}{!}{%
+		\begin{tabular}{cccc}\\\toprule
+			Grau de Instrução & Frequência & Proporção & Porcentagem\\ \midrule
+			Primeiro Grau & 12 & 0,3333 & 33,33\%\\
+			Segundo Grau & 18 & 0,5000 & 50,00\%\\
+			Superior & 6 & 0,1667 & 16,67\% \\ \midrule
+			Total & 36 & 1,0000 & 100\% \\ \bottomrule
+		\end{tabular}
+		}
+	\end{pageWidthAreaPicture}
+\end{pageWidthArea}
+
+\todo{indicar fonte para a tabela?}
+
+\begin{example}
+	A distribuição da variável \emphasis{grau de instrução} dos 36 funcionários da Companhia Milsa, na Tabela \ref{table:grau_instrucao_milsa}.
+\end{example}
+
+\begin{pageWidthArea}
+	\begin{pageWidthAreaPicture}{table}{Distribuição do tamanho da propriedade (ha).}
+		\label{table:distribuicao_tamanho_propriedades}
+		\hspace{-15pt}
+		\resizebox{\textwidth}{!}{%
+		\begin{tabular}{cccccc}\\\toprule
+			\begin{tabular}[c]{@{}c@{}}Tamanho\\ (ha)\end{tabular} & Frequência & Proporção & Porcentagem & \begin{tabular}[c]{@{}c@{}}Frequência\\ Acumulada\end{tabular} & \begin{tabular}[c]{@{}c@{}}Porcentagem\\ Acumulada\end{tabular}\\ \midrule
+			\text{ }70 $\vdash$ 90\text{ } & 02 & 0,0250 & 2,50\% & 02 & 2,50\%\\
+			\text{ }90 $\vdash$ 110 & 03 & 0,0375 & 3,75\% & 05 & 6,25\%\\
+			110 $\vdash$ 130 & 06 & 0,0750 & 7,50\% & 11 & 13,75\% \\ 
+			130 $\vdash$ 150 & 14 & 0,1750 & 17,50\% & 25 & 31,25\% \\ 
+			150 $\vdash$ 170 & 22 & 0,2750 & 27,50\% & 47 & 58,75\% \\ 
+			170 $\vdash$ 190 & 17 & 0,2125 & 21,25\% & 64 & 80,00\% \\ 
+			190 $\vdash$ 210 & 10 & 0,1250 & 12,50\% & 74 & 92,50\% \\ 
+			210 $\vdash$ 230 & 04 & 0,0500 & 5,00\% & 78 & 97,50\% \\ 
+			230 $\vdash$ 250 & 02 & 0,0250 & 2,50\% & 80 & 100,00\% \\ \midrule
+			Total & 80 & 1,0000 & 100\% & -- & -- \\ \bottomrule
+		\end{tabular}
+		}
+	\end{pageWidthAreaPicture}
+\end{pageWidthArea}
+
+\begin{example}
+	Distribuição de frequência da variável \emphasis{tamanho da propriedade (ha)} de 80 áreas rurais, mostrados na Tabela \ref{table:distribuicao_tamanho_propriedades}.
+\end{example}
+
+\todo{Estatística Descritiva, Tipos de variáveis.}
+
+\todo{Representação Gráfica.}
 
 \section{Medidas de Tendência Central e de Dispersão}
 
@@ -897,8 +957,69 @@ Tanto a variância quanto o desvio padrão são medidas que fornecem informaçõ
 
 {\color{red}Fazer exemplo aqui.}
 
-%\subsection{Teorema de Chebyshev}
+\section{Teorema de Chebyshev}
 
+A proporção de qualquer conjunto de dados que se situa a $k$ desvios padrões da média é sempre, no mínimo, $1-\frac{1}{k^2}$, onde $k$ é qualquer número positivo maior do que 1. Para $k=2$ e $k=3$, obtemos as seguintes afirmativas:
+
+\begin{enumerate}
+	\item Pelo menos 3/4 (ou 75\%) de todos os valores do conjunto de dados, localizam-se a 2 desvios padrões da média.
+	
+	\item Pelo menos 8/9 (ou 89\%) de todos os valores do conjunto de dados, localizam-se a 3 desvios padrões da média.
+\end{enumerate}
+
+\begin{example}
+	Os escores QI de adultos normais no teste Weschler tem uma média de 100 e desvio-padrão de 15. O que podemos concluir do teorema de Chebyshev?
+	
+	\begin{enumerate}
+		\item Ao menos 75\% de todos os adultos tem escores QI a 2 desvios padrões da média, ou seja, entre 70 e 130.
+		
+		\item Ao menos 89\% de todos os adultos tem escores QI a 3 desvios padrões da média, ou seja, entre 55 e 145.
+	\end{enumerate}
+\end{example}
+
+\section{Coeficiente de Variação (Pearson)}
+
+É uma medida de dispersão, que tem por finalidade comparar conjuntos de dados \emphasis{não homogêneos} e, em geral, de \emphasis{grandezas diferentes}. O coeficiente de variação de um conjunto de dados é indicado por CV e definido por:
+\begin{equation}
+	CV=\frac{S}{\overline{x}}\text{,}
+\end{equation}
+ou
+\begin{equation}
+	CV=\frac{S}{\overline{x}}\cdot 100\text{.}
+\end{equation}
+
+O coeficiente de variação de Pearson é um número adimensional.
+
+Uma classificação do coeficiente de variação é
+\begin{itemize}
+	\item $0\%\leqslant CV < 10\%$: \emphasis{Variação Baixa};
+	\item $10\%\leqslant CV < 20\%$: \emphasis{Variação Média};
+	\item $20\%\leqslant CV < 30\%$: \emphasis{Variação Alta};
+	\item $CV \geqslant 30$: \emphasis{Variação Muito Alta}.
+\end{itemize}
+
+Em geral, quando comparamos dispersões, ocorrem três situações.
+
+\todo{Falar das três e mostrar seus respectivos exemplos (tabelas).}
+
+\section{Medidas Separatrizes}
+
+\subsection{Quartis}
+
+\todo{Falar dos quartis.}
+
+\subsection{Percentis}
+
+\todo{Falar dos percentis.}
+
+\subsection{Aproximação para o Cálculo dos Percentis}
+
+\todo{Falar dessas aproximações.}
+
+
+\section{Gráfico Box-Plot}
+
+\todo{Falar do gráfico Box-Plot.}
 
 \chapter{Introdução à Probabilidade}
 
@@ -1001,6 +1122,545 @@ Em probabilidade, estudam-se os experimentos aleatórios. Assim, primeiro, é ne
 	\]
 	onde $C$: cara e $K$: coroa.
 \end{example}
+
+\section{Operação entre Eventos}
+
+\begin{definition}
+	\label{def:reuniao_dois_eventos}
+	A reunião de dois eventos $A$ e $B$, denotada por $A\cup B$, é o evento que ocorre se pelo menos um deles ocorre;
+\end{definition}
+
+\begin{definition}
+	\label{def:intercecao_dois_eventos}
+	A intersecção de dois eventos $A$ e $B$, denotada por $A\cap B$, é o evento que ocorre quando $A$ não ocorre.
+\end{definition}
+
+\begin{definition}
+	\label{def:complementar_evento}
+	O complementar do evento $A$, denotado por $A^{c}$, é o evento que ocorre quando $A$ não ocorre.
+\end{definition}
+
+\begin{theorem}
+	A partir das Definições \ref{def:reuniao_dois_eventos}, \ref{def:intercecao_dois_eventos} e \ref{def:complementar_evento}, tem-se as seguintes propriedades:
+	\begin{enumerate}
+		\item $(A\cup B)\cap C = (A\cap C)\cup (B\cap C)$;
+		\item $(A\cap B)\cup C = (A\cup C)\cap (B\cup C)$;
+		\item $(A\cup B)^c = A^c \cap B^c$;
+		\item $(A\cap B)^c= A^c\cup B^c$.
+	\end{enumerate}
+\end{theorem}
+
+\begin{definition}
+	O evento $\displaystyle\bigcup_{i=1}^{n} A_i$ é o evento que ocorre quando pelo menos um dos eventos $A_i$ ocorre, $i=1,2,\dots, n$.
+\end{definition}
+
+\begin{definition}
+	O evento $\displaystyle\bigcap_{i=1}^{n} A_i$ é o evento que ocorre quando todos os eventos $A_i$ ocorrem simultaneamente, $i=1,2,\dots, n$.
+\end{definition}
+
+\section{Definição Clássica de Probabilidade}
+
+Seja $S$ com $n$ eventos simples igualmente possíveis e seja $A$ um evento de $S$ formado de $m$ eventos simples. A probabilidade de ocorrer $A$, é definida por
+\begin{equation}
+	P(A)=\frac{m}{n}\text{.}
+\end{equation}
+
+\begin{example}
+	Joga-se um dado, qual a probabilidade de ocorrer:
+	\begin{enumerate}[label=\alph*)]
+		\item Evento A: "Face 4"\\
+		
+		tem-se $A=\{4\}$, logo $m=1$ e $n=6$, pois $S=\{1$, $2$, $3$, $4$, $5$, $6\}$, então
+		\[
+			P(A)=\frac{1}{6}\text{.}
+		\]
+		
+		\item Evento B: "Face Ímpar"\\
+		
+		tem-se $B=\{1$, $3$, $5\}$, logo $m=3$, então
+		\[
+			P(B)=\frac{3}{6}=\frac{1}{2}\text{.}
+		\]
+	\end{enumerate}
+\end{example}
+
+\section{Definição Frequentista de Probabilidade}
+
+Repete-se o experimento $n$ vezes e anota quantas vezes o evento $A$ associado a esse experimento ocorre. Assim a probabilidade de ocorrer o evento $A$ é dado por:
+\begin{equation}
+	P(A)=\frac{n(A)}{n}\text{,}
+\end{equation}
+onde $n(A)$ é o número de vezes que o evento $A$ ocorre.
+
+\begin{sidepicture}{0cm}{table}{AAAA}
+	\label{table:resistencia_choque_arranhao}
+	\begin{tabular}{ccc}\\\toprule
+		\multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Resistência\\ a arranhão\end{tabular}} & \multicolumn{2}{c}{Resistência a choque} \\ \cline{2-3} 
+			  & alta & baixa\\ \midrule
+		alta  & 80   & 9 \\
+		baixa & 6    & 5 \\ \bottomrule
+	\end{tabular}
+\end{sidepicture}
+
+\begin{example}
+	Amostras de plástico policarbonato são analisadas com relação à resistência a arranhões e a choque. Considerando os dados da Tabela \ref{table:resistencia_choque_arranhao}, calcule a probabilidade de uma unidade ter:
+	
+	\begin{enumerate}[label=\alph*)]
+		\item baixa resistência a arranhão (bra):
+		\[
+			P(bra)=\frac{n(bra)}{n}=\frac{11}{100}=0,11\text{.}
+		\]
+		
+		\item alta resistência a choque (arc):
+		\[
+			P(arc)=\frac{n(arc)}{n}=\frac{86}{100}=0,86\text{.}
+		\]
+		
+		\item baixa resistência em ambos:
+		\[
+			P(bra\cap brc)=\frac{n(bra\cap brc)}{n}=\frac{5}{100}=0,05\text{.}
+		\]
+	\end{enumerate}
+\end{example}
+
+\section{Definição Axiomática de Probabilidade}
+
+A probabilidade será definida numa classe de eventos ($A$) do espaço amostral ($S$) que satisfaz certas propriedades:
+\begin{enumerate}
+	\item $0\leqslant P(A)\leqslant 1$;
+	\item $P(S)=1$;
+	\item $P(\emptyset)=0$;
+	\item $P(A^c)=1-P(A)$;
+	\item $P(A\cup A^c)=P(S)$;
+	\item $P\left ( \displaystyle \bigcup_{i=1}^{n} A_i \right ) = \displaystyle\sum_{i=1}^{n}P(A_i)$, com os $A_i$ mutuamente exclusivos.
+\end{enumerate}
+
+\section{Regra de adição de probabilidade}
+
+Sejam $A$ e $B$ eventos de $S$, então a probabilidade de que ocorra um detes dois eventos, um diagrama está na Figura \ref{picture:eventos_intersessao}, $A$ ou $B$, é dada por
+\begin{equation}
+	P(A\cup B)=P(A)+P(B)-P(A\cap B)\text{.}
+\end{equation}
+
+\begin{remark}
+	Se os dois eventos, $A$ e $B$, forem mutuamente exclusivos, veja a Figura \ref{picture:eventos_mutuamente_exclusivos}, então
+	\begin{equation}
+		P(A\cup B)=P(A)+P(B)\text{,}
+	\end{equation}
+	pois $A\cap B=\emptyset$, então, $P(A\cap B)=0$.
+\end{remark}
+
+\begin{sidepicture}{5cm}{picture}{QQQQQ.}
+	\label{picture:eventos_intersessao}
+	\begin{tikzpicture}
+		\scope
+			\draw[pattern=horizontal lines, distance=25pt, pattern color=ocre!50] (-0.3,0) circle (1);
+		\endscope
+		% right hand
+		\scope
+			\draw[pattern=vertical lines, distance=25pt, pattern color=ocre!50] (1.3,0) circle (1);
+		\endscope
+		% outline
+		\draw[color=ocre] (-0.3,0) circle (1) (-0.3,1)  node [text=ocre,above] {$A$}
+		      (1.3,0) circle (1) (1.3,1)  node [text=ocre,above] {$B$}
+		      (-2,-2) rectangle (3,2) node [text=black,above] { };
+	\end{tikzpicture}
+\end{sidepicture}
+
+\begin{sidepicture}{0cm}{picture}{QQQQQ.}
+	\label{picture:eventos_mutuamente_exclusivos}
+	\begin{tikzpicture}
+		\scope
+			\draw[pattern=horizontal lines, distance=25pt, pattern color=ocre!50] (-0.7,0) circle (1);
+		\endscope
+		% right hand
+		\scope
+			\draw[pattern=vertical lines, distance=25pt, pattern color=ocre!50] (1.7,0) circle (1);
+		\endscope
+		% outline
+		\draw[color=ocre] (-0.7,0) circle (1) (-0.7,1)  node [text=ocre,above] {$A$}
+		      (1.7,0) circle (1) (1.7,1)  node [text=ocre,above] {$B$}
+		      (-2,-2) rectangle (3,2) node [text=black,above] { };
+	\end{tikzpicture}
+\end{sidepicture}
+
+\begin{example}
+	A probabilidade de um indivíduo ser obeso num grupo de pacientes é de 30\% e de ser sedentário é de 60\%. Sabe-se, ainda, que a probabilidade de um individuo ser obeso e sedentário é de 28\%. Determine a probabilidade de selecionar um individuo desse grupo e ele:
+	
+	\begin{enumerate}[label=\alph*)]
+		\item ser obeso ou sedentário.
+		
+			\begin{align*}
+				P(A\cup B)&=P(A)+P(B)-P(A\cap B)\\
+						  &=0,3+0,6-0,28\\
+						  &=0,9-0,28\\
+						  &=0,62\text{.}
+			\end{align*}
+			
+		\item Não ser obeso e nem sedentário.
+		
+			\begin{align*}
+				P(A^c\cap B^c)&=P((A\cup B)^c)\\
+							  &=1-P(A\cup B)\\
+							  &=1-0,62\\
+							  &=0,28\text{.}
+			\end{align*}
+	\end{enumerate}
+\end{example}
+
+\begin{example}
+	No atendimento de uma fila são considerados dois casos: $A$: "grávidas" e $B$: "pessoas com mais de 60 anos". Seja $P(A)=0,06$ e $P(B)=0,12$. Qual é a probabilidade de que seja necessário dar prioridade no atendimento?
+	
+	Considerando $A\cap B=\emptyset$, tem-se $P(A\cap B)=0$, e, então
+	\begin{align*}
+		P(A\cup B)&=P(A)+P(B)\\
+				  &=0,06+0,12\\
+				  &=0,18\text{.}
+	\end{align*}
+\end{example}
+
+\section{Probabilidade Condicional}
+
+Dados dois eventos $A$ e $B$, a probabilidade condicional de $A$ dado que ocorreu $B$ é representada por $P(A\setminus B)$ e é dada por
+\begin{equation}
+	P(A\setminus B)=\frac{P(A\cap B)}{P(B)}\text{,}
+\end{equation}
+com $P(B)>0$.
+
+\begin{example}
+	Em um lançamento de um dado, de 6 faces, $F_1$, $F_2$, $F_3$, $F_4$, $F_5$ e $F_6$, tem-se a probabilidade de se obter a face 2:
+	\[
+		P(F_2)=\frac{1}{6}\text{.}
+	\]
+	
+	A probabilidade, entretanto, de se ter a face 2, visto que o lançamento terminou com face par, é dado por
+	\begin{align*}
+		P(F_2\setminus F_{\text{par}})&=\frac{P(F_2 \cap F_{\text{par}})}{P(F_{\text{par}})}\\
+									   &=\frac{P(F_2)}{P(F_{\text{par}})}\\
+									   &=\frac{1/6}{1/2}\\
+									   &=\frac{1}{6}\cdot \frac{2}{1}\\
+									   &=\frac{1}{3}\text{.}
+	\end{align*}
+\end{example}
+
+\newpage
+
+\begin{pageWidthArea}
+	\begin{pageWidthAreaPicture}{frame}{Quadro contendo dados de filmes para o Exemplo.}
+		\label{quadro:dados_filmes_exemplo_pc}
+		\hspace{-15pt}
+		\resizebox{\textwidth}{!}{%
+		\begin{tabular}{|c|c|c|c|c|}
+			\hline
+			Filme     & \multirow{2}{*}{\emphasis{A}ventura} & \multirow{2}{*}{\emphasis{C}omédia} & \multirow{2}{*}{\emphasis{R}omance} & \multirow{2}{*}{Total} \\ \cline{1-1}
+			Sexo      &                           &                          &                          &                        \\ \hline
+			\emphasis{M}asculino & 50                        & 30                       & 10                       & 90                     \\ \hline
+			\emphasis{F}eminino  & 20                        & 30                       & 60                       & 110                    \\ \hline
+			Total     & 70                        & 60                       & 70                       & 200                    \\ \hline
+		\end{tabular}%
+		}
+	\end{pageWidthAreaPicture}
+	
+	\vspace{20pt}
+
+	\begin{example}
+		\begin{multicols}{2}
+			Analisando os dados do Quadro \ref{quadro:dados_filmes_exemplo_pc}, é possível determinar\\
+	
+			\begin{enumerate}[label=\alph*), itemsep=10pt]
+				\item $P(A)=\dfrac{70}{200}=0,35$.
+		
+				\item $P(A\setminus M)=\dfrac{50}{90}=0,5556$, ou, ainda,
+				\begin{align*}
+					P(A\setminus M)&=\frac{P(A\cup M)}{P(M)}\\
+							&=\frac{50}{200}\cdot \frac{200}{90}\\
+							&=\frac{50}{90}\\
+							&=0,5556\text{.}
+				\end{align*}
+		
+				\item $P(M\setminus A)=\dfrac{50}{70}=0,7143$.
+		
+				\item $P(R^c)=1-P(R)=1-\dfrac{70}{200}=0,65$.
+		
+				\item $P(F\cap C)=\dfrac{30}{200}=0,15$.
+				
+				\item $P(F\cup A) = P(F) + P(A) - P(F\cap A)$, assim,
+				\begin{align*}
+					P(F\cup A) &= \frac{110}{200}+\frac{70}{200}-\frac{20}{200}\\
+							   &= \frac{110+70-20}{200}\\
+							   &= \frac{160}{200}\\
+							   &=0,80\text{.}
+				\end{align*}
+				
+				\item $P(M\setminus R^c)$, que é dado por
+				\begin{align*}
+					P(M\setminus R^c) &= \frac{P(M\cap R^c)}{P(R^c)}\\
+									  &= \frac{80}{200}\cdot \frac{200}{130}\\
+									  &= \frac{80}{130}\\
+									  &= 0,6154\text{.}
+				\end{align*}
+			\end{enumerate}
+		\end{multicols}
+	\end{example}
+\end{pageWidthArea}
+
+\section{Regra do Produto}
+
+Sabendo que
+\[
+	P(A\setminus B)=\frac{P(A \cap B)}{P(B)}\text{,}
+\]
+tem-se
+\begin{equation}
+	P(A\cap B)=P(A\setminus B)\cdot P(B)\text{.}
+\end{equation}
+
+\begin{example}
+	A probabilidade de que uma bateria de automóvel, sujeita a alta temperatura no compartimento do motor, sofra baixa corrente de carga é de 0,7. A probabilidade da bateria estar sujeita a alta temperatura no comportamento do motor é de 0,05. Determine a probabilidade da bateria estar sujeita a baixa corrente de carga e a alta temperatura do motor.
+	
+	Sejam os eventos BC: "baixa corrente"; AT: "Alta temperatura", então $P(BC\cap AT)=P(BC\setminus AT)\cdot P(AT)$, ou seja,
+	\begin{align*}
+		P(BC\cap AT)&=0,7\cdot 0,05\\
+					&=0,035\text{.}
+	\end{align*}
+\end{example}
+
+\section{Independência de Eventos}
+
+Dois eventos $A$ e $B$ são independentes se a informação da ocorrência ou não de $B$ não altera a probabilidade da ocorrência de $A$, isto é:
+\[
+	P(A\setminus B)=P(A)\text{,}
+\]
+ou, ainda,
+\[
+	P(A\cap B)=P(A)\cdot P(B)\text{.}
+\]
+
+\begin{sidepicture}{0cm}{table}{AAAA}
+	%\label{table:tamanho_example_amostra_estratificada_teste_droga}
+	\begin{tabular}{cc}\\\toprule
+		Resultados & Probabilidades\\  \midrule
+		$B_1 B_2$ & \vspace{5pt}$\dfrac{2}{5}\cdot\dfrac{1}{4}=\dfrac{2}{20}$ \\ 
+		$B_1 V_2$ & \vspace{5pt}$\dfrac{2}{5}\cdot\dfrac{3}{4}=\dfrac{6}{20}$\\
+		$V_1 B_2$ & \vspace{5pt}$\dfrac{3}{5}\cdot\dfrac{2}{4}=\dfrac{6}{20}$\\
+		$V_1 V_2$ & \vspace{5pt}$\dfrac{3}{5}\cdot\dfrac{2}{4}=\dfrac{6}{20}$\\ \midrule
+		Total & 1 \\ \bottomrule
+	\end{tabular}
+\end{sidepicture}
+
+\begin{example}
+	Uma urna contém duas bolas brancas e três vermelhas. Sorteamos ao acaso duas delas, sem reposição. Assim, temos
+	
+	\todo{Fazer o outro desenho (arvore)}
+
+	\todo{Terminar exemplo}
+\end{example}
+
+\begin{example}
+	Uma urna contém duas bolas brancas e três vermelhas. Sorteamos ao acaso duas delas, com reposição. Assim, temos
+	
+	\todo{Fazer tabela e desenho (arvore)}
+	
+	\todo{Terminar exemplo}
+\end{example}
+
+\todo{FAZER: Partição do espaço amostral}
+
+\todo{FAZER: Teorema de Bayes}
+
+
+\chapter{Variáveis Aleatórias Discretas}
+
+Uma quantidade $X$ associada a cada possível resultado do espaço amostral é denominada de variável aleatória discreta se assume valores num conjunto enumerável, com certa probabilidade.
+
+\section{Função de Probabilidade}
+
+Seja $X$ uma variável aleatória discreta e $x_1$, $x_2$, $x_3$, $\dots$, seus diferentes valores, a função que atribui a cada valor da variável aleatória sua probabilidade é denominada de função discreta de probabilidade ou simplesmente, função de probabilidade. Ela pode ser representada como
+\begin{equation}
+	P(X=x_i)=p_i\text{,}
+\end{equation}
+com $i=1$, $2$, $3$, $\dots$, $0\leqslant p_i\leqslant 1$ e $\sum p_i=1$. Ainda, a função de probabilidade pode ser exibida como na Tabela \ref{table:describe_func_probabilidade}.
+
+\begin{sidepicture}{5cm}{table}{Forma de se exibir uma função de probabilidade, através de seus valores. É importante perceber que $0\leqslant p_i\leqslant 1$ e que $\sum p_i=1$.}
+	\label{table:describe_func_probabilidade}
+	\begin{tabular}{c|cccc}\toprule  
+		$X$ & $x_1$ & $x_2$ & $x_3$ & $\dots$ \\ \midrule
+		$P(X=x_i)$ & $p_1$ & $p_2$ & $p_3$ & $\dots$\\\bottomrule
+	\end{tabular}
+\end{sidepicture}
+
+\subsection{Função acumulada de probabilidade}
+
+A função de distribuição ou função acumulada de probabilidade de uma variável aleatória discreta $X$ é definida por
+\begin{equation}
+	F(x)=P(X\leqslant x)\text{.}
+\end{equation}
+
+\todo{Fazer o exemplo aqui.}
+
+\subsection{Medidas de posição}
+
+\subsubsection*{Média ou Valor Esperado}
+
+A média denominada \emphasis{esperança} ou valor esperado de uma variável aleatória discreta é dada por
+\begin{equation}
+	E(X)=\sum_{i=1}^{n} x_i p_i\text{.}
+\end{equation}
+
+\subsubsection*{Mediana}
+
+A mediana é o valor $Md$ que satisfaz às seguintes condições
+\begin{equation}
+	P(X \geqslant Md) \geqslant 0,5\text{,}
+\end{equation}
+\begin{equation}
+	P(X \leqslant Md) \geqslant 0,5\text{.}
+\end{equation}
+
+\subsubsection*{Moda}
+
+A moda é o valor da variável aleatória que tem maior probabilidade de ocorrência
+\begin{equation}
+	P(X=Mo)=\max_{x} (p_1, p_2, \dots, p_m)\text{.}
+\end{equation}
+
+\subsubsection*{Variância}
+
+A variância é dada por
+\begin{equation}
+	Var(X)=\sum_{i=1}^{n} (x_i - E(X))^2 p_i\text{,}
+\end{equation}
+ou, ainda, como
+\begin{equation}
+	Var(X)=E(X^2)-(E(X))^2\text{,}
+\end{equation}
+onde 
+\begin{equation}
+	E(X^2)=\sum_{i=1}^{n} x_i^2 p_i\text{.}
+\end{equation}
+
+\subsubsection*{Desvio Padrão}
+
+O desvio padrão é dado pela raíz quadrada da variância, ou seja,
+\begin{equation}
+	DP(X)=\sqrt{Var(X)}\text{.}
+\end{equation}
+
+\todo{Fazer Exemplo Aqui}
+
+\subsubsection*{Propriedades}
+
+\begin{theorem}
+	Seja $X$ uma variável aleatória discreta e $Y=aX+b$, onde $a$ e $b$ são constantes, então tem-se que
+	\begin{itemize}
+		\item $E(Y)=E(aX+b)=aE(X)+b$;
+		\item $Var(Y)=Var(aX+b)=a^2\cdot Var(X)$.
+	\end{itemize}
+\end{theorem}
+
+\begin{theorem}
+	Sejam $X_1$, $\dots$, $X_n$, $n$ variáveis aleatórias discretas independentes, então
+	\begin{itemize}
+		\item $E(X_1 + \cdots + X_n)=E(X_1) + \cdots + E(X_n)$;
+		\item $Var(X_1 + \cdots + X_n)=Var(X_1) + \cdots + Var(X_n)$.
+	\end{itemize}
+\end{theorem}
+
+\section{Principais Modelos Discretos}
+
+\subsection{Modelo Uniforme Discreto}
+
+Seja X uma variável aleatória cujos possíveis valores podem ser representados por $x_1$, $x_2$, $\dots$, $x_n$. Dizemos que $X$ segue o modelo uniforme discreto se, e somente se,
+\begin{equation}
+	P(X=x_i)=\frac{1}{n}\text{,}
+\end{equation}
+para todo $i=1$, $2$, $\dots$, $n$. Outra representação do modelo está na Tabela \ref{table:describe_func_probabilidade_uniforme_discreto}.
+
+\begin{sidepicture}{5cm}{table}{Representação em Tabela da função de probabilidade do modelo uniforme discreto.}
+	\label{table:describe_func_probabilidade_uniforme_discreto}
+	\begin{tabular}{c|cccc}\toprule  
+		$X$ & $x_1$ & $x_2$ & $\dots$ & $x_n$ \\ \midrule
+		$P(X=x_i)$ & $\frac{1}{n}$ & $\frac{1}{n}$ & $\dots$ & $\frac{1}{n}$\\\bottomrule
+	\end{tabular}
+\end{sidepicture}
+
+A esperança e a variância para o modelo uniforme são dadas, respectivamente, por
+\begin{equation}
+	E(X)=\frac{\displaystyle\sum_{i=1}^{n}x_i}{n}\text{,}
+\end{equation}
+e
+\begin{equation}
+	Var(X)=\frac{\displaystyle\sum_{i=1}^{n} x_i^2}{n} - \left (
+		\frac{\displaystyle \sum_{i=1}^{n} x_i}{n}
+	\right )^2\text{.}
+\end{equation}
+
+\todo{Fazer, aqui a demonstração.}
+
+\todo{Fazer os gráficos}
+
+
+\begin{example}
+	Uma rifa tem 100 bilhetes numerados de 1 a 100. Tenho 5 bilhetes consecutivos numerados de 21 a 25 e, meu colega tem os bilhetes 1, 11, 29, 68 e 93. Quem tem maior probabilidade de ser sorteado?\\
+	
+	Calculando a probabilidade dos 5 bilhetes consecutivos, tem-se
+	\begin{align*}
+		P(\text{Meus})&=P(X=21)+P(X=22)+\\
+					  &\hspace{5pt}+P(X=23)+P(X=24)+P(X=25)\\
+					  &=\frac{1}{100}+\frac{1}{100}+\frac{1}{100}+\frac{1}{100}+\frac{1}{100}\\
+					  &=\frac{5}{100}\text{.}
+	\end{align*}
+	
+	Calculando a probabilidade do colega,
+	\begin{align*}
+		P(\text{Colega})&=P(X=1)+P(X=11)+\\
+						&\hspace{5pt}+P(X=29)+P(X=68)+P(X=93)\\
+						&=\frac{1}{100}+\frac{1}{100}+\frac{1}{100}+\frac{1}{100}+\frac{1}{100}\\
+					  &=\frac{5}{100}\text{,}
+	\end{align*}
+	de onde pode-se concluir que ambos possuem a mesma probabilidade de serem sorteados.
+\end{example}
+
+\subsection{Modelo de Bernoulli}
+
+Seja $X$ uma variável aleatória que assume apenas os valores 0 ou 1, respectivamente. Dizemos que $X$ segue o modelo de Bernoulli, se e somente se,
+\begin{equation}
+	P(X=x)=p^x(1-p)^{1-x}\text{,}
+\end{equation}
+com $x=0$ ou $x=1$. Outra representação para a função de probabilidade do modelo está na Tabela \ref{table:describe_func_probabilidade_bernoulli}.
+
+\begin{sidepicture}{5cm}{table}{Representação em Tabela da função de probabilidade do modelo de Bernoulli.}
+	\label{table:describe_func_probabilidade_bernoulli}
+	\begin{tabular}{c|cc|c}\toprule
+		$X$ & $0$ & $1$ & Total \\ \midrule
+		$P(X=x_i)$ & $1-p$ & $p$ & $1$\\\bottomrule
+	\end{tabular}
+\end{sidepicture}
+
+A esperança e a variância são
+\begin{equation}
+	E(X)=p\text{,}
+\end{equation}
+e
+\begin{equation}
+	Var(X)=p(1-p)\text{.}
+\end{equation}
+
+\todo{fazer as demonstrações}
+
+A função acumulada é
+\begin{equation}
+	F(x)=\begin{cases}
+		0\text{,}&\text{ se }x < 0\\
+		1-p\text{,}&\text{ se }0\leqslant x < 1\\
+		1\text{,}&\text{ se } x\geqslant 1
+	\end{cases}
+	\text{.}
+\end{equation}
+
+\todo{fazer os gráficos}
+
+\todo{fazer exemplo}
 
 
 \nosidepicturearea
@@ -2227,10 +2887,12 @@ onde $t_{n-1}$ representa a distribuição \emphasis{t-student} com $n-1$ graus 
 \part{Anexos}
 \nosidepicturearea
 
-\chapter*{Quadro de Números Aleatórios}
-\label{anexo:quadro_num_aleatorio}
+\renewcommand{\thechapter}{\Alph{apendix}}
 
-% TODO: Criar um counter para os anexos
+\refstepcounter{apendix}
+
+\chapter{Quadro de Números Aleatórios}
+\label{anexo:quadro_num_aleatorio}
 
 {\color{red}Falar aqui sobre o quadro de números aleatórios}
 
