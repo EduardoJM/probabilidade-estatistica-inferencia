@@ -352,9 +352,9 @@ São amostras em que a seleção é aleatória de tal forma, que cada elemento d
 
 Nessa amostragem, cada elemento da população tem a mesma probabilidade de pertencer à amostra.
 
-\todo{falar sobre a tabela de números aleatórios}
+Para sortearmos números aleatórios utilizaremos uma tabela de números aleatórios (Disponível no Anexo \ref{anexo:quadro_num_aleatorio}). Para isso, é possível escolher uma linha ou coluna da tabela e, em seguida, a percorrer encontrando a quantidade de números necessários, passando a próxima linha ou coluna, caso necessário. Por exemplo, na primeira linha, para encontrar três números aleatórios entre 1 e 9, tem-se o conjunto $\{9,$ 8, 0, 8, 6, 2, 4, 8, $\dots\}$. Tomamos o número 9, pois ainda não há nenhum número selecionado e ele está entre 1 e 9 (inclusive). Em seguida, tomamos o 8 pelas mesmas razões. O 0, não é selecionado, pois não está entre 1 e 9. O 8 também não é selecionado agora, pois o mesmo foi selecionado anteriormente. O último número a ser tomado é, então, o número 6.
 
-\begin{sidepicture}{5cm}{table}{AAA}
+\begin{sidepicture}{0}{table}{AAA}
 	\label{table:funcionarios_exemplo}
 	\begin{tabular}{ccc}\\\toprule
 		Ricardo & Gabriela & Cláudia\\
@@ -363,7 +363,7 @@ Nessa amostragem, cada elemento da população tem a mesma probabilidade de pert
 	\end{tabular}
 \end{sidepicture}
 
-\begin{sidepicture}{0cm}{table}{AAA}
+\begin{sidepicture}{-4cm}{table}{AAA}
 	\label{table:funcionarios_exemplo_numeros}
 	\begin{tabular}{rl}\\\toprule
 		Ricardo & 01 \\
@@ -411,6 +411,8 @@ Seja $N$ o tamanho da população e $n$ o tamanho da amostra, calcula-se o inter
 
 A amostragem estratificada consiste em dividir a população em subgrupos (estratos) mutuamente exclusivos e, selecionar uma amostra aleatória de cada estrato (subamostras) (Figura \ref{fig:amostra_estratificada}).
 
+\newpage
+
 \begin{pageWidthArea}
 	\begin{pageWidthAreaPicture}{picture}{Ilustração exemplificando a amostragem estratificada.}
 		\label{fig:amostra_estratificada}
@@ -456,8 +458,6 @@ A amostragem estratificada consiste em dividir a população em subgrupos (estra
 \begin{remark}
 	Quando as subamostras tiverem tamanhos proporcionais aos respectivos números de elementos o estrato, teremos a \emphasis{estratificação proporcional} (Figura \ref{fig:estratificacao_proporcional}).
 \end{remark}
-
-\newpage
 
 \begin{pageWidthArea}
 	\begin{pageWidthAreaPicture}{picture}{Ilustração exemplificando a amostragem estratificada proporcional.}
@@ -517,6 +517,26 @@ A amostragem estratificada consiste em dividir a população em subgrupos (estra
 	\end{pageWidthAreaPicture}
 \end{pageWidthArea}
 
+\begin{sidepicture}{0cm}{table}{Composição da população do Exemplo \ref{example:amostra_estratificada_teste_droga}}
+	\label{table:composicao_example_amostra_estratificada_teste_droga}
+	\begin{tabular}{rl}\\\toprule
+		Lab. A & $A_1$, $\dots$, $A_{10}$ \\
+		Lab. B & $B_1$, $\dots$, $B_{10}$ \\ 
+		Lab. C & $C_1$, $\dots$, $C_{10}$, $\dots$, $C_{30}$ \\ \bottomrule
+	\end{tabular}
+\end{sidepicture}
+
+\begin{sidepicture}{-3cm}{table}{Determinando o tamanho da amostra em cada estrato do Exemplo \ref{example:amostra_estratificada_teste_droga}}
+	\label{table:tamanho_example_amostra_estratificada_teste_droga}
+	\begin{tabular}{ccc}\\\toprule
+		\small Estrato & \begin{tabular}{c}\small Proporção\\\small na\\\small População\end{tabular} & \begin{tabular}{c}\small Tamanho\\\small Amostral\\\small no\\\small Estrato\end{tabular}\\ \midrule
+		\small Lab. A & \small $\dfrac{10}{50}=0,2$\vspace{10pt} & \small $0,2\cdot 10=2$ \\
+		\small Lab. B & \small $\dfrac{10}{50}=0,2$\vspace{10pt} & \small $0,2\cdot 10=2$ \\ 
+		\small Lab. C & \small $\dfrac{30}{50}=0,6$\vspace{10pt} & \small $0,6\cdot 10=6$ \\ \midrule
+		\small Total & \small $\dfrac{50}{50}=1$ & \small $10$ \\ \bottomrule
+	\end{tabular}
+\end{sidepicture}
+
 \begin{example}
 	\label{example:amostra_estratificada_teste_droga}
 	Com o objetivo de estudar a eficácia de uma determinada droga, vamos realizar um levantamento por amostragem estratificada proporcional de tamanho 10. Suponha que a população é composta por 10 drogas do laboratório A, 10 do laboratório B e 30 do laboratório C (Tabela \ref{table:composicao_example_amostra_estratificada_teste_droga}). A determinação do tamanho da amostra em cada estrato pode ser feita com porcentagem simples (Tabela \ref{table:tamanho_example_amostra_estratificada_teste_droga}). \\
@@ -539,26 +559,6 @@ A amostragem estratificada consiste em dividir a população em subgrupos (estra
 	\end{center}
 \end{example}
 
-\begin{sidepicture}{12cm}{table}{Composição da população do Exemplo \ref{example:amostra_estratificada_teste_droga}}
-	\label{table:composicao_example_amostra_estratificada_teste_droga}
-	\begin{tabular}{rl}\\\toprule
-		Lab. A & $A_1$, $\dots$, $A_{10}$ \\
-		Lab. B & $B_1$, $\dots$, $B_{10}$ \\ 
-		Lab. C & $C_1$, $\dots$, $C_{10}$, $\dots$, $C_{30}$ \\ \bottomrule
-	\end{tabular}
-\end{sidepicture}
-
-\begin{sidepicture}{8cm}{table}{Determinando o tamanho da amostra em cada estrato do Exemplo \ref{example:amostra_estratificada_teste_droga}}
-	\label{table:tamanho_example_amostra_estratificada_teste_droga}
-	\begin{tabular}{ccc}\\\toprule
-		\small Estrato & \begin{tabular}{c}\small Proporção\\\small na\\\small População\end{tabular} & \begin{tabular}{c}\small Tamanho\\\small Amostral\\\small no\\\small Estrato\end{tabular}\\ \midrule
-		\small Lab. A & \small $\dfrac{10}{50}=0,2$\vspace{10pt} & \small $0,2\cdot 10=2$ \\
-		\small Lab. B & \small $\dfrac{10}{50}=0,2$\vspace{10pt} & \small $0,2\cdot 10=2$ \\ 
-		\small Lab. C & \small $\dfrac{30}{50}=0,6$\vspace{10pt} & \small $0,6\cdot 10=6$ \\ \midrule
-		\small Total & \small $\dfrac{50}{50}=1$ & \small $10$ \\ \bottomrule
-	\end{tabular}
-\end{sidepicture}
-
 \subsection{Uma Fórmula para o Cálculo do Tamanho de Uma Amostra Aleatória Simples}
 
 Seja $N$ o tamanho da população, $n$ o tamanho da amostra, $n_0$ uma primeira aproximação para o tamanho da amostra e $E_0$ o erro amostral tolerável.
@@ -577,7 +577,6 @@ Conhecendo o tamanho $N$ da população, podemos corrigir o cálculo acima por
 	Perceba que quando $N\to\infty$, o valor de $n_0\to n$.
 \end{remark}
 
-\begin{pageWidthArea}
 \begin{example}
 	Planeja-se um levantamento por amostragem para avaliar diversas características da população das 200 famílias moradoras de um bairro. Qual deve ser o tamanho mínimo de uma amostra aleatória simples, tal que, possamos admitir, com alta confiança, que os erros amostrais não ultrapassem 4\%.\\
 	
@@ -596,13 +595,73 @@ Conhecendo o tamanho $N$ da população, podemos corrigir o cálculo acima por
 		n=\frac{200.000\cdot 625}{200.000+625}=623\text{.}
 	\]
 \end{example}
-\end{pageWidthArea}
 
 \begin{note}{Arredondamentos}
 	Uma observação a ser feita é que não se deve reduzir ou truncar a aproximação. Use sempre o próximo inteiro de modo a garantir que esteja dentro da margem de erro desejada.
 \end{note}
 
-\todo{fazer os dois exemplos das folhas}
+\begin{pageWidthArea}
+	\begin{exerciseArea}
+		\item A Tabela \ref{table:exercicio_prop_rural} refere-se a informações sobre as variáveis classe social, grau de instrução, diversidade de cultivo e tamanho da propriedade de 36 propriedades rurais. Baseado nesses dados e com o objetivo de calcular o tamanho médio dessas propriedades, realize uma amostragem de tamanho 10:
+		\begin{enumerate}[label=\alph*)]
+			\item aleatória simples, utilizando a quinta linha do quadro de números aleatórios;
+			\item sistemática, utilizando a 9$^{\text{a}}$ coluna; e
+			\item estratificada proporcional a classe social, utilizando a 17$^{\text{a}}$ linha para a classe baixa, 18$^{\text{a}}$ linha para a classe média e a 19$^{\text{a}}$ linha para a classe alta.
+		\end{enumerate}
+	\end{exerciseArea}
+\end{pageWidthArea}
+
+\newpage
+
+\begin{pageWidthArea}
+	\begin{pageWidthAreaPicture}{table}{Bla bla bla bla.}
+		\label{table:exercicio_prop_rural}
+		\centering
+		\resizebox{\textwidth}{!}{%
+		\begin{tabular}{ccccc}\\\toprule
+			Propriedade & \begin{tabular}{c}Classe\\Social\end{tabular} & \begin{tabular}{c}Grau de\\Instrução\end{tabular} & \begin{tabular}{c}Diversidade\\de Cultivo\end{tabular} & \begin{tabular}{c}Tamanho da\\Propriedade (ha)\end{tabular}\\ \midrule
+			1 & Baixa & 1$^{\text{o}}$ Grau & 4 & 70,52 \\
+			2 & Baixa & 2$^{\text{o}}$ Grau & 1 & 70,52 \\
+			3 & Média & 2$^{\text{o}}$ Grau & 2 & 70,52 \\
+			4 & Média & 1$^{\text{o}}$ Grau & 3 & 60,15 \\
+			5 & Baixa & 2$^{\text{o}}$ Grau & 2 & 80,34 \\
+			6 & Baixa & 1$^{\text{o}}$ Grau & 3 & 70,52 \\
+			7 & Baixa & Superior & 0 & 90,25 \\
+			8 & Baixa & 2$^{\text{o}}$ Grau & 4 & 70,52 \\
+			9 & Média & 2$^{\text{o}}$ Grau & 1 & 70,52 \\
+			10 & Média & 2$^{\text{o}}$ Grau & 1 & 70,52 \\
+			11 & Média & 2$^{\text{o}}$ Grau & 2 & 67,40 \\
+			12 & Baixa & 1$^{\text{o}}$ Grau & 0 & 90,25 \\
+			13 & Média & 1$^{\text{o}}$ Grau & 0 & 71,65 \\
+			14 & Média & 1$^{\text{o}}$ Grau & 3 & 70,52 \\
+			15 & Média & 1$^{\text{o}}$ Grau & 1 & 70,52 \\
+			16 & Média & 2$^{\text{o}}$ Grau & 0 & 90,25 \\
+			17 & Média & 2$^{\text{o}}$ Grau & 0 & 90,25 \\
+			18 & Média & 2$^{\text{o}}$ Grau & 2 & 98,76 \\
+			19 & Alta & Superior & 1 & 136,12 \\
+			20 & Média & 2$^{\text{o}}$ Grau & 0 & 75,33 \\
+			21 & Baixa & 1$^{\text{o}}$ Grau & 1 & 56,98 \\
+			22 & Média & Superior & 4 & 70,52 \\
+			23 & Baixa & 2$^{\text{o}}$ Grau & 3 & 70,52 \\
+			24 & Alta & Superior & 0 & 136,16 \\
+			25 & Média & 2$^{\text{o}}$ Grau & 2 & 70,52 \\
+			26 & Média & 2$^{\text{o}}$ Grau & 5 & 89,83 \\
+			27 & Baixa & 1$^{\text{o}}$ Grau & 3 & 70,52 \\
+			28 & Média & 2$^{\text{o}}$ Grau & 0 & 90,25 \\
+			29 & Baixa & 2$^{\text{o}}$ Grau & 2 & 66,75 \\
+			30 & Baixa & 1$^{\text{o}}$ Grau & 2 & 70,52 \\
+			31 & Alta & 2$^{\text{o}}$ Grau & 2 & 140,80 \\
+			32 & Média & 1$^{\text{o}}$ Grau & 1 & 90,25 \\
+			33 & Alta & Superior & 0 & 160,15 \\
+			34 & Alta & Superior & 0 & 136,80 \\
+			35 & Média & 1$^{\text{o}}$ Grau & 2 & 70,52 \\
+			36 & Alta & 2$^{\text{o}}$ Grau & 1 & 120,27 \\ \midrule
+			 & \textbf{Média} &   & \textbf{1,61} & \textbf{86,02} \\ \bottomrule
+		\end{tabular}
+		}
+	\end{pageWidthAreaPicture}
+\end{pageWidthArea}
+
 
 \section{Distribuição de Frequências}
 
@@ -623,8 +682,6 @@ Quando se estuda uma variável, o maior interesse do pesquisador é conhecer a s
 		}
 	\end{pageWidthAreaPicture}
 \end{pageWidthArea}
-
-\todo{indicar fonte para a tabela?}
 
 \begin{example}
 	A distribuição da variável \emphasis{grau de instrução} dos 36 funcionários da Companhia Milsa, na Tabela \ref{table:grau_instrucao_milsa}.
