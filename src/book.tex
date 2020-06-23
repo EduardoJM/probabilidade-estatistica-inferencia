@@ -713,9 +713,163 @@ Quando se estuda uma variável, o maior interesse do pesquisador é conhecer a s
 	Distribuição de frequência da variável \emphasis{tamanho da propriedade (ha)} de 80 áreas rurais, mostrados na Tabela \ref{table:distribuicao_tamanho_propriedades}.
 \end{example}
 
-\todo{Estatística Descritiva, Tipos de variáveis.}
+\section{Estatística Descritiva}
 
-\todo{Representação Gráfica.}
+Na estatística descritiva, as variáveis podem ser classificadas conforme o diagrama na Figura \ref{diagrama:estatistica_descritiva}. Observe, no Exemplo \ref{example:estatistica_descritiva}, algumas classificações.
+
+\begin{pageWidthArea}
+	\begin{pageWidthAreaPicture}{picture}{Tipos de variáveis na estatística descritiva.}
+	\label{diagrama:estatistica_descritiva}
+		\resizebox{\textwidth}{!}{
+			\begin{tikzpicture}[grow=right, sloped]
+			\node[text width=4em, text centered] {Variável}
+			child {
+				node[text width=14em, text centered] {\begin{tabular}{l}\textbf{Quantitativa}\\(expressa quantidade)\end{tabular}}
+				child {
+					node[circle, minimum width=3pt,fill, inner sep=0pt, label=right:{\begin{tabular}{l}\textbf{Contínua}\\(Intervalo de tempo)\end{tabular}}] {}
+				}
+				child {
+					node[circle, minimum width=3pt,fill, inner sep=0pt, label=right:{\begin{tabular}{l}\textbf{Discreta}\\(Conjunto finito ou enumerável)\end{tabular}}] {}
+				}
+			} child {
+				node[text width=14em, text centered] {\begin{tabular}{l}\textbf{Qualitativa (Categórica)}\\(expressa qualidade)\end{tabular}}
+				child {
+					node[circle, minimum width=3pt, fill, inner sep=0pt, label=right:{\begin{tabular}{l}\textbf{Ordinal}\\(Há uma certa ordem)\end{tabular}}] {}
+				}
+				child {
+					node[circle, minimum width=3pt,fill, inner sep=0pt, label=right:{\begin{tabular}{l}\textbf{Nominal}\\(Não há ordem)\end{tabular}}] {}
+				}
+			};
+			\end{tikzpicture}
+		}
+	\end{pageWidthAreaPicture}
+\end{pageWidthArea}
+
+\begin{example}
+	\label{example:estatistica_descritiva}
+	
+	Classifique as variáveis:
+	\begin{enumerate}[label=\alph*)]
+		\item \emphasis{Peso ou Altura:} variáveis do tipo peso ou altura são quantitativas, pois representam números e são contínuas pois o conjunto é não enumerável (quantitativa contínua).
+		
+		\item \emphasis{Número de tratores em uma propriedade rural:} é uma variável quantitativa pois representa um número e discreta pois seu conjunto é enumerável (quantitativa discreta).
+		
+		\item \emphasis{Uso do solo:} é uma variável qualitativa pois expressa uma qualidade e é nominal pois não há ordem nos possíveis valores (qualitativa nominal).
+		
+		\item \emphasis{Grau de Instrução:} é uma variável qualitativa pois expressa uma qualidade e ordinal pois há uma ordem nos possíveis valores (qualitativa ordinal).
+	\end{enumerate}
+\end{example}
+
+\section{Representação Gráfica}
+
+A representação gráfica tem por objetivo, dar ideia imediata dos resultados obtidos, permitindo ao leitor tirar conclusões sobre o comportamento da variável.
+
+\subsection{Gráficos em colunas ou em barras}
+
+Um exemplo de exibição de um mesmo gráfico, em formato de colunas e de barras pode ser visto na Figura \ref{picture:diversidade_coluna} e na Figura \ref{picture:diversidade_barra}, respectivamente.
+
+\vspace{10pt}
+
+\begin{pageWidthArea}
+	\begin{pageWidthAreaPicture}{picture}{Diversidade de Cultivo de 36 Propriedades Rurais exibido em um Gráfico de Colunas.}
+		\label{picture:diversidade_coluna}
+		\centering
+		\includegraphics[scale=0.4]{graphs/diversidade_cultivo}
+	\end{pageWidthAreaPicture}
+\end{pageWidthArea}
+
+\vspace{10pt}
+
+\begin{pageWidthArea}
+	\begin{pageWidthAreaPicture}{picture}{Diversidade de Cultivo de 36 Propriedades Rurais exibido em um Gráfico de Barras.}
+		\label{picture:diversidade_barra}
+		\centering
+		\includegraphics[scale=0.4]{graphs/diversidade_cultivo_barra}
+	\end{pageWidthAreaPicture}
+\end{pageWidthArea}
+
+\subsection{Gráfico em setores}
+
+\begin{sidepicture}{10pt}{table}{Dados sobre os domicílios particulares permanentes na cidade de Potirendaba - SP}
+	\label{table:setores_domicilios}
+	\begin{tabular}{lcc}\\\toprule
+		\begin{tabular}{l}Imóvel\end{tabular}\vspace{10pt} & Domicílios & Ângulo \\ \midrule
+		\begin{tabular}{l}Próprio\\já quitado\end{tabular}\vspace{10pt} & 2.135 & $186^{\text{o}}$\\
+		\begin{tabular}{l}Próprio\\em aquisição\end{tabular}\vspace{10pt} & 872 & $76^{\text{o}}$\\ 
+		\begin{tabular}{l}Alugado\end{tabular}\vspace{10pt} & 632 & $55^{\text{o}}$ \\ 
+		\begin{tabular}{l}Cedido\end{tabular}\vspace{10pt} & 486 & $42^{\text{o}}$ \\
+		\begin{tabular}{l}Outra forma\end{tabular}\vspace{10pt} & 9 & $1^{\text{o}}$ \\ \midrule
+		\begin{tabular}{l}Total\end{tabular}\vspace{10pt} & 4.134 & $360^{\text{o}}$\\\bottomrule
+	\end{tabular}
+\end{sidepicture}
+
+O gráfico em setores, também conhecido como gráfico de pizza, é muito utilizado para a exibição em porcentagem, onde, o ângulo de cada setor é dado por
+\[
+	x_i^{\text{o}}=\frac{360^{\text{o}}f_i}{n}\text{.}
+\]
+
+Um exemplo de gráfico de setores, criado a partir dos dados disponíveis na Tabela \ref{table:setores_domicilios}, pode ser visto na Figura \ref{picture:setores_domicilios}.
+
+\vspace{160pt}
+
+\begin{pageWidthArea}
+	\begin{pageWidthAreaPicture}{picture}{Domicilios Particulares Permanentes em Potirendaba - SP Exibidos em um Gráfico de Setores.}
+		\label{picture:setores_domicilios}
+		\centering
+		\includegraphics[scale=0.35]{graphs/domicilios}
+	\end{pageWidthAreaPicture}
+\end{pageWidthArea}
+
+\newpage
+
+\subsection{Gráfico em curvas ou linhas}
+
+Um exemplo de gráfico em curva, também chamado de gráfico em linha, pode ser visto na Figura \ref{picture:linha_kw}.
+
+\begin{pageWidthArea}
+	\begin{pageWidthAreaPicture}{picture}{Demanda horária de quilowatt (KW) em um dia de pico de verão para um edifício comercial visualizado num gráfico em linha.}
+		\label{picture:linha_kw}
+		\centering
+		\includegraphics[scale=0.35]{graphs/kw_linha}
+	\end{pageWidthAreaPicture}
+\end{pageWidthArea}
+
+\subsection{Histograma}
+
+Um histograma é uma representação gráfica de uma ditribuição de frequência por meio de retângulos justapostos. Um exemplo de histograma pode ser visto na Figura \ref{picture:histograma}.
+
+\begin{pageWidthArea}
+	\begin{pageWidthAreaPicture}{picture}{Tamanho de 80 Propriedades Rurais visto num Histograma.}
+		\label{picture:histograma}
+		\centering
+		\includegraphics[scale=0.35]{graphs/histograma_rurais}
+	\end{pageWidthAreaPicture}
+\end{pageWidthArea}
+
+\subsection{Curva Polida de Frequência}
+
+Um exemplo de curva polida (suave) de frequência está na Figura \ref{picture:polida}.
+
+\begin{pageWidthArea}
+	\begin{pageWidthAreaPicture}{picture}{Tamanho de 80 Propriedades Rurais visto numa curva polida.}
+		\label{picture:polida}
+		\centering
+		\includegraphics[scale=0.35]{graphs/polida}
+	\end{pageWidthAreaPicture}
+\end{pageWidthArea}
+
+\newpage
+\subsection{Histograma com Curva Polida de Frequência}
+
+Um exemplo de histograma com curva polida (suave) de frequência está na Figura \ref{picture:polida_histograma}.
+
+\begin{pageWidthArea}
+	\begin{pageWidthAreaPicture}{picture}{Tamanho de 80 Propriedades Rurais visto numa curva polida junto com o histograma.}
+		\label{picture:polida_histograma}
+		\centering
+		\includegraphics[width=\textwidth]{graphs/histograma_polida}
+	\end{pageWidthAreaPicture}
+\end{pageWidthArea}
 
 \section{Medidas de Tendência Central e de Dispersão}
 
