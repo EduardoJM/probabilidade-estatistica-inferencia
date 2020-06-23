@@ -1057,19 +1057,96 @@ Neste caso, "\emphasis{convencionamos}" que todos os valores incluídos em um de
 \]
 onde $k$ é o número de classes.
 
-{\color{red}Fazer Exemplo Aqui.}
+\begin{pageWidthArea}
+	\begin{pageWidthAreaPicture}{table}{Aluguel das residências gerenciadas por um imobiliária}
+		\label{table:exemplo_aluguel_residencias}
+		\hspace{-15pt}
+		\resizebox{\textwidth}{!}{%
+			\begin{tabular}{lccc}\\\toprule
+				Aluguel (R\$) ($x_i$) & Residências ($f_i$) & Ponto médio ($x^{*}$) & $x_i\cdot f_i$ \\ \midrule
+				\hspace{11pt}0 $\vdash$ 200 & 30 & 100 & 3.000 \\
+				200 $\vdash$ 400 & 52 & 300 & 15.600 \\
+				400 $\vdash$ 600 & 28 & 500 & 14.000 \\ 
+				600 $\vdash$ 800 & 7 & 700 & 4.900 \\
+				800 $\vdash$ 1.000 & 3 & 900 & 2.700\\\midrule
+				Total & 120 & - & 40.200 \\ \bottomrule
+			\end{tabular}
+		}
+	\end{pageWidthAreaPicture}
+\end{pageWidthArea}
+
+\begin{example}
+	Uma imobiliária gerencia o aluguel de residências particulares, conforme a Tabela \ref{table:exemplo_aluguel_residencias}. A média dos aluguéis gerenciados por esta imobiliária pode ser cálculada como
+	\[
+		\overline{x}=\frac{
+			\displaystyle\sum_{i=1}^{5} x_{i}^{*} f_i
+		}{
+			\displaystyle\sum_{i=1}^{5} f_i
+		}
+		= \frac{40.200}{120}
+		= 335\text{.}
+	\]
+	
+	Portanto, a média dos aluguéis dessa imobiliária é de R\$ 335,00.
+\end{example}
 
 \subsection{Mediana}
 
 A mediana é o \emphasis{valor central} que divide um conjunto de "\emphasis{dados ordenados}" ao meio, deixando 50\% dos valores dos dados a sua esquerda e 50\% à sua direita.
 
-{\color{red}Fazer Exemplo Aqui.}
+\begin{example}
+	\label{example:mediana_vendedor}
+	O departamento de recursos humanos de uma empresa, tendo em vista o aumento de produtividade de seus vendedores, resolveu, premiar com um aumento de 5\% no salário, a metade de seus vendedores mais eficientes. Para isto, fez um levantamento de vendas semanais (em milhares de reais), por vendedor, obtendo os dados: 22, 18, 24, 19, 20, 21, 28, 26 e 25. A partir de qual volume de vendas o vendedor será premiado?
+	
+	O Rol dos conjuntos de dados é
+	\begin{center}
+		18, 19, 20, 21, \emphasis{22}, 24, 25, 26, 28\text{,}
+	\end{center}
+	que é uma sequência ímpar, portanto, a mediana é $md=R\$\text{ }22.000,00$. Assim o vendedor será premiado se o seu volume de vendas for a partir de R\$ 22.000,00.
+\end{example}
+
+\begin{example}
+	No Exemplo \ref{example:mediana_vendedor}, considere, agora, que temos mais um vendedor nesta empresa, com um volume de vendas (em milhares de reais) de 23. Então, tem-se o Rol
+	\begin{center}
+		18, 19, 20, 21, \emphasis{22}, \emphasis{23}, 24, 25, 26, 28,
+	\end{center}
+	que é uma sequência ímpar e, portanto, a mediana é calculada pela média entre os valores centrais,
+	\[
+		md=\frac{22 + 23}{2}=22,5\text{,}
+	\]
+	ou seja, o vendedor agora será premiado se o seu volume de vendas for a partir de R\$ 22.500,00.
+\end{example}
 
 \subsection{Moda}
 
 Denominamos por moda o valor que ocorre com maior frequência em um conjunto de dados.
 
-{\color{red}Fazer Exemplo Aqui.}
+\begin{example}
+	Os dados abaixo se referem ao consumo em kg, de um produto colocado em oferta, limitado a 5 kg no máximo por cliente.
+	\begin{center}
+		\emphasis{3}, 1, 2, 5, \emphasis{3}, 4, \emphasis{3} e 2.
+	\end{center}
+	
+	A moda para o consumo desse produto é $mo=3$ kg, pois o valor 3 é o que mais ocorre.
+\end{example}
+
+\begin{example}
+	Um grupo de funcionários teve seus pesos anotados:
+	\begin{center}
+		82, 73, 61, 58, 88, 77, 64 e 56.
+	\end{center}
+	
+	Neste caso, não existe moda, pois todos os valores ocorrem com a mesma frequência.
+\end{example}
+
+\begin{example}
+	As alturas de oito pessoas são medidas para fins de estudos. Suas alturas são:
+	\begin{center}
+		\emphasis{1,72}; 1,84; \textbf{1,64}; 1,76; \emphasis{1,72}; 1,58; \textbf{1,64} e 1,81.
+	\end{center}
+	
+	Portanto, a moda é 1,64 m e 1,72 m, pois os valores 1,64 e 1,72 são os valores que mais ocorreram.
+\end{example}
 
 \subsection{Qual a Melhor Medida de Centralidade?}
 
@@ -1099,7 +1176,49 @@ Não há uma única melhor resposta para esta questão, porque não há critéri
 	Para um conjunto de dados obviamente assimétrico, seria melhor informar tanto a média como a mediana.
 \end{remark}
 
-{\color{red}Fazer exemplos aqui.}
+\begin{pageWidthArea}
+	\begin{pageWidthAreaPicture}{table}{Distribuição de números de fregueses de um restaurante italiano}
+		\label{table:exemplo_restaurante_italiano}
+		\hspace{-15pt}
+		\resizebox{\textwidth}{!}{%
+			\begin{tabular}{cccccccc}\\\toprule
+				Dias & Seg. & Ter. & Qua. & Qui. & Sex. & \textbf{Sab.} & Dom \\ \midrule
+				Fregueses & 24 & 21 & 28 & 31 & 42 & \emphasis{226} & 39 \\ \bottomrule
+			\end{tabular}
+		}
+	\end{pageWidthAreaPicture}
+\end{pageWidthArea}
+
+\begin{example}
+	Um restaurante "Italiano" recebeu em uma determinada semana, uma certa quantidade de fregueses, e sabe-se que sábado foi um dia atípico pois chegaram ao restaurante três turmas de turistas. Os dados estão condensados na Tabela \ref{table:exemplo_restaurante_italiano}. A fim de ajudar o dono do restaurante, resuma esses dados em uma medida de tendência central mais apropriada.
+	
+	O rol do conjunto de dados é
+	\begin{center}
+		21, 24, 28, 31, 39, 42, \emphasis{226},
+	\end{center}
+	cuja média é 59 fregueses e a mediana é de 31 fregueses. A medida de tendência central mais "apropriada" é a mediana, pois esta representa melhor o conjunto de dados.
+\end{example}
+
+\begin{pageWidthArea}
+	\begin{pageWidthAreaPicture}{table}{Intenção de compra segundo os maridos}
+		\label{table:exemplo_compras_marido}
+		\resizebox{\textwidth}{!}{%
+			\begin{tabular}{cccccc}\\\toprule
+				Marido & 1 & 2 & 3 & 4 & 5 \\ \midrule
+				Presente & Roupa & Flores & CD & Livro & \emphasis{Carro}\\ \midrule
+				R\$ & 60,00 & 50,00 & 44,00 & 48,00 & \emphasis{25.000,00}\\ \bottomrule
+			\end{tabular}
+		}
+	\end{pageWidthAreaPicture}
+\end{pageWidthArea}
+
+\begin{example}
+	Numa pesquisa de consumo para o Natal, cinco maridos responderam o que e quanto eles pretendiam gastar com o presente para suas respectivas esposas. Os dados estão na Tabela \ref{table:exemplo_compras_marido}. O Rol do conjunto de dados é
+	\begin{center}
+		44,00; 48,00; \textbf{50,00}; 60,00; \emphasis{25.000,00}.
+	\end{center}
+	Neste caso, a mediana é "muito mais apropriada" do que a média para representar esse conjunto de dados, pois a mediana é R\$ 50,00 e a média é R\$ 5.040,40.
+\end{example}
 
 \section{Medidas de Dispersão}
 
@@ -1107,7 +1226,27 @@ Não há uma única melhor resposta para esta questão, porque não há critéri
 
 A amplitude total é a diferença entre os valores extremos do conjunto de dados.
 
-{\color{red}Fazer exemplos aqui.}
+\begin{example}
+	A produção diária de álcool na usina A durante uma semana foi de: 10, 14, 13, 15, 16 e 18 mil litros. Determine a amplitude total.
+	\[
+		A_t=18-10=8\text{,}
+	\]
+	assim, a amplitude total é de 8 mil litros.
+\end{example}
+
+\begin{remark}
+	Dois conjuntos de dados podem ter dispersão diferentes e apresentar a mesma amplitude total.
+\end{remark}
+
+\begin{example}
+	Considere os dados de produção diária de álcool da usina B durante uma semana: 7, 15, 14, 15, 14, 15 mil litros. A amplitude total é 
+	\[
+		A_t = 15 - 7 = 8\text{,}
+	\]
+	ou seja, 8 mil litros.
+\end{example}
+
+Considerando os dois exemplos, a amplitude da produção diária de álcool é a mesma para as duas usinas, porém, a usina B tem menor dispersão em relação a A.
 
 Embora a amplitude total seja a medida de dispersão mais simples, existem várias restrições ao seu uso devido a sua instabilidade, uma vez que, ela utiliza somente os valores extremos do conjunto de dados, sendo extremamente sensível à presença de valores extremos (outliers). Neste caso, precisamos de uma medida que foge a essa "falha", isto é, que leva em consideração todos os valores de um conjunto de dados.
 
