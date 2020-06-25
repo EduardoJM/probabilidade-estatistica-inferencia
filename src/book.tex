@@ -116,16 +116,6 @@
 
 \newlength{\leftshift}
 \NewEnviron{sidepicture}[3]{%
-	\ifthenelse{\equal{\detokenize{#1}}{\detokenize{picture}}}{
-		\refstepcounter{mpicture}
-	} {
-		\ifthenelse{\equal{\detokenize{#1}}{\detokenize{frame}}}{
-			\refstepcounter{mframe}
-		} {
-			\refstepcounter{mtable}
-		}
-	}
-	%\ifodd\thepage lol \else nolol \fi
 	\ifodd\thepage 
 		\setlength{\leftshift}{-8cm} 
 	\else 
@@ -141,11 +131,14 @@
 						{
 							\color{ocre}
 							\ifthenelse{\equal{\detokenize{#2}}{\detokenize{picture}}}{
+								\refstepcounter{mpicture}
 								\textbf{Figura \thempicture}
 							} {
 								\ifthenelse{\equal{\detokenize{#1}}{\detokenize{frame}}}{
+									\refstepcounter{mframe}
 									\textbf{Quadro \themframe}
 								} {
+									\refstepcounter{mtable}
 									\textbf{Tabela \themtable}
 								}
 							}
@@ -3345,22 +3338,6 @@ Também é possível substituir $p(1-p)$ pelo seu valor máximo $\frac{1}{4}$, a
 
 Esse intervalo de confiança é denominado intervalo \emphasis{conservador} pois substitui a variância $\frac{p(1-p)}{n}$ por um valor maior, com excessão se $p=\frac{1}{2}$.
 
-\begin{example}
-	\label{example:exemplo_proporcao}
-	Numa pesquisa de mercado 400 pessoas foram entrevistadas sobre determinado produto e, 60\% delas preferiram a marca A. Construa um intervalo de 95\% de confiança para a proporção de indivíduos que preferem a marca A.\\
-	
-	Do enunciado, tem-se $n=400$ e $1-\alpha=0,95$, de onde $\alpha=0,05$. Ainda, $\hat{p}=0,6$. Para encontrar o valor de $Z_{\frac{\alpha}{2}}$, é preciso lembrar que o gráfico de uma distribuição normal é simétrico e que, portanto, a área entre 0 e $Z_{\frac{\alpha}{2}}$ será igual a $\frac{1-0,05}{2}$, ou seja, $0,475$ (Figura \ref{fig:cap0:intervalo_confianca_exemplo_proporcao}). Então, 
-	\[
-		P(0\leqslant Z\leqslant Z_{\frac{\alpha}{2}})=0,475\text{,}
-	\]
-	de onde, $Z_{\frac{\alpha}{2}}=1,96$. Dessa forma, o intervalo de confiança será
-	\begin{align*}
-		IC(p, 95\%)&= [0,6-1,96\sqrt{0,0006};\text{ }0,6+1,96\sqrt{0,0006}]\\
-				   &= [0,6-0,048;\text{ }0,6+0,048]\\
-				   &= [0,55199;\text{ }0,64801]\text{.}
-	\end{align*}
-\end{example}
-
 \begin{sidepicture}{6cm}{picture}{Note que $P(0\leqslant Z\leqslant Z_{\frac{\alpha}{2}})=0,475$.}
 	\label{fig:cap0:intervalo_confianca_exemplo_proporcao}
 	\begin{tikzpicture}
@@ -3380,6 +3357,22 @@ Esse intervalo de confiança é denominado intervalo \emphasis{conservador} pois
 		\tkzText[color=black](1, 1.5){$0,475$}
 	\end{tikzpicture}
 \end{sidepicture}
+
+\begin{example}
+	\label{example:exemplo_proporcao}
+	Numa pesquisa de mercado 400 pessoas foram entrevistadas sobre determinado produto e, 60\% delas preferiram a marca A. Construa um intervalo de 95\% de confiança para a proporção de indivíduos que preferem a marca A.\\
+	
+	Do enunciado, tem-se $n=400$ e $1-\alpha=0,95$, de onde $\alpha=0,05$. Ainda, $\hat{p}=0,6$. Para encontrar o valor de $Z_{\frac{\alpha}{2}}$, é preciso lembrar que o gráfico de uma distribuição normal é simétrico e que, portanto, a área entre 0 e $Z_{\frac{\alpha}{2}}$ será igual a $\frac{1-0,05}{2}$, ou seja, $0,475$ (Figura \ref{fig:cap0:intervalo_confianca_exemplo_proporcao}). Então, 
+	\[
+		P(0\leqslant Z\leqslant Z_{\frac{\alpha}{2}})=0,475\text{,}
+	\]
+	de onde, $Z_{\frac{\alpha}{2}}=1,96$. Dessa forma, o intervalo de confiança será
+	\begin{align*}
+		IC(p, 95\%)&= [0,6-1,96\sqrt{0,0006};\text{ }0,6+1,96\sqrt{0,0006}]\\
+				   &= [0,6-0,048;\text{ }0,6+0,048]\\
+				   &= [0,55199;\text{ }0,64801]\text{.}
+	\end{align*}
+\end{example}
 
 \begin{remark}
 	Perceba, no exemplo acima (Exemplo \ref{example:exemplo_proporcao}) que, em determinado momento, tem-se o intervalo de confiança escrito como $0,6\pm 0,048$. Isso é o memso que dizer que o erro é de 4,8\% para mais ou para menos.
