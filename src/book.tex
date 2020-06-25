@@ -1373,9 +1373,54 @@ Uma classificação do coeficiente de variação é
 	\item $CV \geqslant 30$: \emphasis{Variação Muito Alta}.
 \end{itemize}
 
-Em geral, quando comparamos dispersões, ocorrem três situações.
+Em geral, quando comparamos dispersões, ocorrem três situações:
 
-\todo{Falar das três e mostrar seus respectivos exemplos (tabelas).}
+\begin{enumerate}
+	\item Os conjuntos de dados têm a mesma grandeza, e suas médias são muito próximas. Nesse caso, o coeficiente de variação (CV) não traz muito mais informação do que o desvio padrão (Tabela \ref{table:cv_caso1}).
+	
+	\item Os conjuntos de dados têm a mesma grandeza, mas suas médias são "significantemente" diferentes (Tabela \ref{table:cv_caso2}).
+	
+	\item Os conjuntos de dados têm grandezas diferentes. Neste caso o uso do coeficiente de variação se torna "muito viável" na comparação dos conjuntos, uma vez que o uso do desvio-padrão é inviável (Tabela \ref{table:cv_caso3}).
+\end{enumerate}
+
+\begin{pageWidthArea}
+	\begin{pageWidthAreaPicture}{table}{Coeficiente de variação para a duração de duas marcas de pneus}
+		\label{table:cv_caso1}
+		\resizebox{\textwidth}{!}{%
+			\begin{tabular}{cccc}\\\toprule
+				Duração & Média & Desvio-Padrão & CV \\ \midrule
+				Rodabem & 31.000 km & 3.500 km & 11,29\% \\
+				Duratex & 30.000 km & 3.200 km & 10,67\% \\ \bottomrule
+			\end{tabular}
+		}
+	\end{pageWidthAreaPicture}
+\end{pageWidthArea}
+
+\begin{pageWidthArea}
+	\begin{pageWidthAreaPicture}{table}{Coeficiente de variação para o tempo de serviço nos últimos empregos}
+		\label{table:cv_caso2}
+		\resizebox{\textwidth}{!}{%
+			\begin{tabular}{cccc}\\\toprule
+				Grupo & Média & Desvio-Padrão & CV \\ \midrule
+				João & 2,1 anos & 0,87 anos & 41,43\% \\
+				Lucas & 2,6 anos & 1,01 anos & 38,85\% \\ \bottomrule
+			\end{tabular}
+		}
+	\end{pageWidthAreaPicture}
+\end{pageWidthArea}
+
+\begin{pageWidthArea}
+	\begin{pageWidthAreaPicture}{table}{Coeficiente de variação para altura e peso dos funcionários da empresa Avante \& Avante}
+		\label{table:cv_caso3}
+		\resizebox{\textwidth}{!}{%
+			\begin{tabular}{cccc}\\\toprule
+				Funcionários & Média & Desvio-Padrão & CV \\ \midrule
+				Altura & 1,69 m & 0,11 m & 6,51\% \\
+				Peso & 64,8 kg & 5,23 kg & 8,07\% \\ \bottomrule
+			\end{tabular}
+		}
+	\end{pageWidthAreaPicture}
+\end{pageWidthArea}
 
 \section{Medidas Separatrizes}
 
