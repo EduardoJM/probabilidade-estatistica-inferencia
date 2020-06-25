@@ -1381,16 +1381,65 @@ Em geral, quando comparamos dispersões, ocorrem três situações.
 
 \subsection{Quartis}
 
-\todo{Falar dos quartis.}
+Os quartis dividem o conjunto de dados em quatro partes iguais. Assim, tem-se
+\begin{itemize}
+	\item \emphasis{$Q_1$}: O primeiro quartil, que separa o conjunto de dados deixando 25\% de seus valores à esquerda e 75\% à direita.
+	\item \emphasis{$Q_2$}: O segundo quartil, que coincide com a mediana, isto é, divide o conjunto de dados ao meio.
+	\item \emphasis{$Q_3$}: O terceiro quartil, que separa o conjunto de dados deixando 75\% de seus valores à esquerda e 25\% à direita.
+\end{itemize}
 
 \subsection{Percentis}
 
-\todo{Falar dos percentis.}
+Os percentis dividem o conjunto de dados em 100 partes iguais. Assim, tem-se
+\begin{itemize}
+	\item \emphasis{$P_1$}: Primeiro percentil, que separa o conjunto de dados deixando 1\% de seus valores à esquerda e 99\% à direita.
+	\item \emphasis{$P_2$}: Segundo percentil, que separa o conjunto de dados deixando 2\% de seus valores à esquerda e 98\% à direita.
+	\begin{center}
+		$\vdots$
+	\end{center}
+	\item \emphasis{$P_{99}$}: 99$^{\text{o}}$ percentil, que separa o conjunto de dados deixando 99\% de seus valores à esquerda e 1\% à direita.
+\end{itemize}
+
+\begin{remark}
+	É importante notar que $Q_1=P_{25}$, $Q_2=P_{50}$ e $Q_3=P_{75}$.
+\end{remark}
 
 \subsection{Aproximação para o Cálculo dos Percentis}
 
-\todo{Falar dessas aproximações.}
+Considerando o número
+\[
+\frac{i\cdot n}{100}\text{,}
+\]
+tem-se dois casos:
+\begin{itemize}
+	\item Se $\frac{i\cdot n}{100}$ é um número inteiro, então $P_i$ é um dos elementos do conjunto de dados.
+	
+	\item Se $\frac{i\cdot n}{100}$ não é um número inteiro, então $P_i$ é a média entre o valor aproximado por falta e por excesso.
+\end{itemize}
 
+\begin{example}
+	Dados os números de horas de trabalho perdidas por dia em uma lavoura devido a incidentes relacionados ao clima: 2, 5, 8, 5, 5, 10, 1, 8, 12, 9, 12 e 11. Determine o primeiro quartil.
+	
+	Como $Q_1=P_{25}$, logo, basta calcular $P_{25}$, ou seja, se $i=25$ e $n=12$, logo tem-se $\frac{i\cdot n}{100}=\frac{25\cdot 12}{100}=3$, portanto, $P_{25}$ é o terceiro elemento do rol desse conjunto de dados:
+	\begin{center}
+		1, 2, \emphasis{5}, 5, 5, 8, 8, 9, 10, 11, 12, 12\text{,}
+	\end{center}
+	portanto, $Q_1=5$ horas/dia.
+\end{example}
+
+\begin{example}
+	Considere o seguinte conjunto de dados, em kg, referentes ao peso de bovinos com uma determinada idade: 265, 197, 346, 280, 268, 200, 221, 261. Calcule o percentil de ordem 60.
+	
+	Chamando $i=60$ e $n=80$, tem-se $\frac{i\cdot n}{100}=\frac{60\cdot 8}{100}=4,8$, portanto, $P_{60}$ será a média entre o 4$^{\text{o}}$ e o 5$^{\text{o}}$ elementos do rol desses dados:
+	\begin{center}
+		197, 200, 221, \emphasis{261}, \emphasis{265}, 268, 280, 346\text{,}
+	\end{center}
+	de onde,
+	\[
+		P_{60}=\frac{261 + 265}{2}=263\text{,}
+	\]
+	isto é, $P_{60}=263$ kg.
+\end{example}
 
 \section{Gráfico Box-Plot}
 
