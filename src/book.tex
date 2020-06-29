@@ -1565,7 +1565,27 @@ tem-se dois casos:
 
 \section{Gráfico Box-Plot}
 
-\todo{Falar do gráfico Box-Plot.}
+O gráfico box-plot é uma representação gráfica envolvendo os quartis. Definimos uma "caixa" com o nível superior dado pelo terceiro quartil e o nível inferior pelo primeiro quartil. A mediana é representada por um traço no interior da caixa e segmentos de reta são colocados da caixa até os valores extremos, caso os valores extremos estiverem no máximo até $1,5\cdot DQ$ da caixa, onde
+\[
+DQ=Q_3-Q_1\text{,}
+\]
+distância chamada de diferença interquartílica. 
+
+\begin{example}
+	Considerando o conjunto de dados: 1, 2, 2, 3, 4, 4, 5 e 8 é possível construir um gráfico box-plot a partir dos dados conhecidos, como se pode ver na Figura \ref{picture:ex_boxplot}.
+\end{example}
+
+\newpage
+
+\begin{pageWidthArea}
+	\begin{pageWidthAreaPicture}{picture}{Boxplot aaaaaa.}
+		\label{picture:ex_boxplot}
+		\centering
+		\resizebox{\textwidth}{!}{%
+			\includegraphics[width=\textwidth]{boxplot/box_plot_01}
+		}
+	\end{pageWidthAreaPicture}
+\end{pageWidthArea}
 
 \chapter{Introdução à Probabilidade}
 
@@ -1982,8 +2002,46 @@ ou, ainda,
 	P(A\cap B)=P(A)\cdot P(B)\text{.}
 \]
 
+\begin{sidepicture}{6cm}{picture}{AAAA}
+	\label{picture:prob_independ_ex1}
+	\begin{tikzpicture}[
+		grow=right,
+		level 1/.style ={level distance=2cm, sibling distance=2.6cm},
+		level 2/.style ={level distance=2cm, sibling distance=1.2cm},
+	]
+		\node [prob_tree_origin] {}
+		child {
+			node [prob_tree_node] {$V_1$}
+			child {
+				node [prob_tree_node] {$V_2$}
+				edge from parent
+				node[below, prob_tree_text]  {$\frac{2}{4}$}
+			} child {
+				node [prob_tree_node] {$B_2$}
+				edge from parent
+				node[above, prob_tree_text]  {$\frac{2}{4}$}
+			}
+			edge from parent
+			node[below, prob_tree_text]  {$\frac{3}{5}$}
+		} child {
+			node [prob_tree_node] {$B_1$}
+			child {
+				node [prob_tree_node]{$V_2$}
+				edge from parent
+				node[below, prob_tree_text]  {$\frac{3}{4}$}
+			} child {
+				node [prob_tree_node]{$B_2$}
+				edge from parent
+				node[above, prob_tree_text]  {$\frac{1}{4}$}
+			}
+			edge from parent
+			node[above, prob_tree_text]  {$\frac{2}{5}$}
+		};
+	\end{tikzpicture}
+\end{sidepicture}
+
 \begin{sidepicture}{0cm}{table}{AAAA}
-	%\label{table:tamanho_example_amostra_estratificada_teste_droga}
+	\label{table:prob_independ_ex1}
 	\begin{tabular}{cc}\\\toprule
 		Resultados & Probabilidades\\  \midrule
 		$B_1 B_2$ & \vspace{5pt}$\dfrac{2}{5}\cdot\dfrac{1}{4}=\dfrac{2}{20}$ \\ 
@@ -1994,21 +2052,98 @@ ou, ainda,
 	\end{tabular}
 \end{sidepicture}
 
-\begin{example}
-	Uma urna contém duas bolas brancas e três vermelhas. Sorteamos ao acaso duas delas, sem reposição. Assim, temos
-	
-	\todo{Fazer o outro desenho (arvore)}
-
-	\todo{Terminar exemplo}
-\end{example}
 
 \begin{example}
-	Uma urna contém duas bolas brancas e três vermelhas. Sorteamos ao acaso duas delas, com reposição. Assim, temos
-	
-	\todo{Fazer tabela e desenho (arvore)}
-	
-	\todo{Terminar exemplo}
+	Uma urna contém duas bolas brancas e três vermelhas. Sorteamos ao acaso duas delas, sem reposição. Assim, tem-se os possíveis resultados na Figura \ref{picture:prob_independ_ex1} e na Tabela \ref{table:prob_independ_ex1}. Deste modo,
+	\[
+		P(B_2\setminus V_1)=\frac{2}{4}\text{,}
+	\]
+	e
+	\[
+		P(B_2\cap V_1)=P(B_2\setminus V_1)P(V_1)=\frac{2}{4}\cdot \frac{3}{5}=\frac{6}{20}\text{,}
+	\]
+	onde, nesse caso, os eventos são dependentes.
 \end{example}
+
+\newpage
+
+\begin{sidepicture}{0cm}{picture}{AAAA}
+	\label{picture:prob_independ_ex2}
+	\begin{tikzpicture}[
+		grow=right,
+		level 1/.style ={level distance=2cm, sibling distance=2.6cm},
+		level 2/.style ={level distance=2cm, sibling distance=1.2cm},
+	]
+		\node [prob_tree_origin] {}
+		child {
+			node [prob_tree_node] {$V_1$}
+			child {
+				node [prob_tree_node] {$V_2$}
+				edge from parent
+				node[below, prob_tree_text]  {$\frac{3}{5}$}
+			} child {
+				node [prob_tree_node] {$B_2$}
+				edge from parent
+				node[above, prob_tree_text]  {$\frac{2}{5}$}
+			}
+			edge from parent
+			node[below, prob_tree_text]  {$\frac{3}{5}$}
+		} child {
+			node [prob_tree_node] {$B_1$}
+			child {
+				node [prob_tree_node]{$V_2$}
+				edge from parent
+				node[below, prob_tree_text]  {$\frac{3}{5}$}
+			} child {
+				node [prob_tree_node]{$B_2$}
+				edge from parent
+				node[above, prob_tree_text]  {$\frac{2}{5}$}
+			}
+			edge from parent
+			node[above, prob_tree_text]  {$\frac{2}{5}$}
+		};
+	\end{tikzpicture}
+\end{sidepicture}
+
+\begin{sidepicture}{-6cm}{table}{AAAA}
+	\label{table:prob_independ_ex2}
+	\begin{tabular}{cc}\\\toprule
+		Resultados & Probabilidades\\  \midrule
+		$B_1 B_2$ & \vspace{5pt}$\dfrac{2}{5}\cdot\dfrac{2}{5}=\dfrac{4}{25}$ \\ 
+		$B_1 V_2$ & \vspace{5pt}$\dfrac{2}{5}\cdot\dfrac{3}{5}=\dfrac{6}{25}$\\
+		$V_1 B_2$ & \vspace{5pt}$\dfrac{3}{5}\cdot\dfrac{2}{5}=\dfrac{6}{25}$\\
+		$V_1 V_2$ & \vspace{5pt}$\dfrac{3}{5}\cdot\dfrac{3}{5}=\dfrac{9}{25}$\\ \midrule
+		Total & 1 \\ \bottomrule
+	\end{tabular}
+\end{sidepicture}
+
+\begin{example}
+	Uma urna contém duas bolas brancas e três vermelhas. Sorteamos ao acaso duas delas, com reposição. Assim, tem-se os possíveis resultados na Figura \ref{picture:prob_independ_ex2} e na Tabela \ref{table:prob_independ_ex2}. Deste modo,
+	\[
+		P(B_2\setminus V_1)=\frac{2}{5}\text{,}
+	\]
+	e
+	\[
+		P(B_2\cap V_1)=P(B_2)P(V_1)=\frac{2}{5}\cdot \frac{3}{5}=\frac{6}{25}\text{,}
+	\]
+	onde, nesse caso, os eventos são independentes.
+\end{example}
+
+\section{Partição do Espaço Amostral}
+
+Os eventos $E_1$, $E_2$, $\dots$, $E_k$ formam uma partição do espaço amostral, $S$, quando eles são mutuamente exclusivos e sua reunião é igual ao espaço amostral, isto é
+\[
+	E_1\cap E_2\cap \dots \cap E_k=\emptyset
+\]
+e
+\[
+	E_1\cup E_2\cup \dots \cup E_k=S\text{.}
+\]
+
+Um exemplo gráfico, com $k=4$, pode ser visto na Figura XX, onde $E_1\cap E_2 \cap E_3 \cap E_4=\emptyset$ e $E_1\cup E_2\cup E_3 \cup E_4=S$.
+
+
+\section{Regra da Probabilidade Total}
 
 \todo{FAZER: Partição do espaço amostral}
 
