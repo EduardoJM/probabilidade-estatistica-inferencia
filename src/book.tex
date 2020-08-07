@@ -125,20 +125,26 @@
 		\node[anchor=north west,xshift=\leftshift,yshift=#1]{
 			\parbox[t]{5.8cm} {
 				\centering
+				\ifthenelse{\equal{\detokenize{#2}}{\detokenize{picture}}}{
+					\refstepcounter{mpicture}
+				} {
+					\ifthenelse{\equal{\detokenize{#1}}{\detokenize{frame}}}{
+						\refstepcounter{mframe}
+					} {
+						\refstepcounter{mtable}
+					}
+				}
 				\BODY
 				{
 					\begin{flushleft}
 						{
 							\color{ocre}
 							\ifthenelse{\equal{\detokenize{#2}}{\detokenize{picture}}}{
-								\refstepcounter{mpicture}
 								\textbf{Figura \thempicture}
 							} {
 								\ifthenelse{\equal{\detokenize{#1}}{\detokenize{frame}}}{
-									\refstepcounter{mframe}
 									\textbf{Quadro \themframe}
 								} {
-									\refstepcounter{mtable}
 									\textbf{Tabela \themtable}
 								}
 							}
