@@ -1706,6 +1706,27 @@ Em probabilidade, estudam-se os experimentos aleatórios. Assim, primeiro, é ne
 	O complementar do evento $A$, denotado por $A^{c}$, é o evento que ocorre quando $A$ não ocorre.
 \end{definition}
 
+\begin{example}
+	Um fazendeiro com o intuito de fazer uma amostragem simples, enumerou de um a quinze, quinze gado Nelore. Sejam $A$ e $B$ os seguintes eventos:
+	\begin{itemize}
+		\item $A$: "o número do gado sorteado é par" e
+		\item $B$: "o número do gado sorteado é múltiplo de 3".
+	\end{itemize}
+	
+	Determine os eventos $A\cup B$, $A\cap B$ e $A^{c}$.\\
+	
+	Escrevendo o espaço amostral $S=\{1$, $2$, $3$, $4$, $5$, $6$, $7$, $8$, $9$, $10$, $11$, $12$, $13$, $14$, $15\}$ e os eventos $A=\{2$, $4$, $6$, $8$, $10$, $12$, $14\}$ e $B=\{3$, $6$, $9$, $12$, $15\}$, pode-se determinar os conjuntos
+	\begin{itemize}
+		\item $A\cup B=\{2$, $3$, $4$, $6$, $8$, $9$, $10$, $12$, $14$, $15\}$,
+		\item $A\cap B=\{6$, $12\}$ e
+		\item $A^{c}=\{1$, $3$, $5$, $7$, $9$, $11$, $13$, $15\}$.
+	\end{itemize}
+\end{example}
+
+\begin{remark}
+	Os eventos $A$ e $B$ são ditos mutuamente exclusivos, se eles não podem ocorrer simultaneamente. Isto é $A\cap B=\emptyset$.
+\end{remark}
+
 \begin{theorem}
 	A partir das Definições \ref{def:reuniao_dois_eventos}, \ref{def:intercecao_dois_eventos} e \ref{def:complementar_evento}, tem-se as seguintes propriedades:
 	\begin{enumerate}
@@ -1714,6 +1735,10 @@ Em probabilidade, estudam-se os experimentos aleatórios. Assim, primeiro, é ne
 		\item $(A\cup B)^c = A^c \cap B^c$;
 		\item $(A\cap B)^c= A^c\cup B^c$.
 	\end{enumerate}
+	
+	\begin{proof}
+		Essas propriedades são propriedades de conjuntos e, portanto, não serão demonstradas aqui. \todo{Adicionar alguma referência aqui}.
+	\end{proof}
 \end{theorem}
 
 \begin{definition}
@@ -1803,7 +1828,7 @@ A probabilidade será definida numa classe de eventos ($A$) do espaço amostral 
 
 \section{Regra de adição de probabilidade}
 
-Sejam $A$ e $B$ eventos de $S$, então a probabilidade de que ocorra um detes dois eventos, um diagrama está na Figura \ref{picture:eventos_intersessao}, $A$ ou $B$, é dada por
+Sejam $A$ e $B$ eventos de $S$, então a probabilidade de que ocorra um destes dois eventos, um diagrama está na Figura \ref{picture:eventos_intersessao}, $A$ ou $B$, é dada por
 \begin{equation}
 	P(A\cup B)=P(A)+P(B)-P(A\cap B)\text{.}
 \end{equation}
@@ -2140,14 +2165,157 @@ e
 	E_1\cup E_2\cup \dots \cup E_k=S\text{.}
 \]
 
-Um exemplo gráfico, com $k=4$, pode ser visto na Figura XX, onde $E_1\cap E_2 \cap E_3 \cap E_4=\emptyset$ e $E_1\cup E_2\cup E_3 \cup E_4=S$.
+Um exemplo gráfico, com $k=4$, pode ser visto na Figura \ref{picture:prob_part_espaco_amostral}, onde $E_1\cap E_2 \cap E_3 \cap E_4=\emptyset$ e $E_1\cup E_2\cup E_3 \cup E_4=S$.
 
+\begin{sidepicture}{0}{picture}{AAAA}
+	\label{picture:prob_part_espaco_amostral}
+	\begin{tikzpicture}
+		\begin{scope}[local bounding box=graph1]
+			\node[inner sep=0pt](large) at (0,0){
+				\includegraphics[scale=0.35]{probabilidade/particao4.png}
+			};
+		\end{scope}
+		\node[align=left, color=ocre] at ($(graph1.west)+(0.6cm, 1.7cm)$) {$E_1$};
+		\node[align=left, color=ocre] at ($(graph1.west)+(0.8cm, -0.7cm)$) {$E_2$};
+		\node[align=left, color=ocre] at ($(graph1.west)+(3.2cm, 1cm)$) {$E_3$};
+		\node[align=left, color=ocre] at ($(graph1.west)+(3.2cm, -1.1cm)$) {$E_4$};
+	\end{tikzpicture}
+\end{sidepicture}
 
 \section{Regra da Probabilidade Total}
 
-\todo{FAZER: Partição do espaço amostral}
+A regra da probabilidade total é enunciado no Teorema \ref{theorem:prob_total}.
 
-\todo{FAZER: Teorema de Bayes}
+\begin{theorem}
+\label{theorem:prob_total}
+	Sejam $E_1$, $E_2$, $\dots$, $E_k$ uma partição de $S$ e $B$ um evento qualquer, então tem-se
+	\[
+		P(B) = P(B\setminus E_1)P(E_1)
+		+ \cdots
+		+ P(B\setminus E_k)P(E_k)
+		\text{.}
+	\]
+
+	\begin{proof}
+	O evento $B$ pode ser escrito como
+	\[
+		B = (B\cap E_1)\cup \dots \cup (B\cap E_k)\text{,}
+	\]
+	logo,
+	\[
+		P(B)=P(B\cap E_1)+\cdots+P(B\cap E_k)\text{,}
+	\]
+	onde, utilizando a regra do produto, tem-se
+	\[
+		P(B)=P(B\setminus E_1)P(E_1)+\cdots+P(B\setminus E_k)P(E_k)\text{.}
+	\]
+	\end{proof}
+\end{theorem}
+
+\section{Teorema de Bayes}
+
+O Teorema de Bayes é enunciado no Teorema \ref{theorem:bayes}.
+
+\begin{theorem}
+	\label{theorem:bayes}
+	Sejam $E_1$, $E_2$, $\dots$, $E_k$ uma partição do espaço amostral $S$ e, seja $B$ um evento qualquer de $S$ e, ainda, considere conhecidas $P(E_i)$ e $P(B\setminus E_i)$, para $i=1$, $2$, $\dots$, $k$, então a probabilidade de ocorrência de um dos eventos $E_i$, dado que ocorreu o evento $B$ é dada por
+	\[
+		P(E_i\setminus B)=\frac{
+			P(B\setminus E_i)P(E_i)
+		} {
+			\displaystyle \sum_{j=1}^{k} P(B\setminus E_j)P(E_j)
+		}
+		\text{,}
+	\]
+	ou, ainda,
+	\[
+		P(E_i\setminus B)=\frac{
+			P(B\setminus E_i)P(E_i)
+		}{
+			P(B\setminus E_1)P(E_1)
+			+
+			\cdots
+			+
+			P(B\setminus E_k)P(E_k)
+		}
+		\text{.}
+	\]
+	
+	\begin{proof}
+		Pela probabilidade condicional, tem-se que
+		\[
+			P(E_i\setminus B)=\frac{P(E_1\cap B)}{P(B)}\text{,}
+		\]
+		e, pela regra do produto, tem-se
+		\[
+			P(E_i\cap B) = P(B\cap E_i)=P(B\setminus E_i)P(E_i)\text{.}
+		\]
+		
+		Pela regra da probabilidade total (Teorema \ref{theorem:prob_total}), tem-se
+		\[
+			P(B) = P(B\setminus E_1)P(E_1)+\cdots + P(B\setminus E_k)P(E_k)\text{,}
+		\]
+		portanto, tem-se
+		\[
+			P(E_i\setminus B)=\frac{
+				P(B\setminus E_i)P(E_i)
+			}{
+				P(B\setminus E_1)P(E_1)
+				+
+				\cdots
+				+
+				P(B\setminus E_k)P(E_k)
+			}
+			\text{.}
+		\]
+	\end{proof}
+\end{theorem}
+
+\begin{pageWidthArea}
+	\begin{example}
+			Em uma fábrica de parafusos, as máquinas A, B e C produzem 25\%, 35\% e 40\% do total produzido, respectivamente. Da produção de cada máquina, 5\%, 4\% e 2\%, respectivamente, são parafusos defeituosos. Determine:\\
+	
+			\begin{enumerate}[label=\alph*), itemsep=10pt]
+				\item A probabilidade de que o parafuso seja fabricado na máquina A, sabendo que ele é defeituoso.\\
+				
+				Representando por A, B e C as três máquinas e, ainda, por D os parafusos defeituosos. As probabilidades são $P(A)=0,25$, $P(B)=0,35$ e $P(C)=0,4$, $P(D\setminus A)=0,05$, $P(D\setminus B)=0,04$, $P(D\setminus C)=0,02$. Assim, pelo teorema de Bayes (Teorema \ref{theorem:bayes}), tem-se
+				\begin{align*}
+					P(A\setminus D) &=
+					\frac{
+						P(D\setminus A)P(A)
+					}{
+						P(D\setminus A)P(A)+P(D\setminus B)P(B)+P(D\setminus C)P(C)
+					}\\
+					&=\frac{0,05\cdot 0,25}{
+						0,05\cdot 0,25
+						+
+						0,04\cdot 0,35
+						+
+						0,02\cdot 0,40
+					}\\
+					&=0,3623\text{.}
+				\end{align*}
+				
+				\item A probabilidade de que o parafuso não seja defeituoso.\\
+				
+				Considerando as probabilidades $P(D^C\setminus A)=0,95$, $P(D^C\setminus B)=0,96$ e $P(D^C\setminus C)=0,98$. Deste modo,
+				\begin{align*}
+					P(D^C) &= P(D^C\setminus A)P(A)+P(D^C\setminus B)P(B)+P(D^C\setminus C)P(C)\\
+					&=0,95\cdot 0,25+0,96\cdot 0,35+0,98\cdot 0,40\\
+					&=0,9655\text{.}
+				\end{align*}
+				
+				\item A probabilidade de que o parafuso seja fabricado na máquina C sabendo que ele não é defeituoso.\\
+				
+				Fazendo
+				\begin{align*}
+					P(C\setminus D^C)&=\frac{P(D^C\setminus C)P(C)}{P(D^C)}\\
+					&=\frac{0,98\cdot 0,40}{0,9655}\\
+					&=0,4060\text{.}
+				\end{align*}
+			\end{enumerate}
+	\end{example}
+\end{pageWidthArea}
 
 
 \chapter{Variáveis Aleatórias Discretas}
