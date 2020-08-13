@@ -1,4 +1,3 @@
-*.bib
 *.aux
 *.bbl
 *.bcf
@@ -13,6 +12,7 @@
 *.run.xml
 *.synctex*gz
 *.toc
+*.synctex(busy)
 
 # gnuplot files (tkz-fct
 *.gnuplot
