@@ -2351,8 +2351,97 @@ A função de distribuição ou função acumulada de probabilidade de uma vari�
 \begin{equation}
 	F(x)=P(X\leqslant x)\text{.}
 \end{equation}
+\newpage
 
-\todo{Fazer o exemplo aqui.}
+\begin{pageWidthArea}
+	\begin{pageWidthAreaPicture}{frame}{Doses da vacina do exemplo.}
+		\label{table:dados_vacina_alergia}
+		\hspace{-15pt}
+		\resizebox{\textwidth}{!}{%
+		\begin{tabular}{c|ccccc}
+			Doses & 1 & 2 & 3 & 4 & 5 \\\toprule
+			Frequência & 245 & 288 & 256 & 145 & 66 \\
+		\end{tabular}%
+		}
+	\end{pageWidthAreaPicture}
+
+	\vspace{10pt}
+
+	\begin{example}
+		Uma população de 1000 crianças foi analisada num estudo para determinar a efetividade de uma vacina contra um tipo de alergia. No estudo, as crianças recebiam uma dose de vacina e após um mês passavam por um novo teste. Caso ainda tivessem tido alguma reação alérgica, recebiam outra dose da vacina. Ao fim de 5 doses todas as crianças foram consideradas imunizadas. Os resultados estão na Tabela \ref{table:dados_vacina_alergia}. Qual a probabilidade de uma criança ter recebido
+		\begin{enumerate}[label=\alph*]
+			\item Duas doses somente.\hfill\\
+			
+				Sendo $X:$ "a quantidade de doses", então $S=\{1$, $2$, $3$, $4$, $5\}$ e, por fim,
+				\[
+					P(X=2)=\frac{288}{1.000}=0,288\text{.}
+				\]
+
+			\item Até duas doses.\hfill\\
+			
+				Considerando, ainda a variável $X$, tem-se
+				\[
+					P(X\leqslant 2)=P(X=1)+P(X=2)=\frac{245}{1.000} + \frac{288}{1.000}=0,533\text{.}
+				\]
+
+			A função acumulada de probabilidade do exemplo, cujo gráfico está na Figura \ref{picture:funcao_acumulada_vacina_alergia}, é
+			\[
+				F(X)= \begin{cases}
+					0, \text{, se } X\leqslant 1\\
+					0,245 \text{, se } 1\leqslant X < 2\\
+					0,533 \text{, se } 2\leqslant X < 3\\
+					0,789 \text{, se } 3 \leqslant X < 4\\
+					0,934 \text{, se } 4 \leqslant X < 5\\
+					1 \text{, se } X \geqslant 5
+				\end{cases}
+			\]
+		\end{enumerate}
+	\end{example}
+	
+	\vspace{10pt}
+
+	\begin{pageWidthAreaPicture}{picture}{Função Acumulada do Exemplo da Vacina.}
+		\label{picture:funcao_acumulada_vacina_alergia}
+		\begin{tikzpicture}
+			\tkzInit[xmin=-1,xmax=6,ymin=-1,ymax=5]
+			\tkzDrawX[noticks, label={$X$}]
+			\tkzDrawY[noticks,label={$F(X)$}]
+			\tkzDefPoint(0,0){A}
+			\tkzDefPoint(1,0){B}
+			\tkzDrawSegment[color=ocre, line width=2pt](A,B)
+			\tkzDefPoint(1,1){C}
+			\tkzDefPoint(2,1){D}
+			\tkzDrawSegment[color=ocre, line width=2pt](C,D)
+			\tkzDefPoint(2,2){E}
+			\tkzDefPoint(3,2){F}
+			\tkzDrawSegment[color=ocre, line width=2pt](E,F)
+			\tkzDefPoint(3,3){G}
+			\tkzDefPoint(4,3){H}
+			\tkzDrawSegment[color=ocre, line width=2pt](G,H)
+			\tkzDefPoint(4,4){I}
+			\tkzDefPoint(5,4){J}
+			\tkzDrawSegment[color=ocre, line width=2pt](I,J)
+			\tkzDefPoint(5,5){K}
+			\tkzDefPoint(7,5){L}
+			\tkzDrawSegment[color=ocre, line width=2pt](K,L)
+			\tkzPointShowCoord[xlabel=$1$, xstyle={below=7pt}, ylabel=$0\text{,}245$, ystyle={left=7pt}](C)
+			\tkzPointShowCoord[xlabel=$2$, xstyle={below=7pt}, ylabel=$0\text{,}533$, ystyle={left=7pt}](E)
+			\tkzPointShowCoord[xlabel=$3$, xstyle={below=7pt}, ylabel=$0\text{,}789$, ystyle={left=7pt}](G)
+			\tkzPointShowCoord[xlabel=$4$, xstyle={below=7pt}, ylabel=$0\text{,}934$, ystyle={left=7pt}](I)
+			\tkzPointShowCoord[xlabel=$5$, xstyle={below=7pt}, ylabel=$1$, ystyle={left=7pt}](K)
+			\tkzDrawPoint[fill=ocre, size=10](C)
+			\tkzDrawPoint[fill=ocre, size=10](E)
+			\tkzDrawPoint[fill=ocre, size=10](G)
+			\tkzDrawPoint[fill=ocre, size=10](I)
+			\tkzDrawPoint[fill=ocre, size=10](K)
+			\tkzDrawPoint[fill=white, size=10](B)
+			\tkzDrawPoint[fill=white, size=10](D)
+			\tkzDrawPoint[fill=white, size=10](F)
+			\tkzDrawPoint[fill=white, size=10](H)
+			\tkzDrawPoint[fill=white, size=10](J)
+		\end{tikzpicture}
+	\end{pageWidthAreaPicture}
+\end{pageWidthArea}
 
 \subsection{Medidas de posição}
 
