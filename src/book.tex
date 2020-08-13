@@ -1625,43 +1625,44 @@ Em probabilidade, estudam-se os experimentos aleatórios. Assim, primeiro, é ne
 	Denominaremos espaço amostral associado a um experimento ($E$) o conjunto de seus possíveis resultados, que representaremos por $S$, cujos elementos serão denominados eventos simples ou pontos amostrais.
 \end{definition}
 
-\begin{example}
-	Seja o experimento $E$: Lançamento de uma moeda. Então, $S=\{C,\text{ }K\}$, onde $C$ representa cara e $K$ coroa.
-\end{example}
-
-\begin{example}
-	\label{example:pecas_boas_defeituosas}
-	Seja o experimento $E$: três peças são retiradas de uma linha de produção e classificadas em Boa ($B$) ou Defeituosas ($D$). Assim,
-	\[
-		S=\{BBB, BBD, BDB, DBB, BDD, DBD, DDB, DDD\}\text{.}
-	\]
-\end{example}
-
-\begin{example}
-	Seja o experimento $E$: número de plantas doentes em um tomateiro. Então,
-	\[
-		S=\{0, 1, 2, \dots, n\}\text{,}
-	\]
-	onde $n$ é o número máximo de plantas neste tomateiro.
-\end{example}
-
-\begin{example}
-	Seja $E$: uma moeda é lançada sucessivamente até que ocorra cara pela primeira vez. Assim,
-	\[
-		S=\{C, KC, KKC, KKKC, KKKKC, \dots \}\text{.}
-	\]
-\end{example}
-
-\begin{example}
-	Seja $E$: tempo de vida de um animal. Então,
-	\[
-		S=\{t\in\mathbb{R}/ t\geqslant 0\}\text{,}
-	\]
-	ou
-	\[
-		S=\mathbb{R}_{+}\text{.}
-	\]
-\end{example}
+\begin{pageWidthArea}
+	\begin{example}
+		\label{example:pecas_boas_defeituosas}
+		\begin{multicols}{2}
+			\begin{enumerate}\hfill
+				\item Seja o experimento $E$: Lançamento de uma moeda. Então, $S=\{C,\text{ }K\}$, onde $C$ representa cara e $K$ coroa.
+			
+				\item Seja o experimento $E$: três peças são retiradas de uma linha de produção e classificadas em Boa ($B$) ou Defeituosas ($D$). Assim,
+					\label{example:item:pecas_boas_defeituosas}
+					\begin{center}
+						\(S=\{BBB\), \(BBD\), \(BDB\), \(DBB\), \(BDD\), \(DBD\), \(DBD\), \(DDB\), \(DDD\}\).
+					\end{center}
+		
+				\item Seja o experimento $E$: número de plantas doentes em um tomateiro. Então,
+					\[
+						S=\{0, 1, 2, \dots, n\}\text{,}
+					\]
+					onde $n$ é o número máximo de plantas neste tomateiro.
+					
+				\columnbreak
+			
+				\item Seja $E$: uma moeda é lançada sucessivamente até que ocorra cara pela primeira vez. Assim,
+					\[
+						S=\{C, KC, KKC, KKKC, KKKKC, \dots \}\text{.}
+					\]
+			
+				\item Seja $E$: tempo de vida de um animal. Então,
+					\[
+						S=\{t\in\mathbb{R}/ t\geqslant 0\}\text{,}
+					\]
+					ou
+					\[
+						S=\mathbb{R}_{+}\text{.}
+					\]
+			\end{enumerate}
+		\end{multicols}
+	\end{example}
+\end{pageWidthArea}
 
 \begin{definition}
 	Denominaremos de evento a todo resultado ou subconjunto de resultados de um experimento.
@@ -1676,7 +1677,7 @@ Em probabilidade, estudam-se os experimentos aleatórios. Assim, primeiro, é ne
 \end{remark}
 
 \begin{example}
-	Consideremos o Exemplo \ref{example:pecas_boas_defeituosas} e, seja um evento $A$: "Duas peças são boas". Tem-se
+	Consideremos o Item \ref{example:item:pecas_boas_defeituosas} do Exemplo \ref{example:pecas_boas_defeituosas} e, seja um evento $A$: "Duas peças são boas". Tem-se
 	\[
 		A=\{BBD, BDB, DBB\}\text{,}
 	\]
