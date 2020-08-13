@@ -2491,7 +2491,39 @@ O desvio padrão é dado pela raíz quadrada da variância, ou seja,
 	DP(X)=\sqrt{Var(X)}\text{.}
 \end{equation}
 
-\todo{Fazer Exemplo Aqui}
+\begin{example}
+	Uma pequena cirurgia dentária pode ser realizada por um método cujo tempo de recuperação, em dias, é modelado pela variável $X$. Admita que sua função de probabilidade seja dada pela Tabela \ref{table:example:cirurgia_dentaria}. Calcule o desvio padrão dessa variável.\\
+
+	Para calcular a $Var(X)$, pode-se utilizar o fato de que $E(X)=5$ e, ainda,
+	\[
+		Var(X)=\sum_{i=1}^{n} (x_i - E(X))^2 p_i\text{,}
+	\]
+	utilizando os valores, calculados, conforme a Tabela \ref{table:example:cirurgia_dentaria_var}, de onde
+	\[
+		Var(X)=5+0,2+0,2+5=10,4\text{,}
+	\]
+	onde $DP(X)=\sqrt{Var(X)}=\sqrt{10,4}=3,22$ dias.
+\end{example}
+
+\begin{sidepicture}{7cm}{table}{AAAAAAAa.}
+	\label{table:example:cirurgia_dentaria}
+	\begin{tabular}{c|ccccc}
+		$X$ & 0 & 4 & 5 & 6 & 10 \\ \toprule
+		$P(X=x)$ & 0,2 & 0,2 & 0,2 & 0,2 & 0,2 \\
+	\end{tabular}
+\end{sidepicture}
+
+\begin{sidepicture}{4cm}{table}{BBBBBBB.}
+	\label{table:example:cirurgia_dentaria_var}
+	\begin{tabular}{c|c|c}
+		$x_i$ & $x_i-E(x)$ & $(x_i-E(X))^2p_i$ \\ \toprule
+		0 & -5 & 5 \\
+		4 & -1 & 0,2 \\
+		5 & 0 & 0 \\
+		6 & 1 & 0,2 \\
+		10 & 5 & 5 \\
+	\end{tabular}
+\end{sidepicture}
 
 \subsubsection*{Propriedades}
 
@@ -2515,19 +2547,19 @@ O desvio padrão é dado pela raíz quadrada da variância, ou seja,
 
 \subsection{Modelo Uniforme Discreto}
 
-Seja X uma variável aleatória cujos possíveis valores podem ser representados por $x_1$, $x_2$, $\dots$, $x_n$. Dizemos que $X$ segue o modelo uniforme discreto se, e somente se,
-\begin{equation}
-	P(X=x_i)=\frac{1}{n}\text{,}
-\end{equation}
-para todo $i=1$, $2$, $\dots$, $n$. Outra representação do modelo está na Tabela \ref{table:describe_func_probabilidade_uniforme_discreto}.
-
-\begin{sidepicture}{5cm}{table}{Representação em Tabela da função de probabilidade do modelo uniforme discreto.}
+\begin{sidepicture}{0}{table}{Representação em Tabela da função de probabilidade do modelo uniforme discreto.}
 	\label{table:describe_func_probabilidade_uniforme_discreto}
 	\begin{tabular}{c|cccc}\toprule  
 		$X$ & $x_1$ & $x_2$ & $\dots$ & $x_n$ \\ \midrule
 		$P(X=x_i)$ & $\frac{1}{n}$ & $\frac{1}{n}$ & $\dots$ & $\frac{1}{n}$\\\bottomrule
 	\end{tabular}
 \end{sidepicture}
+
+Seja X uma variável aleatória cujos possíveis valores podem ser representados por $x_1$, $x_2$, $\dots$, $x_n$. Dizemos que $X$ segue o modelo uniforme discreto se, e somente se,
+\begin{equation}
+	P(X=x_i)=\frac{1}{n}\text{,}
+\end{equation}
+para todo $i=1$, $2$, $\dots$, $n$. Outra representação do modelo está na Tabela \ref{table:describe_func_probabilidade_uniforme_discreto}.
 
 A esperança e a variância para o modelo uniforme são dadas, respectivamente, por
 \begin{equation}
