@@ -20,3 +20,4 @@
 # remove only the production pdf
 # (no remove the pictures pdf's)
 src/*.pdf
+node_modules
