@@ -2787,6 +2787,99 @@ O gráfico da função de probabilidade está na Figura \ref{graph:modelo_bernou
 	A esperança é $E(X)=p=0,10$ e a variância é $Var(X)=p(1-p)=0,10\cdot 0,90=0,09$.
 \end{example}
 
+\subsection{Distribuição Binomial}
+
+Considere a repetição de $n$ ensaios de Bernoulli independentes e todos com probabilidade de sucesso $p$.
+
+A variável aleatória que conta o número de sucessos é denominada binomial com parâmetros $n$ e $p$, e sua função de probabilidade é dada por
+\begin{equation}
+	P(X=k)= {n\choose k} p^k (1-p)^{n-k}\text{,}
+\end{equation}
+onde $k=0$, $1$, $2$, $\dots$, $n$ e
+\[
+	{n\choose k} = \frac{n!}{k!(n-k)!}\text{.}
+\]
+
+A esperança e a variância são dadas, respectivamente, por
+\begin{equation}
+	E(X)=np\text{,}
+\end{equation}
+e
+\begin{equation}
+	Var(X)=np(1-p)\text{.}
+\end{equation}
+
+\begin{proof}
+	Como $X$ é uma variável aleatória binomial, logo ela é a repetição de $n$ ensaios de Bernoulli independentes e com probabilidade de sucesso $p$. Assim podemos escrever $X$ como sendo a soma de $n$ variáveis aleatórias de Bernoulli, isto é,
+	\[
+		X=X_1 + X_2 + \cdots + X_n\text{.}
+	\]
+
+	Portanto, tem-se
+	\begin{align*}
+		E(X) &= E(X_1 + X_2 + \cdots + X_n)\\
+			&= E(X_1) + E(X_2) + \cdots + E(X_n)\\
+			&= p + p + \cdots + p\\
+			&= np\text{.}
+	\end{align*}
+	e
+	\begin{align*}
+		Var(X)&=Var(X_1 + X_2 + \cdots + X_n)\\
+			&= Var(X_1) + Var(X_2) + \cdots + Var(X_n)\\
+			&= p(1-p) + p(1-p) \cdots + p(1-p)\\
+			&= np(1-p)\text{.}
+	\end{align*}
+\end{proof}
+
+\newpage
+
+\begin{pageWidthArea}
+	\begin{example}
+		Quando as placas de circuito integrado usadas na fabricação de CD-players são testadas, a porcentagem de placas com defeitos no longo prazo é igual a 5\%. Seja $X$: "o número de placas com defeitos" em uma amostra de tamanho 25, determine:
+
+		\begin{enumerate}[label=\alph*)]
+			\item $P(X\geqslant 1)$\hfill
+			
+			\begin{align*}
+				P(X\geqslant 1) &= 1 - P(X < 1)\\
+					&= 1 - P(X=0)\\
+					&= 1 - {25\choose 0} 0,05^0 (1-0,05)^{25}\\
+					&=1-0,95^{25}\\
+					&=0,7226\text{.}
+			\end{align*}
+
+			\item $P(X\geqslant 2)$\hfill
+			
+			\begin{align*}
+				P(X\geqslant 2) &= P(X=2)+P(X=1)+P(X=0)\\
+				&= {25\choose 2}0,05^2(0,95)^{23} + {25 \choose 1} 0,05^1(0,95)^{24}+ {25\choose 0}0,05^0(0,95)^25\\
+				&= 300\cdot 0,05^2\cdot 0,95^{23} + 25\cdot 0,05\cdot 0,95^{24} + 0,95^{25}\\
+				&= 0,2305 + 0,365 + 0,2774\\
+				&=0,8729\text{.}
+			\end{align*}
+
+			\item $P(1\leqslant X \leqslant 4)$\hfill
+			
+			\begin{align*}
+				P(1\leqslant X \leqslant 4) &= P(X=1) + P(X=2) + P(X=3) + P(X=4)\\
+					&=0,365 + 0,2305 + {25\choose 3}0,05^3\cdot 0,95^{22} + {25\choose 4}0,05^4\cdot 0,95^{21}\\
+					&=0,365+0,2305+0,0930+0,0269\\
+					&=0,7154\text{.}
+			\end{align*}
+
+			\item O valor esperado e o desvio padrão de $X$.
+			
+			\[
+				E(X)=np=25\cdot 0,05=1,25\text{.}
+			\]
+
+			\[
+				DP(X)=\sqrt{Var(X)}=\sqrt{np(1-p)}=\sqrt{1,1875}=1,0897\text{.}
+			\]
+		\end{enumerate}
+	\end{example}
+\end{pageWidthArea}
+
 \nosidepicturearea
 \part{Inferência Estatística}
 
