@@ -2699,7 +2699,22 @@ e
 	Var(X)=p(1-p)\text{.}
 \end{equation}
 
-\todo{fazer as demonstrações}
+\begin{proof}
+	A esperança pode ser determinada como,
+	\begin{align*}
+		E(X)&=\sum_{i=1}^{n} x_i p_i\\
+			&=x_1 p_1 + x_2 + p_2\\
+			&=0(1-p)+1\cdot p\\
+			&=p\text{.}
+	\end{align*}
+
+	De modo análogo, $E(X^2)=p$, de onde, a variância será dada por
+	\begin{align*}
+		Var(X) &= E(X^2)-(E(X))^2\\
+			   &= p-p^2\\
+			   &= p(1-p)\text{.}
+	\end{align*}
+\end{proof}
 
 A função acumulada é
 \begin{equation}
@@ -2711,10 +2726,66 @@ A função acumulada é
 	\text{.}
 \end{equation}
 
-\todo{fazer os gráficos}
+O gráfico da função de probabilidade está na Figura \ref{graph:modelo_bernoulli_probabilidade} e o gráfico da função acumulada de probabilidade está na Figura \ref{graph:modelo_bernoulli_acumulada}.
 
-\todo{fazer exemplo}
+\begin{sidepicture}{7cm}{picture}{Gráfico de probabilidade}
+	\label{graph:modelo_bernoulli_probabilidade}
+	\centering
+	\begin{tikzpicture}
+		\tkzInit[xmin=-1,xmax=3,ymin=-0.5,ymax=3]
+		\tkzDrawX[noticks, label={$x$}]
+		\tkzDrawY[noticks,label={$P(X=x)$}]
+		\tkzDefPoint(0,1){A}
+		\tkzDefPoint(1,2){B}
+		\tkzPointShowCoord[noxdraw, ylabel=$1-p$, ystyle={left=7pt}](A)
+		\tkzPointShowCoord[xlabel=$1$, xstyle={below=7pt}, ylabel=$p$, ystyle={left=7pt}](B)
+		\tkzDrawPoint[fill=ocre, size=10](A)
+		\tkzDrawPoint[fill=ocre, size=10](B)
+	\end{tikzpicture}
+\end{sidepicture}
 
+\begin{sidepicture}{0}{picture}{Gráfico de probabilidade acumulada}
+	\label{graph:modelo_bernoulli_acumulada}
+	\centering
+	\begin{tikzpicture}
+		\tkzInit[xmin=-1,xmax=3,ymin=-0.5,ymax=3]
+		\tkzDrawX[noticks, label={$x$}]
+		\tkzDrawY[noticks,label={$P(X=x)$}]
+		\tkzDefPoint(-1,0){A}
+		\tkzDefPoint(0,0){B}
+		\tkzDrawSegment[color=ocre, line width=2pt](A,B)
+		\tkzDefPoint(0,1){C}
+		\tkzDefPoint(1,1){D}
+		\tkzDrawSegment[color=ocre, line width=2pt](C,D)
+		\tkzDefPoint(1,2){E}
+		\tkzDefPoint(3,2){F}
+		\tkzDrawSegment[color=ocre, line width=2pt](E,F)
+		\tkzPointShowCoord[xlabel=$1$, xstyle={below=7pt}, ylabel=$1-p$, ystyle={left=7pt}](D)
+		\tkzPointShowCoord[noxdraw, ylabel=$1$, ystyle={left=7pt}](E)
+		\tkzDrawPoint[fill=white, size=10](B)
+		\tkzDrawPoint[fill=white, size=10](D)
+		\tkzDrawPoint[fill=ocre, size=10](C)
+		\tkzDrawPoint[fill=ocre, size=10](E)
+	\end{tikzpicture}
+\end{sidepicture}
+
+\begin{example}
+	Uma fábrica de parafusos tem 10\% de sua produção com algum defeito. Retira-se um parafuso, onde verifica-se se ele é defeituoso ou não.\\
+	
+	Tomando o evento $X$: "número de parafusos defeituosos", então, tem-se $X=0$ (o parafuso é perfeito, "fracasso") ou $X=1$ (o parafuso é defeituoso, "sucesso") e $p=0,10$. Assim, tem-se
+	\begin{align*}
+		P(\text{Parafuso Perfeito}) &= P(X=0)\\
+			&=0,10^{0}(1-0,10)^{1-0}\\
+			&=0,90\text{,}
+	\end{align*}
+	\begin{align*}
+		P(\text{Parafuso Defeituoso}) &= P(X=1)\\
+			&=0,10^{1}(1-0,10)^{0}\\
+			&=0,10\text{.}
+	\end{align*}
+
+	A esperança é $E(X)=p=0,10$ e a variância é $Var(X)=p(1-p)=0,10\cdot 0,90=0,09$.
+\end{example}
 
 \nosidepicturearea
 \part{Inferência Estatística}
