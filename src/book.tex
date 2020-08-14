@@ -2505,7 +2505,7 @@ O desvio padrão é dado pela raíz quadrada da variância, ou seja,
 	onde $DP(X)=\sqrt{Var(X)}=\sqrt{10,4}=3,22$ dias.
 \end{example}
 
-\begin{sidepicture}{7cm}{table}{AAAAAAAa.}
+\begin{sidepicture}{9cm}{table}{AAAAAAAa.}
 	\label{table:example:cirurgia_dentaria}
 	\begin{tabular}{c|ccccc}
 		$X$ & 0 & 4 & 5 & 6 & 10 \\ \toprule
@@ -2513,7 +2513,7 @@ O desvio padrão é dado pela raíz quadrada da variância, ou seja,
 	\end{tabular}
 \end{sidepicture}
 
-\begin{sidepicture}{4cm}{table}{BBBBBBB.}
+\begin{sidepicture}{6cm}{table}{BBBBBBB.}
 	\label{table:example:cirurgia_dentaria_var}
 	\begin{tabular}{c|c|c}
 		$x_i$ & $x_i-E(x)$ & $(x_i-E(X))^2p_i$ \\ \toprule
@@ -2547,7 +2547,7 @@ O desvio padrão é dado pela raíz quadrada da variância, ou seja,
 
 \subsection{Modelo Uniforme Discreto}
 
-\begin{sidepicture}{0}{table}{Representação em Tabela da função de probabilidade do modelo uniforme discreto.}
+\begin{sidepicture}{2cm}{table}{Representação em Tabela da função de probabilidade do modelo uniforme discreto.}
 	\label{table:describe_func_probabilidade_uniforme_discreto}
 	\begin{tabular}{c|cccc}\toprule  
 		$X$ & $x_1$ & $x_2$ & $\dots$ & $x_n$ \\ \midrule
@@ -2568,14 +2568,90 @@ A esperança e a variância para o modelo uniforme são dadas, respectivamente, 
 e
 \begin{equation}
 	Var(X)=\frac{\displaystyle\sum_{i=1}^{n} x_i^2}{n} - \left (
-		\frac{\displaystyle \sum_{i=1}^{n} x_i}{n}
+		\frac{\sum_{i=1}^{n} x_i}{n}
 	\right )^2\text{.}
 \end{equation}
 
-\todo{Fazer, aqui a demonstração.}
+\begin{proof}
+	Considerando $E(X)=\displaystyle\sum_{i=1}^{n}x_i p_i$, tem-se
+	\[
+		E(X)=\sum_{i=1}^{n}x_i p_i =\sum_{i=1}^{n} x_i\frac{1}{n} = \frac{\displaystyle\sum_{i=1}^{n} x_i}{n}\text{.}
+	\]
 
-\todo{Fazer os gráficos}
+	A variância é dada por $Var(X)=E(X^2)-(E(X))^2$, de onde
+	\begin{align*}
+		Var(X) &= E(X^2)-(E(X))^2\\
+			   &= \sum_{i=1}^{n} x_i^2\frac{1}{n} - \left ( \frac{\sum_{i=1}^{n} x_i}{n} \right)^2\\
+			   &= \frac{\displaystyle\sum_{i=1}^{n}x_i^2}{n} - \left ( \frac{ \sum_{i=1}^{n}x_i}{n} \right)^2\text{.}
+	\end{align*}
+\end{proof}
 
+O gráfico da função de probabilidade do modelo uniforme discreto está na Figura \ref{graph:modelo_uniforme_discreto_probabilidade} e o gráfico da função acumulada de probabilidade da Figura \ref{graph:modelo_uniforme_discreto_acumulada}.
+
+\begin{sidepicture}{10cm}{picture}{Gráfico de probabilidade}
+	\label{graph:modelo_uniforme_discreto_probabilidade}
+	\centering
+	\begin{tikzpicture}
+		\tkzInit[xmin=-1.2,xmax=4.2,ymin=-0.5,ymax=3]
+		\tkzDrawX[noticks, label={$X$}]
+		\tkzDrawY[noticks,label={$P(X=x_i)$}]
+		\tkzDefPoint(-1,1){A}
+		\tkzDefPoint(1,1){B}
+		\tkzDefPoint(2,1){C}
+		\tkzDefPoint(4,1){D}
+		\tkzDefPoint(3,1){E}
+		\tkzPointShowCoord[xlabel=$x_1$, xstyle={below=7pt}](A)
+		\tkzPointShowCoord[xlabel=$x_2$, xstyle={below=7pt}, noydraw](B)
+		\tkzPointShowCoord[xlabel=$x_3$, xstyle={below=7pt}, noydraw](C)
+		\tkzPointShowCoord[xlabel=$...$, xstyle={below=7pt}, noydraw](E)
+		\tkzPointShowCoord[xlabel=$x_n$, xstyle={below=7pt}, ylabel=$\frac{1}{n}$, ystyle={left=7pt}](D)
+		\tkzDrawPoint[fill=ocre, size=10](A)
+		\tkzDrawPoint[fill=ocre, size=10](B)
+		\tkzDrawPoint[fill=ocre, size=10](C)
+		\tkzDrawPoint[fill=ocre, size=10](D)
+	\end{tikzpicture}
+\end{sidepicture}
+
+\begin{sidepicture}{4cm}{picture}{função acumulada de probabilidade}
+	\label{graph:modelo_uniforme_discreto_acumulada}
+	\centering
+	\begin{tikzpicture}
+		\tkzInit[xmin=-0.8,xmax=5,ymin=-0.5,ymax=5]
+		\tkzDrawX[noticks, label={$X$}]
+		\tkzDrawY[noticks,label={$F(X)$}]
+		\tkzDefPoint(-1,0){A}
+		\tkzDefPoint(-0.5,0){B}
+		\tkzDrawSegment[color=ocre, line width=2pt](A,B)
+		\tkzDefPoint(-0.5,1){C}
+		\tkzDefPoint(1,1){D}
+		\tkzDrawSegment[color=ocre, line width=2pt](C,D)
+		\tkzDefPoint(1,2){E}
+		\tkzDefPoint(2,2){F}
+		\tkzDrawSegment[color=ocre, line width=2pt](E,F)
+		\tkzDefPoint(2,3){G}
+		\tkzDefPoint(3,3){H}
+		\tkzDrawSegment[color=ocre, line width=2pt](G,H)
+		\tkzDefPoint(4,4){I}
+		\tkzDefPoint(5,4){J}
+		\tkzDrawSegment[color=ocre, line width=2pt](I,J)
+		\tkzPointShowCoord[xlabel=$x_1$, xstyle={below=7pt}, ylabel=$\frac{1}{n}$, ystyle={right=7pt, above=5pt}](C)
+		\tkzPointShowCoord[xlabel=$x_2$, xstyle={below=7pt}, ylabel=$\frac{2}{n}$, ystyle={left=7pt, above=5pt}](E)
+		\tkzPointShowCoord[xlabel=$x_3$, xstyle={below=7pt}, ylabel=$\frac{3}{n}$, ystyle={left=7pt, above=5pt}](G)
+		\tkzPointShowCoord[xlabel=$...$, xstyle={below=7pt}, noydraw](H)
+		\tkzPointShowCoord[xlabel=$x_n$, xstyle={below=7pt}, ylabel=$1$, ystyle={left=7pt, above=5pt}](I)
+		%\tkzPointShowCoord[xlabel=$5$, xstyle={below=7pt}, ylabel=$1$, ystyle={left=7pt}](K)
+		\tkzDrawPoint[fill=ocre, size=10](C)
+		\tkzDrawPoint[fill=ocre, size=10](E)
+		\tkzDrawPoint[fill=ocre, size=10](G)
+		\tkzDrawPoint[fill=ocre, size=10](I)
+		%\tkzDrawPoint[fill=ocre, size=10](K)
+		\tkzDrawPoint[fill=white, size=10](B)
+		\tkzDrawPoint[fill=white, size=10](D)
+		\tkzDrawPoint[fill=white, size=10](F)
+		\tkzDrawPoint[fill=white, size=10](H)
+		\tkzDrawPoint[fill=white, size=10](J)
+	\end{tikzpicture}
+\end{sidepicture}
 
 \begin{example}
 	Uma rifa tem 100 bilhetes numerados de 1 a 100. Tenho 5 bilhetes consecutivos numerados de 21 a 25 e, meu colega tem os bilhetes 1, 11, 29, 68 e 93. Quem tem maior probabilidade de ser sorteado?\\

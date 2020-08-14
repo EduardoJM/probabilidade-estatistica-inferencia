@@ -14,7 +14,6 @@ gulp.task('build', shell.task([
     pdflatex +
     'makeindex book.idx -s StyleInd.ist\n' +
     'biber book\n' +
-    'cd ../' +
     pdflatex +
     pdflatex
 ], opts));
