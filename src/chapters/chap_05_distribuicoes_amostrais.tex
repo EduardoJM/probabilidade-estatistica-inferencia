@@ -1,0 +1,389 @@
+\chapter{Distribuições Amostrais}
+
+Os valores em função dos elementos da amostra são chamados de estatísticas. As estatísticas são variáveis aleatórias, logo, tem alguma distribuição de probabilidade, com uma média, proporção, variância, etc. A distribuição de probabilidade de uma estatística chama-se distribuição amostral. Esquemáticamente, temos o seguinte procedimento
+\begin{enumerate}[label=(\roman*)]
+	\item Uma população $X$ com um certo parâmetro $\theta$ de interesse.
+	\item Todas as amostras retiradas da população, de acordo com um certo procedimento.
+	\item Para cada amostra, calculamos o valor $t$ da estatística $T$.
+	\item Os valores de $t$ formam uma nova população, cuja distribuição recebe o nome de distribuição amostral de $T$.
+\end{enumerate}
+
+\begin{sidepicture}{6cm}{table}{Diferença entre as notações das medidas para população e amostra.}
+	\label{table:diff_notacao_populacao_amostra}
+	\begin{tabular}{ccc}\\\toprule  
+		Medida & População & Amostra \\ \midrule
+		Média & $\mu$ & $\overline{x}$ \\ \midrule
+		Variância & $\sigma^2$ & $S^2$ \\ \midrule
+		\begin{tabular}[c]{@{}l@{}}Devio\\ Padrão\end{tabular} & $\sigma$ & $S$ \\ \midrule
+		Proporção & $p$ & $\hat{p}$ \\ \bottomrule
+	\end{tabular}
+\end{sidepicture}
+
+Serão tratadas, durante esse capítulo, medidas para população e para amostra. A Tabela \ref{table:diff_notacao_populacao_amostra} mostra as diferenças entre as notações utilizadas para as medidas referentes a população e amostra.
+
+{\color{red}Fazer o desenho das anotações.}
+
+\begin{theorem}
+	Seja $X$ uma variável aleatória com média $\mu$ e variância $\sigma^2$, e seja $(x_1,x_2,\dots,x_n)$ uma amostra aleatória simples, então, se
+	\[
+		\overline{X}=\frac{x_1+x_2+\cdots +x_n}{n}\text{,}
+	\]
+	tem-se que
+	\[
+		E(\overline{X})=\mu
+		\text{,}
+	\]
+	e que
+	\[
+		Var(\overline{X})=\frac{\sigma^2}{n}
+		\text{.}
+	\]
+\end{theorem}
+
+\begin{theorem}
+	Para amostras aleatórias simples
+	\[
+		(x_1,x_2,\dots,x_n)
+	\]
+	retiradas de uma população com média $\mu$ e variância $\sigma^2$, a distribuição amostral da média $\overline{X}$ aproxima-se de uma distribuição normal com média $\mu$ e variância $\dfrac{\sigma^2}{n}$, quando $n$ tende ao infinito. Ou seja,
+	\[
+		\overline{X}\sim N(\mu,\frac{\sigma^2}{n})\text{,}
+	\]
+	quando $n\to \infty$.
+\end{theorem}
+
+\begin{example}
+	Suponha uma população de 80, 100 e 120, logo, tem-se
+	\[
+		\mu=\frac{80+100+120}{3}=100\text{,}
+	\]
+	e
+	\begin{align*}
+		\sigma^2&=\frac{(80-100)^2+(100-100)^2+(120-100)^2}{3}\\
+				&=266,66\text{,}
+	\end{align*}
+	logo, $\mu=100$ e $\sigma^2=266,66$.
+	
+	{\color{red}Terminar esse exemplo (das anotações)}
+\end{example}
+
+\section{Teorema do Limite Central}
+
+\begin{theorem}
+	\label{theorem:limite_central}
+	Se $(x_1, x_2, \cdots x_n)$ é uma amostra aleatória simples da população $X$ com média $\mu$ e variância $\sigma^2$, então
+	\[
+		Z=\frac{\overline{X}-\mu}{\sigma/\sqrt{n}} \sim N(0,1)\text{,}
+	\]
+	quando $n\to \infty$.
+\end{theorem}
+
+{\color{red}Fazer exemplos aqui.}
+
+
+\section{Distribuição Amostral da Proporção}
+
+Seja $n_c$ o número de indivíduos na amostra com certa característica, então a proporção amostral ($\hat{p}$) é dada por
+\[
+	\hat{p}=\frac{n_c}{n}
+	\text{.}
+\]
+
+Utilizando o Teorema do Limite Central (Teorema \ref{theorem:limite_central}), tem-se que
+\[
+	\hat{p}\sim N\left (p, \frac{p(1-p)}{n}\right )\text{,}
+\]
+e, ainda, que
+\[
+	Z=\frac{\hat{p}-p}{\sqrt{\frac{p(1-p)}{n}}} \sim N(0,1)\text{.}
+\]
+
+\begin{sidepicture}{5cm}{picture}{AAAAAAAAAa.}
+	\label{fig:cap0:exemplo_amostral_proporcao}
+	\begin{tikzpicture}
+		\tkzInit[xmin=-1.5,xmax=1.5,ymin=0,ymax=2.5]
+		\tkzDrawX[noticks, label={}]
+		\tkzFct[domain=-1.5:1.5, samples=2000, color=ocre, line width=2pt]{20*(\gauss{0}{4.5}{10}) + 0.25}
+		\tkzDrawArea[color=ocre!30, domain=-1.5:0.5]
+		\tkzDefPointByFct(0)
+		\tkzGetPoint{C}
+		\tkzPointShowCoord[xlabel=$\text{0,4 }$, noydraw, xstyle={below=7pt, font=\footnotesize}](C)
+		\tkzDefPointByFct(0.5)
+		\tkzGetPoint{B}
+		\tkzPointShowCoord[xlabel=$\text{ 0,5}$, noydraw, xstyle={below=7pt, font=\footnotesize}](B)
+	\end{tikzpicture}
+\end{sidepicture}
+
+\begin{sidepicture}{2cm}{picture}{BBBBBBBBBBb.}
+	\label{fig:cap0:exemplo_amostral_proporcao_padronizada}
+	\begin{tikzpicture}
+		\tkzInit[xmin=-1.5,xmax=1.5,ymin=0,ymax=2.5]
+		\tkzDrawX[noticks, label={}]
+		\tkzFct[domain=-1.5:1.5, samples=2000, color=ocre, line width=2pt]{20*(\gauss{0}{4.5}{10}) + 0.25}
+		\tkzDrawArea[color=ocre!30, domain=-1.5:0.5]
+		\tkzDefPointByFct(0)
+		\tkzGetPoint{C}
+		\tkzPointShowCoord[xlabel=$\text{0 }$, noydraw, xstyle={below=7pt, font=\footnotesize}](C)
+		\tkzDefPointByFct(0.5)
+		\tkzGetPoint{B}
+		\tkzPointShowCoord[xlabel=$\text{ 1,12}$, noydraw, xstyle={below=7pt, font=\footnotesize}](B)
+	\end{tikzpicture}
+\end{sidepicture}
+
+\begin{example}
+	Suponha que a proporção de peças fora de especificação em um lote é de 40\%. Tomada uma amostra de tamanho 30, determine:
+	
+	\begin{enumerate}[label=(\alph*)]
+		\item qual a probabilidade desta amostra fornecer uma proporção de peças defeituosas menor que 50\%.\\
+		
+			Primeiro, tem-se que
+			\[
+				\hat{p}\sim N\left ( 0,4;\text{ }\frac{0,4(1-0,4)}{30}\right )
+				\text{,}
+			\]
+			onde a distribuição normal pode ser padronizada por
+			\begin{equation}
+				\label{eqn:ex:amostral_proporcao_transformada}
+				Z=\frac{\hat{p}-p}{\sqrt{\frac{p(1-p)}{n}}}
+				 =\frac{\hat{p}-0,4}{0,0894}
+				\text{.}
+			\end{equation}
+			
+			Queremos $P(\hat{p}<0,5)$, primeiro, transformando $0,5$ por meio da Equação \ref{eqn:ex:amostral_proporcao_transformada}, tem-se $Z=1,12$ (Nas Figuras \ref{fig:cap0:exemplo_amostral_proporcao} e \ref{fig:cap0:exemplo_amostral_proporcao_padronizada}, respectivamente, tem-se exemplos gráficos da distribuição normal original e padronizada). Deste modo,
+			\begin{align*}
+				P(\hat{p}<0,5) &=0,5+P(0\leqslant Z\leqslant 1,12)\\
+								&=0,5+0,3686\\
+								&=0,8686\text{.}
+			\end{align*}
+			
+		\item um valor $p_c$ tal que $P(p<p_c)=0,95$.\\
+		
+			Basta fazer o processo inverso ao anterior, ou seja, de $P(p<p_c)=0,95$, pode-se tirar que existe $z_c$ de modo que
+			\[
+				P(0\leqslant Z\leqslant z_c)=0,45\text{,}
+			\]
+			de onde tira-se que $z_c=1,64$. Agora, utilizando a Equação \ref{eqn:ex:amostral_proporcao_transformada}, tem-se
+			\[
+				1,64=\frac{p_c-0,4}{0,0894}\text{,}
+			\]
+			isto é, $p_c=0,5466$.
+	\end{enumerate}
+\end{example}
+
+\section{Intervalo de confiança para a média com variância conhecida}
+
+Tem-se que
+\[
+	Z=\frac{\overline{x}-\mu}{\sigma/\sqrt{n}}\sim N(0,1)\text{,}
+\]
+logo, fixado um determinado valor $\alpha$ tal que $0<\alpha<1$, é possível encontrar um valor $Z_{\frac{\alpha}{2}}$ tal que
+\[
+	P(-Z_{\frac{\alpha}{2}} \leqslant Z\leqslant Z_{\frac{\alpha}{2}})=1-\alpha
+	\text{.}
+\]
+
+\begin{sidepicture}{4cm}{picture}{Exemplificação gráfica de um intervalo de confiança. Perceba que cada área laranja, antes de $-Z_{\frac{\alpha}{2}}$ e depois de $Z_{\frac{\alpha}{2}}$, tem área $\frac{\alpha}{2}$.}
+	\label{fig:cap0:intervalo_confianca_01}
+	\begin{tikzpicture}
+		\tkzInit[xmin=-1.5,xmax=1.5,ymin=0,ymax=2.5]
+		\tkzDrawX[noticks, label={}]
+		\tkzFct[domain=-1.5:1.5, samples=2000, color=ocre, line width=2pt]{20*(\gauss{0}{4.5}{10}) + 0.25}
+		\tkzDrawArea[color=ocre!30, domain=1:1.5]
+		\tkzDrawArea[color=ocre!30, domain=-1.5:-1]
+		\tkzDefPointByFct(0)
+		\tkzGetPoint{C}
+		\tkzPointShowCoord[xlabel=$0$, noydraw, xstyle={below=7pt}](C)
+		\tkzDefPointByFct(-1)
+		\tkzGetPoint{A}
+		\tkzPointShowCoord[xlabel=$-Z_{\frac{\alpha}{2}}$, noydraw, xstyle={below=7pt}](A)
+		\tkzDefPointByFct(1)
+		\tkzGetPoint{B}
+		\tkzPointShowCoord[xlabel=$Z_{\frac{\alpha}{2}}$, noydraw, xstyle={below=7pt}](B)
+		\tkzText[color=black, fill=white](-0.6, 1){$1-\alpha$}
+	\end{tikzpicture}
+\end{sidepicture}
+
+É possível obter, portanto, um intervalo de confiança dado por
+\[
+	-Z_{\frac{\alpha}{2}} \leqslant Z\leqslant Z_{\frac{\alpha}{2}}
+	\text{,}
+\]
+ou seja
+\[
+	-Z_{\frac{\alpha}{2}} \leqslant 
+		\frac{\overline{X}-\mu}{\sigma/\sqrt{n}}
+	\leqslant Z_{\frac{\alpha}{2}}
+	\text{,}
+\]
+concluindo que
+\[
+	\overline{X}-Z_{\frac{\alpha}{2}}\frac{\sigma}{\sqrt{n}}
+	\leqslant
+	\mu
+	\leqslant
+	\overline{X}+Z_{\frac{\alpha}{2}}\frac{\sigma}{\sqrt{n}}
+	\text{.}
+\]
+
+Assim, um intervalo de confiança para $\mu$ com $(1-\alpha)\%$ de confiança é dado por
+\[
+	IC(\mu, (1-\alpha)\%) = \left [
+		\overline{X} - Z_{\frac{\alpha}{2}}\frac{\sigma}{\sqrt{n}}
+		,
+		\overline{X} + Z_{\frac{\alpha}{2}}\frac{\sigma}{\sqrt{n}}
+	\right ]
+	\text{,}
+\]
+onde o erro é dado por
+\[
+	e=Z_{\frac{\alpha}{2}}\frac{\sigma}{\sqrt{n}}
+	\text{.}
+\]
+
+\begin{example}
+	\label{example:ic_media_variancia_conhecida}
+	Um provedor de internet está monitorando a duração do tempo das conexões de seus clientes. por analogia a outros serviços o desvio padrão é considerado igual a $\sqrt{50}$ minutos. Uma amostra de 200 conexões resultou num valor médio de 25 minutos. Construa um intervalo de confiança para a média de duração do tempo das conexões, com 90\% de confiança.\\
+	
+	O valor $\alpha=0,1$, pois $1-\alpha=0,9$. Assim, $P(0\leqslant Z \leqslant Z_{\frac{\alpha}{2}})=0,45$. Dessa forma, determina-se $Z_{\frac{\alpha}{2}}=1,64$. O desvio padrão é $\sigma=50$ e $n=200$, além de $\overline{X}=25$. Portanto,
+	\begin{align*}
+		\overline{X}\pm Z_{\frac{\alpha}{2}}\frac{\sigma}{\sqrt{n}} &= 25\pm 1,64\frac{\sqrt{50}}{\sqrt{200}}\\
+																	  &= 25\pm 0,82\text{,}
+	\end{align*}
+	ou seja, o intervalo de confiança é $[24,18;\text{ }25,82]$.
+\end{example}
+
+{\color{red}Citar a figura no corpo do texto.}
+
+\section{Intervalo de confiança para a proporção}
+
+Apesar da proporção amostral $\hat{p}$ não ter distribuição normal, o Teorema do Limite Central (Teorema \ref{theorem:limite_central}) nos garante que para um tamanho de amostra grande, podemos aproximá-la para a normal. Desse modo, tem-se
+\[
+	\hat{p}\sim N\left ( p, \frac{p(1-p)}{n} \right )
+	\text{.}
+\]
+
+Assim, um intervalo de confiança com coeficiente de confiança $(1-\alpha)$ é dado por:
+\[
+	IC(p,  (1-\alpha)\%) = \left [
+		\hat{p} - Z_{\frac{\alpha}{2}} \sqrt{ \frac{p(1-p)}{n} }
+		,
+		\hat{p} + Z_{\frac{\alpha}{2}} \sqrt{ \frac{p(1-p)}{n} }
+	\right ]
+	\text{.}
+\]
+
+Se p é desconhecido, então, é possível substituir $p(1-p)$ por $\hat{p}(1-\hat{p})$, tendo, como resultado, o intervalo de confiança, para $p$, 
+\[
+	IC(p,  (1-\alpha)\%) = \left [
+		\hat{p} - Z_{\frac{\alpha}{2}} \sqrt{ \frac{\hat{p}(1-\hat{p})}{n} }
+		,
+		\hat{p} + Z_{\frac{\alpha}{2}} \sqrt{ \frac{\hat{p}(1-\hat{p})}{n} }
+	\right ]
+	\text{.}
+\]
+
+Esse intervalo de confiança é denominado intervalo \emphasis{otimista} por considerar $\hat{p}$ uma boa aproximação para $p$.
+
+Também é possível substituir $p(1-p)$ pelo seu valor máximo $\frac{1}{4}$, assim um intervalo de confiança para $p$ é dado por
+\[
+	IC(p,  (1-\alpha)\%) = \left [
+		\hat{p} - \frac{Z_{\frac{\alpha}{2}}}{\sqrt{4n} }
+		,
+		\hat{p} + \frac{Z_{\frac{\alpha}{2}}}{\sqrt{4n} }
+	\right ]
+	\text{.}
+\]
+
+Esse intervalo de confiança é denominado intervalo \emphasis{conservador} pois substitui a variância $\frac{p(1-p)}{n}$ por um valor maior, com excessão se $p=\frac{1}{2}$.
+
+\begin{sidepicture}{6cm}{picture}{Note que $P(0\leqslant Z\leqslant Z_{\frac{\alpha}{2}})=0,475$.}
+	\label{fig:cap0:intervalo_confianca_exemplo_proporcao}
+	\begin{tikzpicture}
+		\tkzInit[xmin=-1.5,xmax=1.5,ymin=0,ymax=2.5]
+		\tkzDrawX[noticks, label={}]
+		\tkzFct[domain=-1.5:1.5, samples=2000, color=ocre, line width=2pt]{20*(\gauss{0}{4.5}{10}) + 0.25}
+		\tkzDrawArea[color=ocre!30, domain=1:1.5]
+		\tkzDefPointByFct(0)
+		\tkzGetPoint{C}
+		\tkzPointShowCoord[xlabel=$0$, noydraw, xstyle={below=7pt}](C)
+		\tkzDefPointByFct(1)
+		\tkzGetPoint{B}
+		\tkzPointShowCoord[xlabel=$Z_{\frac{\alpha}{2}}$, noydraw, xstyle={below=7pt}](B)
+		\tkzDefPoint(0.5, 0.3){A_1}
+		\tkzDefPoint(1, 1){A_2}
+		\tkzDrawSegment[color=black!50](A_1, A_2)
+		\tkzText[color=black](1, 1.5){$0,475$}
+	\end{tikzpicture}
+\end{sidepicture}
+
+\begin{example}
+	\label{example:exemplo_proporcao}
+	Numa pesquisa de mercado 400 pessoas foram entrevistadas sobre determinado produto e, 60\% delas preferiram a marca A. Construa um intervalo de 95\% de confiança para a proporção de indivíduos que preferem a marca A.\\
+	
+	Do enunciado, tem-se $n=400$ e $1-\alpha=0,95$, de onde $\alpha=0,05$. Ainda, $\hat{p}=0,6$. Para encontrar o valor de $Z_{\frac{\alpha}{2}}$, é preciso lembrar que o gráfico de uma distribuição normal é simétrico e que, portanto, a área entre 0 e $Z_{\frac{\alpha}{2}}$ será igual a $\frac{1-0,05}{2}$, ou seja, $0,475$ (Figura \ref{fig:cap0:intervalo_confianca_exemplo_proporcao}). Então, 
+	\[
+		P(0\leqslant Z\leqslant Z_{\frac{\alpha}{2}})=0,475\text{,}
+	\]
+	de onde, $Z_{\frac{\alpha}{2}}=1,96$. Dessa forma, o intervalo de confiança será
+	\begin{align*}
+		IC(p, 95\%)&= [0,6-1,96\sqrt{0,0006};\text{ }0,6+1,96\sqrt{0,0006}]\\
+				   &= [0,6-0,048;\text{ }0,6+0,048]\\
+				   &= [0,55199;\text{ }0,64801]\text{.}
+	\end{align*}
+\end{example}
+
+\begin{remark}
+	Perceba, no exemplo acima (Exemplo \ref{example:exemplo_proporcao}) que, em determinado momento, tem-se o intervalo de confiança escrito como $0,6\pm 0,048$. Isso é o memso que dizer que o erro é de 4,8\% para mais ou para menos.
+\end{remark}
+
+\section{Intervalo de confiança para a média com variância desconhecida}
+
+Se a variância populacional $\sigma^2$ é desconhecida, é possível estimá-la pela variância amostral $S^2$. Assim, tem-se que
+\[
+	T=\frac{\overline{X}-\mu}{S/\sqrt{n}} \sim t_{n-1}\text{,}
+\]
+onde $t_{n-1}$ representa a distribuição \emphasis{t-student} com $n-1$ graus de liberdade. Deste modo, tem-se
+\[
+	IC(\mu, (1-\alpha)\%) = \left [
+		\overline{X} - t_{n-1,\frac{\alpha}{2}}\frac{S}{\sqrt{n}}
+		,
+		\overline{X} + t_{n-1,\frac{\alpha}{2}}\frac{S}{\sqrt{n}}
+	\right ]
+	\text{.}
+\]
+
+{\color{red}Falar sobre a tabela t-student.}
+
+\begin{example}
+	Para verificar o nível de nicotina em seus cigarros uma indústria seleciona uma amostra de 25 cigarros obtendo uma média de 31,5mg e um desvio padrão de 3mg. Construa um intervalo com 95\% de confiança para a média de nicotina dos cigarros fabricados por essa indústria.\\
+	
+	Do exemplo, podemos definir que $n=25$, $\overline{x}=31,5\text{mg}$ e $S=3\text{mg}$. Ainda, $1-\alpha=0,95$, de onde $\alpha=0,05$ e, $\frac{\alpha}{2}=0,025$. Dessa forma,
+	\begin{align*}
+		IC(\mu,95\%)&=\overline{x}\pm t_{n-1,\frac{\alpha}{2}}\frac{S}{\sqrt{n}}\\
+					&=31,5\pm t_{24,2,5\%}\frac{3}{\sqrt{25}}\\
+					&=31,5\pm 2,064\cdot \frac{3}{5}=31,5\pm 1,2384\text{,}
+	\end{align*}
+	onde, o intervalo de confiança será $[30,2616;\text{ }32,7384]$.
+\end{example}
+
+\begin{exercisePage}
+	\item Volte ao Exemplo \ref{example:ic_media_variancia_conhecida} e resolva o mesmo exemplo, também, com:
+		\begin{enumerate}[label=(\alph*)]
+			\item 95\% de confiança;
+			\item 99\% de confiança;
+			\item Compare os intervalos de confiança com 90\%, 95\% e 99\%.
+		\end{enumerate}
+
+	\item O peso de recém nascidos segue o modelo normal com desvio padrão de 1kg. Uma amostra de 16 recém nascidos de uma maternidade forneceu uma média de 3,1kg. Construa um intervalo de confiança com 90\% para o peso médio de recém nascidos.
+	
+	\item O peso de recém nascidos segue o modelo normal. Uma amostra de 9 recém nascidos de uma maternidade forneceu uma média de 3,1kg e um desvio padrão de 1kg. Construa um intervalo de confiança com 90\% para o peso médio de recém nascidos.
+	
+	\item Uma amostra de 25 recém nascidos fornecem uma média de 3,1kg. Sabendo que o peso de recém nascidos segue uma distribuição normal com desvio padrão de 1kg. Construa um intervalo de 99\% de confiança para a média dos pesos de recém nascidos.
+	
+	\item Uma amostra de 9 recém nascidos fornecem os seguintes pesos:
+		\begin{center}
+			2,9; 3,5; 3,9; 2,5; 2,7; 3,2; 3,6; 4,1; 3,2
+		\end{center}
+		
+		Construa, com 95\% de confiança, um intervalo para o peso dos recém nascidos.
+\end{exercisePage}

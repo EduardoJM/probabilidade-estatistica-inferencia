@@ -1,0 +1,554 @@
+\chapter{Variáveis Aleatórias Discretas}
+
+Uma quantidade $X$ associada a cada possível resultado do espaço amostral é denominada de variável aleatória discreta se assume valores num conjunto enumerável, com certa probabilidade.
+
+\section{Função de Probabilidade}
+
+Seja $X$ uma variável aleatória discreta e $x_1$, $x_2$, $x_3$, $\dots$, seus diferentes valores, a função que atribui a cada valor da variável aleatória sua probabilidade é denominada de função discreta de probabilidade ou simplesmente, função de probabilidade. Ela pode ser representada como
+\begin{equation}
+	P(X=x_i)=p_i\text{,}
+\end{equation}
+com $i=1$, $2$, $3$, $\dots$, $0\leqslant p_i\leqslant 1$ e $\sum p_i=1$. Ainda, a função de probabilidade pode ser exibida como na Tabela \ref{table:describe_func_probabilidade}.
+
+\begin{sidepicture}{5cm}{table}{Forma de se exibir uma função de probabilidade, através de seus valores. É importante perceber que $0\leqslant p_i\leqslant 1$ e que $\sum p_i=1$.}
+	\label{table:describe_func_probabilidade}
+	\begin{tabular}{c|cccc}\toprule  
+		$X$ & $x_1$ & $x_2$ & $x_3$ & $\dots$ \\ \midrule
+		$P(X=x_i)$ & $p_1$ & $p_2$ & $p_3$ & $\dots$\\\bottomrule
+	\end{tabular}
+\end{sidepicture}
+
+\subsection{Função acumulada de probabilidade}
+
+A função de distribuição ou função acumulada de probabilidade de uma variável aleatória discreta $X$ é definida por
+\begin{equation}
+	F(x)=P(X\leqslant x)\text{.}
+\end{equation}
+\newpage
+
+\begin{pageWidthArea}
+	\begin{pageWidthAreaPicture}{frame}{Doses da vacina do exemplo.}
+		\label{table:dados_vacina_alergia}
+		\hspace{-15pt}
+		\resizebox{\textwidth}{!}{%
+		\begin{tabular}{c|ccccc}
+			Doses & 1 & 2 & 3 & 4 & 5 \\\toprule
+			Frequência & 245 & 288 & 256 & 145 & 66 \\
+		\end{tabular}%
+		}
+	\end{pageWidthAreaPicture}
+
+	\vspace{10pt}
+
+	\begin{example}
+		Uma população de 1000 crianças foi analisada num estudo para determinar a efetividade de uma vacina contra um tipo de alergia. No estudo, as crianças recebiam uma dose de vacina e após um mês passavam por um novo teste. Caso ainda tivessem tido alguma reação alérgica, recebiam outra dose da vacina. Ao fim de 5 doses todas as crianças foram consideradas imunizadas. Os resultados estão na Tabela \ref{table:dados_vacina_alergia}. Qual a probabilidade de uma criança ter recebido
+		\begin{enumerate}[label=\alph*]
+			\item Duas doses somente.\hfill\\
+			
+				Sendo $X:$ "a quantidade de doses", então $S=\{1$, $2$, $3$, $4$, $5\}$ e, por fim,
+				\[
+					P(X=2)=\frac{288}{1.000}=0,288\text{.}
+				\]
+
+			\item Até duas doses.\hfill\\
+			
+				Considerando, ainda a variável $X$, tem-se
+				\[
+					P(X\leqslant 2)=P(X=1)+P(X=2)=\frac{245}{1.000} + \frac{288}{1.000}=0,533\text{.}
+				\]
+
+			A função acumulada de probabilidade do exemplo, cujo gráfico está na Figura \ref{picture:funcao_acumulada_vacina_alergia}, é
+			\[
+				F(X)= \begin{cases}
+					0, \text{, se } X\leqslant 1\\
+					0,245 \text{, se } 1\leqslant X < 2\\
+					0,533 \text{, se } 2\leqslant X < 3\\
+					0,789 \text{, se } 3 \leqslant X < 4\\
+					0,934 \text{, se } 4 \leqslant X < 5\\
+					1 \text{, se } X \geqslant 5
+				\end{cases}
+			\]
+		\end{enumerate}
+	\end{example}
+	
+	\vspace{10pt}
+
+	\begin{pageWidthAreaPicture}{picture}{Função Acumulada do Exemplo da Vacina.}
+		\label{picture:funcao_acumulada_vacina_alergia}
+		\begin{tikzpicture}
+			\tkzInit[xmin=-1,xmax=6,ymin=-1,ymax=5]
+			\tkzDrawX[noticks, label={$X$}]
+			\tkzDrawY[noticks,label={$F(X)$}]
+			\tkzDefPoint(0,0){A}
+			\tkzDefPoint(1,0){B}
+			\tkzDrawSegment[color=ocre, line width=2pt](A,B)
+			\tkzDefPoint(1,1){C}
+			\tkzDefPoint(2,1){D}
+			\tkzDrawSegment[color=ocre, line width=2pt](C,D)
+			\tkzDefPoint(2,2){E}
+			\tkzDefPoint(3,2){F}
+			\tkzDrawSegment[color=ocre, line width=2pt](E,F)
+			\tkzDefPoint(3,3){G}
+			\tkzDefPoint(4,3){H}
+			\tkzDrawSegment[color=ocre, line width=2pt](G,H)
+			\tkzDefPoint(4,4){I}
+			\tkzDefPoint(5,4){J}
+			\tkzDrawSegment[color=ocre, line width=2pt](I,J)
+			\tkzDefPoint(5,5){K}
+			\tkzDefPoint(7,5){L}
+			\tkzDrawSegment[color=ocre, line width=2pt](K,L)
+			\tkzPointShowCoord[xlabel=$1$, xstyle={below=7pt}, ylabel=$0\text{,}245$, ystyle={left=7pt}](C)
+			\tkzPointShowCoord[xlabel=$2$, xstyle={below=7pt}, ylabel=$0\text{,}533$, ystyle={left=7pt}](E)
+			\tkzPointShowCoord[xlabel=$3$, xstyle={below=7pt}, ylabel=$0\text{,}789$, ystyle={left=7pt}](G)
+			\tkzPointShowCoord[xlabel=$4$, xstyle={below=7pt}, ylabel=$0\text{,}934$, ystyle={left=7pt}](I)
+			\tkzPointShowCoord[xlabel=$5$, xstyle={below=7pt}, ylabel=$1$, ystyle={left=7pt}](K)
+			\tkzDrawPoint[fill=ocre, size=10](C)
+			\tkzDrawPoint[fill=ocre, size=10](E)
+			\tkzDrawPoint[fill=ocre, size=10](G)
+			\tkzDrawPoint[fill=ocre, size=10](I)
+			\tkzDrawPoint[fill=ocre, size=10](K)
+			\tkzDrawPoint[fill=white, size=10](B)
+			\tkzDrawPoint[fill=white, size=10](D)
+			\tkzDrawPoint[fill=white, size=10](F)
+			\tkzDrawPoint[fill=white, size=10](H)
+			\tkzDrawPoint[fill=white, size=10](J)
+		\end{tikzpicture}
+	\end{pageWidthAreaPicture}
+\end{pageWidthArea}
+
+\subsection{Medidas de posição}
+
+\subsubsection*{Média ou Valor Esperado}
+
+A média denominada \emphasis{esperança} ou valor esperado de uma variável aleatória discreta é dada por
+\begin{equation}
+	E(X)=\sum_{i=1}^{n} x_i p_i\text{.}
+\end{equation}
+
+\subsubsection*{Mediana}
+
+A mediana é o valor $Md$ que satisfaz às seguintes condições
+\begin{equation}
+	P(X \geqslant Md) \geqslant 0,5\text{,}
+\end{equation}
+\begin{equation}
+	P(X \leqslant Md) \geqslant 0,5\text{.}
+\end{equation}
+
+\subsubsection*{Moda}
+
+A moda é o valor da variável aleatória que tem maior probabilidade de ocorrência
+\begin{equation}
+	P(X=Mo)=\max_{x} (p_1, p_2, \dots, p_m)\text{.}
+\end{equation}
+
+\subsubsection*{Variância}
+
+A variância é dada por
+\begin{equation}
+	Var(X)=\sum_{i=1}^{n} (x_i - E(X))^2 p_i\text{,}
+\end{equation}
+ou, ainda, como
+\begin{equation}
+	Var(X)=E(X^2)-(E(X))^2\text{,}
+\end{equation}
+onde 
+\begin{equation}
+	E(X^2)=\sum_{i=1}^{n} x_i^2 p_i\text{.}
+\end{equation}
+
+\subsubsection*{Desvio Padrão}
+
+O desvio padrão é dado pela raíz quadrada da variância, ou seja,
+\begin{equation}
+	DP(X)=\sqrt{Var(X)}\text{.}
+\end{equation}
+
+\begin{example}
+	Uma pequena cirurgia dentária pode ser realizada por um método cujo tempo de recuperação, em dias, é modelado pela variável $X$. Admita que sua função de probabilidade seja dada pela Tabela \ref{table:example:cirurgia_dentaria}. Calcule o desvio padrão dessa variável.\\
+
+	Para calcular a $Var(X)$, pode-se utilizar o fato de que $E(X)=5$ e, ainda,
+	\[
+		Var(X)=\sum_{i=1}^{n} (x_i - E(X))^2 p_i\text{,}
+	\]
+	utilizando os valores, calculados, conforme a Tabela \ref{table:example:cirurgia_dentaria_var}, de onde
+	\[
+		Var(X)=5+0,2+0,2+5=10,4\text{,}
+	\]
+	onde $DP(X)=\sqrt{Var(X)}=\sqrt{10,4}=3,22$ dias.
+\end{example}
+
+\begin{sidepicture}{9cm}{table}{AAAAAAAa.}
+	\label{table:example:cirurgia_dentaria}
+	\begin{tabular}{c|ccccc}
+		$X$ & 0 & 4 & 5 & 6 & 10 \\ \toprule
+		$P(X=x)$ & 0,2 & 0,2 & 0,2 & 0,2 & 0,2 \\
+	\end{tabular}
+\end{sidepicture}
+
+\begin{sidepicture}{6cm}{table}{BBBBBBB.}
+	\label{table:example:cirurgia_dentaria_var}
+	\begin{tabular}{c|c|c}
+		$x_i$ & $x_i-E(x)$ & $(x_i-E(X))^2p_i$ \\ \toprule
+		0 & -5 & 5 \\
+		4 & -1 & 0,2 \\
+		5 & 0 & 0 \\
+		6 & 1 & 0,2 \\
+		10 & 5 & 5 \\
+	\end{tabular}
+\end{sidepicture}
+
+\subsubsection*{Propriedades}
+
+\begin{theorem}
+	Seja $X$ uma variável aleatória discreta e $Y=aX+b$, onde $a$ e $b$ são constantes, então tem-se que
+	\begin{itemize}
+		\item $E(Y)=E(aX+b)=aE(X)+b$;
+		\item $Var(Y)=Var(aX+b)=a^2\cdot Var(X)$.
+	\end{itemize}
+\end{theorem}
+
+\begin{theorem}
+	Sejam $X_1$, $\dots$, $X_n$, $n$ variáveis aleatórias discretas independentes, então
+	\begin{itemize}
+		\item $E(X_1 + \cdots + X_n)=E(X_1) + \cdots + E(X_n)$;
+		\item $Var(X_1 + \cdots + X_n)=Var(X_1) + \cdots + Var(X_n)$.
+	\end{itemize}
+\end{theorem}
+
+\section{Principais Modelos Discretos}
+
+\subsection{Modelo Uniforme Discreto}
+
+\begin{sidepicture}{2cm}{table}{Representação em Tabela da função de probabilidade do modelo uniforme discreto.}
+	\label{table:describe_func_probabilidade_uniforme_discreto}
+	\begin{tabular}{c|cccc}\toprule  
+		$X$ & $x_1$ & $x_2$ & $\dots$ & $x_n$ \\ \midrule
+		$P(X=x_i)$ & $\frac{1}{n}$ & $\frac{1}{n}$ & $\dots$ & $\frac{1}{n}$\\\bottomrule
+	\end{tabular}
+\end{sidepicture}
+
+Seja X uma variável aleatória cujos possíveis valores podem ser representados por $x_1$, $x_2$, $\dots$, $x_n$. Dizemos que $X$ segue o modelo uniforme discreto se, e somente se,
+\begin{equation}
+	P(X=x_i)=\frac{1}{n}\text{,}
+\end{equation}
+para todo $i=1$, $2$, $\dots$, $n$. Outra representação do modelo está na Tabela \ref{table:describe_func_probabilidade_uniforme_discreto}.
+
+A esperança e a variância para o modelo uniforme são dadas, respectivamente, por
+\begin{equation}
+	E(X)=\frac{\displaystyle\sum_{i=1}^{n}x_i}{n}\text{,}
+\end{equation}
+e
+\begin{equation}
+	Var(X)=\frac{\displaystyle\sum_{i=1}^{n} x_i^2}{n} - \left (
+		\frac{\sum_{i=1}^{n} x_i}{n}
+	\right )^2\text{.}
+\end{equation}
+
+\begin{proof}
+	Considerando $E(X)=\displaystyle\sum_{i=1}^{n}x_i p_i$, tem-se
+	\[
+		E(X)=\sum_{i=1}^{n}x_i p_i =\sum_{i=1}^{n} x_i\frac{1}{n} = \frac{\displaystyle\sum_{i=1}^{n} x_i}{n}\text{.}
+	\]
+
+	A variância é dada por $Var(X)=E(X^2)-(E(X))^2$, de onde
+	\begin{align*}
+		Var(X) &= E(X^2)-(E(X))^2\\
+			   &= \sum_{i=1}^{n} x_i^2\frac{1}{n} - \left ( \frac{\sum_{i=1}^{n} x_i}{n} \right)^2\\
+			   &= \frac{\displaystyle\sum_{i=1}^{n}x_i^2}{n} - \left ( \frac{ \sum_{i=1}^{n}x_i}{n} \right)^2\text{.}
+	\end{align*}
+\end{proof}
+
+O gráfico da função de probabilidade do modelo uniforme discreto está na Figura \ref{graph:modelo_uniforme_discreto_probabilidade} e o gráfico da função acumulada de probabilidade da Figura \ref{graph:modelo_uniforme_discreto_acumulada}.
+
+\begin{sidepicture}{10cm}{picture}{Gráfico de probabilidade}
+	\label{graph:modelo_uniforme_discreto_probabilidade}
+	\centering
+	\begin{tikzpicture}
+		\tkzInit[xmin=-1.2,xmax=4.2,ymin=-0.5,ymax=3]
+		\tkzDrawX[noticks, label={$X$}]
+		\tkzDrawY[noticks,label={$P(X=x_i)$}]
+		\tkzDefPoint(-1,1){A}
+		\tkzDefPoint(1,1){B}
+		\tkzDefPoint(2,1){C}
+		\tkzDefPoint(4,1){D}
+		\tkzDefPoint(3,1){E}
+		\tkzPointShowCoord[xlabel=$x_1$, xstyle={below=7pt}](A)
+		\tkzPointShowCoord[xlabel=$x_2$, xstyle={below=7pt}, noydraw](B)
+		\tkzPointShowCoord[xlabel=$x_3$, xstyle={below=7pt}, noydraw](C)
+		\tkzPointShowCoord[xlabel=$...$, xstyle={below=7pt}, noydraw](E)
+		\tkzPointShowCoord[xlabel=$x_n$, xstyle={below=7pt}, ylabel=$\frac{1}{n}$, ystyle={left=7pt}](D)
+		\tkzDrawPoint[fill=ocre, size=10](A)
+		\tkzDrawPoint[fill=ocre, size=10](B)
+		\tkzDrawPoint[fill=ocre, size=10](C)
+		\tkzDrawPoint[fill=ocre, size=10](D)
+	\end{tikzpicture}
+\end{sidepicture}
+
+\begin{sidepicture}{4cm}{picture}{função acumulada de probabilidade}
+	\label{graph:modelo_uniforme_discreto_acumulada}
+	\centering
+	\begin{tikzpicture}
+		\tkzInit[xmin=-0.8,xmax=5,ymin=-0.5,ymax=5]
+		\tkzDrawX[noticks, label={$X$}]
+		\tkzDrawY[noticks,label={$F(X)$}]
+		\tkzDefPoint(-1,0){A}
+		\tkzDefPoint(-0.5,0){B}
+		\tkzDrawSegment[color=ocre, line width=2pt](A,B)
+		\tkzDefPoint(-0.5,1){C}
+		\tkzDefPoint(1,1){D}
+		\tkzDrawSegment[color=ocre, line width=2pt](C,D)
+		\tkzDefPoint(1,2){E}
+		\tkzDefPoint(2,2){F}
+		\tkzDrawSegment[color=ocre, line width=2pt](E,F)
+		\tkzDefPoint(2,3){G}
+		\tkzDefPoint(3,3){H}
+		\tkzDrawSegment[color=ocre, line width=2pt](G,H)
+		\tkzDefPoint(4,4){I}
+		\tkzDefPoint(5,4){J}
+		\tkzDrawSegment[color=ocre, line width=2pt](I,J)
+		\tkzPointShowCoord[xlabel=$x_1$, xstyle={below=7pt}, ylabel=$\frac{1}{n}$, ystyle={right=7pt, above=5pt}](C)
+		\tkzPointShowCoord[xlabel=$x_2$, xstyle={below=7pt}, ylabel=$\frac{2}{n}$, ystyle={left=7pt, above=5pt}](E)
+		\tkzPointShowCoord[xlabel=$x_3$, xstyle={below=7pt}, ylabel=$\frac{3}{n}$, ystyle={left=7pt, above=5pt}](G)
+		\tkzPointShowCoord[xlabel=$...$, xstyle={below=7pt}, noydraw](H)
+		\tkzPointShowCoord[xlabel=$x_n$, xstyle={below=7pt}, ylabel=$1$, ystyle={left=7pt, above=5pt}](I)
+		%\tkzPointShowCoord[xlabel=$5$, xstyle={below=7pt}, ylabel=$1$, ystyle={left=7pt}](K)
+		\tkzDrawPoint[fill=ocre, size=10](C)
+		\tkzDrawPoint[fill=ocre, size=10](E)
+		\tkzDrawPoint[fill=ocre, size=10](G)
+		\tkzDrawPoint[fill=ocre, size=10](I)
+		%\tkzDrawPoint[fill=ocre, size=10](K)
+		\tkzDrawPoint[fill=white, size=10](B)
+		\tkzDrawPoint[fill=white, size=10](D)
+		\tkzDrawPoint[fill=white, size=10](F)
+		\tkzDrawPoint[fill=white, size=10](H)
+		\tkzDrawPoint[fill=white, size=10](J)
+	\end{tikzpicture}
+\end{sidepicture}
+
+\begin{example}
+	Uma rifa tem 100 bilhetes numerados de 1 a 100. Tenho 5 bilhetes consecutivos numerados de 21 a 25 e, meu colega tem os bilhetes 1, 11, 29, 68 e 93. Quem tem maior probabilidade de ser sorteado?\\
+	
+	Calculando a probabilidade dos 5 bilhetes consecutivos, tem-se
+	\begin{align*}
+		P(\text{Meus})&=P(X=21)+P(X=22)+\\
+					  &\hspace{5pt}+P(X=23)+P(X=24)+P(X=25)\\
+					  &=\frac{1}{100}+\frac{1}{100}+\frac{1}{100}+\frac{1}{100}+\frac{1}{100}\\
+					  &=\frac{5}{100}\text{.}
+	\end{align*}
+	
+	Calculando a probabilidade do colega,
+	\begin{align*}
+		P(\text{Colega})&=P(X=1)+P(X=11)+\\
+						&\hspace{5pt}+P(X=29)+P(X=68)+P(X=93)\\
+						&=\frac{1}{100}+\frac{1}{100}+\frac{1}{100}+\frac{1}{100}+\frac{1}{100}\\
+					  &=\frac{5}{100}\text{,}
+	\end{align*}
+	de onde pode-se concluir que ambos possuem a mesma probabilidade de serem sorteados.
+\end{example}
+
+\subsection{Modelo de Bernoulli}
+
+Seja $X$ uma variável aleatória que assume apenas os valores 0 ou 1, respectivamente. Dizemos que $X$ segue o modelo de Bernoulli, se e somente se,
+\begin{equation}
+	P(X=x)=p^x(1-p)^{1-x}\text{,}
+\end{equation}
+com $x=0$ ou $x=1$. Outra representação para a função de probabilidade do modelo está na Tabela \ref{table:describe_func_probabilidade_bernoulli}.
+
+\begin{sidepicture}{5cm}{table}{Representação em Tabela da função de probabilidade do modelo de Bernoulli.}
+	\label{table:describe_func_probabilidade_bernoulli}
+	\begin{tabular}{c|cc|c}\toprule
+		$X$ & $0$ & $1$ & Total \\ \midrule
+		$P(X=x_i)$ & $1-p$ & $p$ & $1$\\\bottomrule
+	\end{tabular}
+\end{sidepicture}
+
+A esperança e a variância são
+\begin{equation}
+	E(X)=p\text{,}
+\end{equation}
+e
+\begin{equation}
+	Var(X)=p(1-p)\text{.}
+\end{equation}
+
+\begin{proof}
+	A esperança pode ser determinada como,
+	\begin{align*}
+		E(X)&=\sum_{i=1}^{n} x_i p_i\\
+			&=x_1 p_1 + x_2 + p_2\\
+			&=0(1-p)+1\cdot p\\
+			&=p\text{.}
+	\end{align*}
+
+	De modo análogo, $E(X^2)=p$, de onde, a variância será dada por
+	\begin{align*}
+		Var(X) &= E(X^2)-(E(X))^2\\
+			   &= p-p^2\\
+			   &= p(1-p)\text{.}
+	\end{align*}
+\end{proof}
+
+A função acumulada é
+\begin{equation}
+	F(x)=\begin{cases}
+		0\text{,}&\text{ se }x < 0\\
+		1-p\text{,}&\text{ se }0\leqslant x < 1\\
+		1\text{,}&\text{ se } x\geqslant 1
+	\end{cases}
+	\text{.}
+\end{equation}
+
+O gráfico da função de probabilidade está na Figura \ref{graph:modelo_bernoulli_probabilidade} e o gráfico da função acumulada de probabilidade está na Figura \ref{graph:modelo_bernoulli_acumulada}.
+
+\begin{sidepicture}{7cm}{picture}{Gráfico de probabilidade}
+	\label{graph:modelo_bernoulli_probabilidade}
+	\centering
+	\begin{tikzpicture}
+		\tkzInit[xmin=-1,xmax=3,ymin=-0.5,ymax=3]
+		\tkzDrawX[noticks, label={$x$}]
+		\tkzDrawY[noticks,label={$P(X=x)$}]
+		\tkzDefPoint(0,1){A}
+		\tkzDefPoint(1,2){B}
+		\tkzPointShowCoord[noxdraw, ylabel=$1-p$, ystyle={left=7pt}](A)
+		\tkzPointShowCoord[xlabel=$1$, xstyle={below=7pt}, ylabel=$p$, ystyle={left=7pt}](B)
+		\tkzDrawPoint[fill=ocre, size=10](A)
+		\tkzDrawPoint[fill=ocre, size=10](B)
+	\end{tikzpicture}
+\end{sidepicture}
+
+\begin{sidepicture}{0}{picture}{Gráfico de probabilidade acumulada}
+	\label{graph:modelo_bernoulli_acumulada}
+	\centering
+	\begin{tikzpicture}
+		\tkzInit[xmin=-1,xmax=3,ymin=-0.5,ymax=3]
+		\tkzDrawX[noticks, label={$x$}]
+		\tkzDrawY[noticks,label={$P(X=x)$}]
+		\tkzDefPoint(-1,0){A}
+		\tkzDefPoint(0,0){B}
+		\tkzDrawSegment[color=ocre, line width=2pt](A,B)
+		\tkzDefPoint(0,1){C}
+		\tkzDefPoint(1,1){D}
+		\tkzDrawSegment[color=ocre, line width=2pt](C,D)
+		\tkzDefPoint(1,2){E}
+		\tkzDefPoint(3,2){F}
+		\tkzDrawSegment[color=ocre, line width=2pt](E,F)
+		\tkzPointShowCoord[xlabel=$1$, xstyle={below=7pt}, ylabel=$1-p$, ystyle={left=7pt}](D)
+		\tkzPointShowCoord[noxdraw, ylabel=$1$, ystyle={left=7pt}](E)
+		\tkzDrawPoint[fill=white, size=10](B)
+		\tkzDrawPoint[fill=white, size=10](D)
+		\tkzDrawPoint[fill=ocre, size=10](C)
+		\tkzDrawPoint[fill=ocre, size=10](E)
+	\end{tikzpicture}
+\end{sidepicture}
+
+\begin{example}
+	Uma fábrica de parafusos tem 10\% de sua produção com algum defeito. Retira-se um parafuso, onde verifica-se se ele é defeituoso ou não.\\
+	
+	Tomando o evento $X$: "número de parafusos defeituosos", então, tem-se $X=0$ (o parafuso é perfeito, "fracasso") ou $X=1$ (o parafuso é defeituoso, "sucesso") e $p=0,10$. Assim, tem-se
+	\begin{align*}
+		P(\text{Parafuso Perfeito}) &= P(X=0)\\
+			&=0,10^{0}(1-0,10)^{1-0}\\
+			&=0,90\text{,}
+	\end{align*}
+	\begin{align*}
+		P(\text{Parafuso Defeituoso}) &= P(X=1)\\
+			&=0,10^{1}(1-0,10)^{0}\\
+			&=0,10\text{.}
+	\end{align*}
+
+	A esperança é $E(X)=p=0,10$ e a variância é $Var(X)=p(1-p)=0,10\cdot 0,90=0,09$.
+\end{example}
+
+\subsection{Distribuição Binomial}
+
+Considere a repetição de $n$ ensaios de Bernoulli independentes e todos com probabilidade de sucesso $p$.
+
+A variável aleatória que conta o número de sucessos é denominada binomial com parâmetros $n$ e $p$, e sua função de probabilidade é dada por
+\begin{equation}
+	P(X=k)= {n\choose k} p^k (1-p)^{n-k}\text{,}
+\end{equation}
+onde $k=0$, $1$, $2$, $\dots$, $n$ e
+\[
+	{n\choose k} = \frac{n!}{k!(n-k)!}\text{.}
+\]
+
+A esperança e a variância são dadas, respectivamente, por
+\begin{equation}
+	E(X)=np\text{,}
+\end{equation}
+e
+\begin{equation}
+	Var(X)=np(1-p)\text{.}
+\end{equation}
+
+\begin{proof}
+	Como $X$ é uma variável aleatória binomial, logo ela é a repetição de $n$ ensaios de Bernoulli independentes e com probabilidade de sucesso $p$. Assim podemos escrever $X$ como sendo a soma de $n$ variáveis aleatórias de Bernoulli, isto é,
+	\[
+		X=X_1 + X_2 + \cdots + X_n\text{.}
+	\]
+
+	Portanto, tem-se
+	\begin{align*}
+		E(X) &= E(X_1 + X_2 + \cdots + X_n)\\
+			&= E(X_1) + E(X_2) + \cdots + E(X_n)\\
+			&= p + p + \cdots + p\\
+			&= np\text{.}
+	\end{align*}
+	e
+	\begin{align*}
+		Var(X)&=Var(X_1 + X_2 + \cdots + X_n)\\
+			&= Var(X_1) + Var(X_2) + \cdots + Var(X_n)\\
+			&= p(1-p) + p(1-p) \cdots + p(1-p)\\
+			&= np(1-p)\text{.}
+	\end{align*}
+\end{proof}
+
+\newpage
+
+\begin{pageWidthArea}
+	\begin{example}
+		Quando as placas de circuito integrado usadas na fabricação de CD-players são testadas, a porcentagem de placas com defeitos no longo prazo é igual a 5\%. Seja $X$: "o número de placas com defeitos" em uma amostra de tamanho 25, determine:
+
+		\begin{enumerate}[label=\alph*)]
+			\item $P(X\geqslant 1)$\hfill
+			
+			\begin{align*}
+				P(X\geqslant 1) &= 1 - P(X < 1)\\
+					&= 1 - P(X=0)\\
+					&= 1 - {25\choose 0} 0,05^0 (1-0,05)^{25}\\
+					&=1-0,95^{25}\\
+					&=0,7226\text{.}
+			\end{align*}
+
+			\item $P(X\geqslant 2)$\hfill
+			
+			\begin{align*}
+				P(X\geqslant 2) &= P(X=2)+P(X=1)+P(X=0)\\
+				&= {25\choose 2}0,05^2(0,95)^{23} + {25 \choose 1} 0,05^1(0,95)^{24}+ {25\choose 0}0,05^0(0,95)^25\\
+				&= 300\cdot 0,05^2\cdot 0,95^{23} + 25\cdot 0,05\cdot 0,95^{24} + 0,95^{25}\\
+				&= 0,2305 + 0,365 + 0,2774\\
+				&=0,8729\text{.}
+			\end{align*}
+
+			\item $P(1\leqslant X \leqslant 4)$\hfill
+			
+			\begin{align*}
+				P(1\leqslant X \leqslant 4) &= P(X=1) + P(X=2) + P(X=3) + P(X=4)\\
+					&=0,365 + 0,2305 + {25\choose 3}0,05^3\cdot 0,95^{22} + {25\choose 4}0,05^4\cdot 0,95^{21}\\
+					&=0,365+0,2305+0,0930+0,0269\\
+					&=0,7154\text{.}
+			\end{align*}
+
+			\item O valor esperado e o desvio padrão de $X$.
+			
+			\[
+				E(X)=np=25\cdot 0,05=1,25\text{.}
+			\]
+
+			\[
+				DP(X)=\sqrt{Var(X)}=\sqrt{np(1-p)}=\sqrt{1,1875}=1,0897\text{.}
+			\]
+		\end{enumerate}
+	\end{example}
+\end{pageWidthArea}

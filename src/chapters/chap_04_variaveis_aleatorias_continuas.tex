@@ -1,0 +1,822 @@
+\chapterimage{heading_var_aleatoria} % Chapter heading image
+\opensidepicturearea
+\chapter{Variável Aleatória Contínua}
+
+\nocite{livro_bussab_morettin}
+Considere a distribuição de probabilidade da variável aleatória discreta $X$, conforme a Tabela \ref{testlabel} e a Figura \ref{testlabel2}. As áreas dos retângulos da Figura \ref{testlabel2} são 
+\[
+	A_i = b_i\cdot h_i
+	\text{,}
+\]
+onde $b_i$ indica a base e $h_i$ indica a altura, ou seja,
+\[
+	A_1 = b_1 \cdot h_1 = 1 \cdot 0,1 = 0,1 \Longrightarrow P(X=1)=A_1
+	\text{,}
+\]
+\[
+	A_2 = b_2 \cdot h_2 = 1 \cdot 0,2 = 0,2 \Longrightarrow P(X=2)=A_2
+	\text{,}
+\]
+\[
+	\vdots
+\]
+\[
+	A_5 = b_5 \cdot h_5 = 1 \cdot 0,1 = 0,1 \Longrightarrow P(X=5)=A_5
+	\text{.}
+\]
+
+\begin{sidepicture}{7cm}{table}{Distribuição de probabilidade da variável aleatória discreta $X$}
+	\label{testlabel}
+	\begin{tabular}{ccc}\\\toprule  
+		$x$ & $P(X=x_i)$ \\ \midrule
+		1 & 0,1 \\
+		2 & 0,2 \\ 
+		3 & 0,4 \\
+		4 & 0,2 \\
+		5 & 0,1 \\ \midrule
+		Total & 1,0\\  \bottomrule
+	\end{tabular}
+\end{sidepicture}
+
+\begin{sidepicture}{1cm}{picture}{Gráfico da distribuição de probabilidade da variável aleatória discreta $X$}
+	\label{testlabel2}
+	\resizebox{5.6cm}{!}{
+		\begin{tikzpicture}
+			\begin{axis}[
+				axis x line=left,
+				axis y line=left,
+				ybar,
+				enlargelimits=0.15,
+				title={$P(X=x_i)$},
+				symbolic x coords={1,2,3,4,5},
+	    		xtick=data,
+	    		bar width=20pt
+		    ]
+				\addplot[color=ocre, fill=ocre!30] coordinates {(1,0.1) (2,0.2) (3,0.4) (4,0.2) (5,0.1)};
+			\end{axis}
+		\end{tikzpicture}
+	}
+\end{sidepicture}
+
+Ainda, somando todas as áreas, tem-se
+\[
+	\sum_{i=1}^{5} A_i = 1 = \sum_{i=1}^{5} P(X=x_i)
+\]
+onde é possível concluir que para calcular $P(1\leqslant X \leqslant 3)$ basta fazer $A_1 + A_2 + A_3$.
+\newpage
+
+\begin{sidepicture}{0cm}{picture}{Exemplo de curva que pode ser traçada unindo os pontos médios das bases superiores dos retângulos da Figura \ref{testlabel2}}
+	\label{testlabel3}
+		\begin{tikzpicture}
+			\tkzInit[xmin=-0.5,xmax=3.4,ymin=-0.5,ymax=4]
+			\tkzDrawX[noticks]
+			\tkzDrawY[noticks, label={$P(X=x_i)$}]
+			\tkzFct[domain=0.2:3.8, color=ocre, line width=2pt, samples=2000]{20 * (\gauss{4}{2}{2.2})-0.3}
+			\tkzDrawArea[color=ocre!30, domain = 0.5:1.6]
+			\tkzDefPointByFct(0.5)
+			\tkzGetPoint{A}
+			\tkzDefPointByFct(1.6)
+			\tkzGetPoint{B}
+			\tkzPointShowCoord[xlabel=$a$, xstyle={below=7pt}, noydraw](A)
+			\tkzPointShowCoord[xlabel=$b$, xstyle={below=7pt}, noydraw](B)
+			\tkzText[color=black](2,4.4) {$y=f(x)$}
+		\end{tikzpicture}
+\end{sidepicture}
+
+Agora, tomando os pontos médios das bases superiores dos retângulos e ligando os mesmos por uma curva, tem-se uma função contínua $f(x)$, como a Figura \ref{testlabel3}.
+
+\begin{definition}
+	Uma variável aleatória $X$ é contínua\index{Variável Aleatória Contínua} em $\mathbb{R}$ se existir uma função $f(x)$ tal que:
+	\begin{enumerate}[label={\roman*)}]
+		\item $f(x) \geqslant 0$; e
+		\item $\displaystyle \int_{-\infty}^{+\infty} f(x)dx = 1$.
+	\end{enumerate}
+	
+	A função $f(x)$ é chamada função densidade de probabilidade\index{Função Densidade de Probabilidade}.
+\end{definition}
+
+\begin{remark}
+	Para calcular $P(a\leqslant X \leqslant b)$, basta calcular a área delimitada por $f(x)$, eixo $x$ e pelas retas $x=a$ e $x=b$, isto é
+	\begin{equation}
+		P(a\leqslant x \leqslant b) = \int_{a}^{b} f(x)dx
+		\text{.}
+	\end{equation}
+\end{remark}
+
+\begin{remark}
+	Sobre qualquer ponto individual a área será zero, isto é $P(X=x_i)=0$.
+\end{remark}
+
+\begin{remark}
+	A igualdade nos extremos indifere no resultado, isto é,
+	\begin{align*}
+		P(a\leqslant X \leqslant b) &= P(a < X \leqslant b)\\
+							  		 &=P(a\leqslant X < b)\\
+									 &=P(a<X<b)\text{.}
+	\end{align*}
+\end{remark}
+
+\begin{definition}
+	A esperança\index{Esperança} de uma variável aleatória contínua é dada por
+	\begin{equation}
+		E(X)=\int_{-\infty}^{+\infty} xf(x)dx
+		\text{.}
+	\end{equation}
+\end{definition}
+
+\begin{definition}
+	A mediana\index{Mediana} é o valor $Md$ que satisfaz $P(X\geqslant Md)=0,5$ e $P(X\leqslant Md)=0,5$.
+\end{definition}
+
+\begin{definition}
+	A moda\index{Moda} é o valor $Mo$ tal que
+	\begin{equation}
+		f(Mo)=\max_x f(x)
+		\text{.}
+	\end{equation}
+\end{definition}
+
+\begin{definition}
+	A variância\index{Variância} é dada por
+	\begin{equation}
+		Var(X)=\int_{-\infty}^{+\infty} (x-E(x))^2 f(x) dx
+		\text{,}
+	\end{equation}
+	ou ainda,
+	\begin{equation}
+		Var(X)=E(X^2)-(E(X))^2
+		\text{.}
+	\end{equation}
+\end{definition}
+
+\begin{definition}
+	A função de distribuição\index{Função de Distribuição Acumulada} ou densidade\index{Função de Densidade Acumulada} acumulada é definida por
+	\begin{equation}
+		F(x)=P(X\leqslant x)=\int_{-\infty}^{x} f(t)dt
+		\text{.}
+	\end{equation}
+\end{definition}
+
+\begin{sidepicture}{0cm}{picture}{Exemplo de gráfico de função de densidade acumulada}
+	\label{testlabel4}
+	\begin{tikzpicture}
+		\tkzInit[xmin=-3,xmax=2.3,ymin=-0.5,ymax=3.2]
+		\tkzDrawX[noticks]
+		\tkzDrawY[noticks,label={$F(x)$}]
+		\tkzFct[domain=-3:2.3,line width=2pt, color=ocre, samples=2000]{atan(2*x) + 1.5}
+		\tkzHLine{3}
+		\tkzText[color=black](-0.5,3) {1}
+		\tkzText[color=black](-0.5,0) {0}
+	\end{tikzpicture}
+\end{sidepicture}
+
+Um exemplo de gráfico de uma função de distribuição acumulada pode ser visto na Figura \ref{testlabel4}.
+
+\begin{remark}
+	Podemos obter a função densidade de probabilidade, se existir, a partir de $F(x)$ pois
+	\[
+		\frac{d}{dx}F(x) = f(x)
+	\]
+	nos pontos onde $F(x)$ é derivável.
+\end{remark}
+
+\begin{example}
+	Verificar se
+	\[
+		f(x)= \begin{cases}
+			2x+3, &\text{ se } 0<x\leqslant 2\\
+			0, &\text{ se } x \leqslant 0 \text{ ou } x > 2
+		\end{cases}
+	\]
+	é uma função densidade de probabilidade.
+	
+	Primeiro, precisamos que  $f(x)\geqslant 0$. Assim, $2x+3\geqslant 0$, ou seja $2x\geqslant -3$, onde se conclui que $x \geqslant -\frac{3}{2}$, logo, $f(x)\geqslant 0$, $\forall x\in \mathbb{R}$.
+	
+	Calculando
+	\begin{align*}
+		\int_{-\infty}^{+\infty} f(x) dx &= \int_{0}^{2} (2x + 3)dx = (x^2+3x)\Big|_{0}^{2} = 4 + 6\\
+										  &= 10\text{.}
+	\end{align*}
+	
+	Logo, $\displaystyle \int_{-\infty}^{+\infty} f(x)dx = 10 \neq 1$, logo, $f(x)$ não é função densidade de probabilidade.
+\end{example}
+
+\begin{remark}
+	Perceba que se usarmos a função
+	\[
+		f(x)=\begin{cases}
+			\dfrac{2x+3}{10}\text{,} &\text{ se } 0<x\leqslant 2\\
+			0\text{,} & \text{ se } x\leqslant 0\text{ ou }x>2
+		\end{cases}
+	\]
+	ela se torna uma função densidade de probabilidade pois passamos a ter
+	\[
+		\int_{-\infty}^{+\infty} f(x)dx = 1
+		\text{.}
+	\]
+\end{remark}
+
+\begin{sidepicture}{5cm}{picture}{Descrição 3}
+	\label{testlabel5}
+	\begin{tikzpicture}
+		\tkzInit[xmin=-1.5,xmax=3,ymin=-0.5,ymax=2]
+		\tkzDrawX[noticks]
+		\tkzDrawY[noticks,label={$y=f(x)$}]
+		\tkzDefPoint(-1.5,0){A}
+		\tkzDefPoint(0,0){B}
+		\tkzDefPoint(1,2){C}
+		\tkzDefPoint(1,0){D}
+		\tkzDefPoint(3,0){E}
+		\tkzPointShowCoord[xlabel=$1$, xstyle={below=7pt}, ylabel=$2$, ystyle={left=7pt}](C)
+		\tkzDrawSegment[color=ocre, line width=2pt](A,B)
+		\tkzDrawSegment[color=ocre, line width=2pt](B,C)
+		\tkzDrawSegment[color=ocre, line width=2pt](D,E)
+		\tkzDrawPoint[fill=ocre, size=10](C)
+		\tkzDrawPoint[fill=white, size=10](D)
+		\tkzText(1.3, 1){$y=f(x)$}
+	\end{tikzpicture}
+\end{sidepicture}
+
+\begin{pageWidthArea}
+	\begin{example}
+		\begin{multicols}{2}
+			Considere a função
+			\[
+				f(x)=\begin{cases}
+					kx\text{,}&\text{ se } 0 < x \leqslant 1\\
+					0\text{,}&\text{ se } x\leqslant 0\text{ ou }x>1
+				\end{cases}
+				\text{,}
+			\]
+			onde podemos determinar
+			\begin{enumerate}[label={(\alph*)}]
+				\item o valor de $k$ afim de que $f(x)$ seja função densidade de probabilidade,
+				\[
+					\int_{-\infty}^{+\infty} f(x)dx=1
+					\text{,}
+				\]
+				deste modo,
+				\[
+					\int_{0}^{1} kx dx = \frac{k}{2}x^2\Big|_{0}^{1}
+									    = \frac{k}{2}
+									    = 1\text{,}
+				\]
+				de onde conclui-se que $k=2$.
+				
+				\item o valor de $P(0\leqslant X\leqslant \frac{1}{2})$, dado pela integral
+				\[
+					\int_{0}^{\frac{1}{2}} 2x dx = x^2\Big|_{0}^{\frac{1}{2}}=\frac{1}{4}
+					\text{.}
+				\]
+				\item a esperança $E(X)$, dada por
+				\[
+					E(X)=\int_{-\infty}^{+\infty}xf(x)dx
+						=\int_{0}^{1}2x^2dx
+						=\frac{2}{3}
+					\text{.}
+				\]
+				
+				\item A variância, $Var(X)$, é calculada como
+				\[
+					Var(X)=\int_{-\infty}^{+\infty} (x-E(X))^2 f(x) dx
+					\text{,}
+				\]
+				ou seja,
+				\begin{align*}
+					Var(X) &=\int_{-\infty}^{+\infty} (x - E(X))^2 f(x) dx\\
+						   &=\int_{0}^{1} \left (x-\frac{2}{3} \right )^2 2xdx = \cdots\\
+						   &=\frac{1}{2}-\frac{8}{9}+\frac{4}{9} = \frac{1}{18}
+						   \text{.}
+				\end{align*}
+				
+				\item a função de densidade acumulada pode ser calculada como
+				\[
+					F(x)=\int_{-\infty}^{x} f(t)dt
+					\text{,}
+				\]
+				deste modo, tem-se que dividir em três casos, sendo que quando $x\leqslant 0$, $F(x)=0$, quando $x>1$, $F(x)=1$ e, quando $0<x\leqslant 1$,
+				\[
+					F(x)=\int_{-\infty}^{0} 0dt + \int_{0}^{x}2tdt=x^2\text{.}
+				\]
+				de onde a função $F(x)$ é
+				\[
+					F(x)=\begin{cases}
+						0\text{,}&\text{ se } x \leqslant 0\\
+						x^2\text{,}&\text{ se } 0<x\leqslant 1\\
+						1\text{,}&\text{ se } x > 1
+					\end{cases}
+					\text{.}
+				\]
+				
+				\item o gráfico de $f(x)$ e $F(x)$ estão nas Figuras \ref{testlabel5} e \ref{testlabel6}, respectivamente.
+			\end{enumerate}	
+		\end{multicols}
+	\end{example}
+\end{pageWidthArea}
+
+\begin{example}
+	\label{ex:cap0:temp_eq_eletric}
+	Seja $X:$"tempo durante o qual um equipamento elétrico é usado em carga máxima, num certo período de tempo, em minutos". A função densidade de probabilidade de $X$ é dada por
+	\[
+		f(x)=\begin{cases}
+			\frac{1}{1500^2}x\text{,}&\text{ se } 0 \leqslant x < 1500\\
+			\frac{1}{1500^2}(3000-x)\text{,}&\text{ se } 1500\leqslant x \leqslant 3000
+		\end{cases}
+		\text{.}
+	\]
+	
+	Calcule o tempo médio em que o equipamento será utilizado em carga máxima.
+	
+	Para calcular o tempo médio, devemos calcular a esperança
+	\begin{align*}
+		E(X)&=\int_{0}^{1500} \frac{1}{1500^2}x^2dx
+			 +\int_{1500}^{3000}\frac{1}{1500^2}(3000x-x^2)dx\\
+			&=\frac{1}{1500^2}\cdot \frac{1}{3}x^3\Big|_{0}^{1500}
+			 +\frac{1}{1500^2}\left (\frac{3000x^2}{2} - \frac{x^3}{3} \right ) \Big|_{1500}^{3000}\\
+			&=1500\text{,}
+	\end{align*}
+	ou seja, o tempo médio em que o equipamento será utilizado em carga máxima é de 1500 minutos. O gráfico da função $f(x)$ pode ser visto na Figura \ref{fig:cap0:curva_fdp_ex_eq_eletric}.
+\end{example}
+
+\begin{sidepicture}{10cm}{picture}{Descrição 3}
+	\label{testlabel6}
+	\begin{tikzpicture}
+		\tkzInit[xmin=-1.5,xmax=3,ymin=-0.5,ymax=2]
+		\tkzDrawX[noticks]
+		\tkzDrawY[noticks,label={$y=F(x)$}]
+		\tkzDefPoint(-1.5,0){A}
+		\tkzDefPoint(0,0){B}
+		\tkzDefPoint(1,1){C}
+		\tkzDefPoint(3,1){D}
+		\tkzPointShowCoord[xlabel=$1$, xstyle={below=7pt}, ylabel=$1$, ystyle={left=7pt}](C)
+		\tkzFct[color=ocre, line width=2pt, domain=0:1]{x**2}
+		\tkzDrawSegment[color=ocre, line width=2pt](A,B)
+		\tkzDrawSegment[color=ocre, line width=2pt](C,D)
+		\tkzText[color=black](2, 1.7){$y=F(x)$}
+	\end{tikzpicture}
+\end{sidepicture}
+
+\begin{sidepicture}{5cm}{picture}{Gráfico da função de densidade de probabilidade do Exemplo \ref{ex:cap0:temp_eq_eletric}}
+	\label{fig:cap0:curva_fdp_ex_eq_eletric}
+	\begin{tikzpicture}
+		\tkzInit[xmin=-0.5,xmax=3,ymin=-0.5,ymax=2]
+		\tkzDrawX[noticks]
+		\tkzDrawY[noticks,label={$y=f(x)$}]
+		\tkzDefPoint(0,0){A}
+		\tkzDefPoint(1.5,0.5){B}
+		\tkzDefPoint(3,0){C}
+		\tkzPointShowCoord[xlabel=$1500$, xstyle={below=7pt}, ylabel=$\frac{1}{1500}$, ystyle={left=7pt}](B)
+		\tkzDrawSegment[color=ocre, line width=2pt](A,B)
+		\tkzDrawSegment[color=ocre, line width=2pt](B,C)
+	\end{tikzpicture}
+\end{sidepicture}
+
+\section{Modelo Uniforme Contínuo}\index{Modelo Uniforme Contínuo}
+
+Uma variável aleatória $X$ tem distribuição uniforme\index{Distribuição Uniforme} de probabilidade no intervalo $[a,b]$ se a sua função densidade de probabilidade é dada por
+\[
+	f(x)=\begin{cases}
+		k\text{,}&\text{ se } a\leqslant x \leqslant b\\
+		0\text{,}&\text{ se } x < a\text{ ou }x>b
+	\end{cases}
+	\text{.}
+\]
+
+A notação utilizada aqui será $X \sim U[a,b]$. Uma representação gráfica de $f(x)$ é apresentada na Figura \ref{fig:cap0:modelo_uniforme_continuo}.
+
+O valor de $k$ pode ser facilmente calculado pois $\displaystyle\int_a^b kdx = 1$, ou seja, $kx\Big|_a^b=1$, de onde $k=\dfrac{1}{b-a}$, logo
+\[
+	f(x)=\begin{cases}
+		\dfrac{1}{b-a}\text{,}&\text{ se } a\leqslant x\leqslant b\\
+		0\text{,}&\text{ se }x<a\text{ ou }x>b
+	\end{cases}
+	\text{.}
+\]
+
+\begin{sidepicture}{8cm}{picture}{Gráfico da função $f(x)$ do modelo uniforme contínuo}
+	\label{fig:cap0:modelo_uniforme_continuo}
+	\begin{tikzpicture}
+		\tkzInit[xmin=-1,xmax=4,ymin=-0.5,ymax=2]
+		\tkzDrawX[noticks]
+		\tkzDrawY[noticks,label={$f(x)$}]
+		\tkzDefPoint(-1,0){A}
+		\tkzDefPoint(1,0){B}
+		\tkzDefPoint(1,1){C}
+		\tkzDefPoint(3,1){D}
+		\tkzDefPoint(3,0){E}
+		\tkzDefPoint(4,0){F}
+		\tkzPointShowCoord[xlabel=$a$, xstyle={below=7pt}, ylabel=$k$, ystyle={left=7pt}](C)
+		\tkzPointShowCoord[xlabel=$b$, xstyle={below=7pt}, noydraw](D)
+		\tkzDrawSegment[color=ocre, line width=2pt](A,B)
+		\tkzDrawSegment[color=ocre, line width=2pt](C,D)
+		\tkzDrawSegment[color=ocre, line width=2pt](E,F)
+		\tkzDrawPoint[fill=ocre, size=10](C)
+		\tkzDrawPoint[fill=ocre, size=10](D)
+		\tkzDrawPoint[fill=white, size=10](B)
+		\tkzDrawPoint[fill=white, size=10](E)
+	\end{tikzpicture}
+\end{sidepicture}
+
+\begin{example}
+	\label{ex:ponto_entre_0_2}
+	Um ponto é escolhido ao acaso no intervalo $[0,2]$. Qual a probabilidade de que esteja entre 1 e 1,5?.\\
+	
+	Primeiro, perceba que, como o modelo adotado é o uniforme, a função $f(x)$ será dada por
+	\[
+		f(x)=\begin{cases}
+			\dfrac{1}{2}\text{,}&\text{ se }0\leqslant x\leqslant 2\\
+			0\text{,}&\text{ se } x<0\text{ ou }x>2
+		\end{cases}\text{.}
+	\]
+	
+	Deste modo, calculando a probabilidade de que esteja entre 1 e 1,5, tem-se
+		\begin{align*}
+			P(1<X<1,5)&=\int_{1}^{1,5} \frac{1}{2} dx\\
+					  &=\frac{1}{2}\Big|_{0}^{1,5}\\
+					  &=\frac{1,5}{2}-\frac{1}{2}\\
+					  &=\frac{1}{4}\text{.}
+		\end{align*}
+\end{example}
+
+A função distribuição (acumulada) de $X$, cuja representação gráfica está na Figura \ref{fig:cap0:modelo_uniforme_continuo_acumulada}, é dada por
+\[
+	F(x)=\begin{cases}
+		0\text{,}&\text{ se }x\leqslant a\\
+		\dfrac{x-a}{b-a}\text{,}&\text{ se }a<x<b\\
+		1\text{,}&\text{ se }x\geqslant b
+	\end{cases}
+	\text{.}
+\]
+
+\begin{sidepicture}{2cm}{picture}{Gráfico da função $F(x)$ do modelo uniforme contínuo}
+	\label{fig:cap0:modelo_uniforme_continuo_acumulada}
+	\begin{tikzpicture}
+		\tkzInit[xmin=-1,xmax=4,ymin=-0.5,ymax=2]
+		\tkzDrawX[noticks]
+		\tkzDrawY[noticks,label={$f(x)$}]
+		\tkzDefPoint(-1,0){A}
+		\tkzDefPoint(1,0){B}
+		\tkzDefPoint(3,1){C}
+		\tkzDefPoint(4,1){D}
+		\tkzPointShowCoord[xlabel=$a$, xstyle={below=7pt}, noydraw](B)
+		\tkzPointShowCoord[xlabel=$b$, xstyle={below=7pt}, ylabel=$1$, ystyle={left=7pt}](C)
+		\tkzDrawSegment[color=ocre, line width=2pt](A,B)
+		\tkzDrawSegment[color=ocre, line width=2pt](B,C)
+		\tkzDrawSegment[color=ocre, line width=2pt](C,D)
+	\end{tikzpicture}
+\end{sidepicture}
+
+A esperança $E(X)$ e a variância $Var(X)$ são, respectivamente
+\begin{equation}
+	E(X)=\frac{b+a}{2}
+	\text{.}
+\end{equation}
+\begin{equation}
+	Var(X)=\frac{(b-a)^2}{12}
+	\text{.}
+\end{equation}
+
+\begin{example}
+	Considere o Exemplo \ref{ex:ponto_entre_0_2} e determine os valores de $E(X)$ e $Var(X)$.\\
+			
+	A esperança será
+		\begin{align*}
+			E(X)&=\frac{b+a}{2}\\
+				&=\frac{2+0}{2}\\
+				&=1\text{.}
+		\end{align*}
+		
+	A variância será
+		\begin{align*}
+			Var(X)&=\frac{(b-a)^2}{12}\\
+				  &=\frac{(2-0)^2}{12}\\
+				  &=\frac{4}{12}\\
+				  &=\frac{1}{3}\text{.}
+		\end{align*}
+\end{example}
+
+\begin{example}
+	A dureza $H$ de uma peça de aço pode ser pensada como sendo uma variável aleatória com distribuição uniforme no intervalo $[50, 70]$. \\
+	
+	Perceba que a função de distribuição de probabilidade, para este exemplo, será
+	\[
+		f(x)=\begin{cases}
+			\dfrac{1}{20}\text{,}&\text{ se } 50\leqslant x\leqslant 70\\
+			0\text{,}&\text{ se } x<50\text{ ou }x>70
+		\end{cases}\text{.}
+	\]
+	
+	A probabilidade de que uma peça tenha dureza entre 55 e 60, isto é $P(55<X<60)$, pode ser determinado facilmente por
+	\begin{align*}
+		P(55<X<60)&=\int_{55}^{60} \frac{1}{20}dx\\
+				  &=\frac{1}{20}x\Big|_{55}^{60}\\
+				  &=\frac{60-55}{20}\\
+				  &=\frac{1}{4}\text{.}
+	\end{align*}
+\end{example}
+
+\section{Distribuição Exponencial}\index{Distribuição Exponencial}
+
+Uma variável aleatória $X$ tem distribuição exponencial de probabilidade se a sua função densidade de probabilidade é dada por
+\[
+	f(x)=\begin{cases}
+		\lambda e^{-\lambda x}\text{,}&\text{ se }x\geqslant 0\\
+		0\text{,}&\text{ se }x<0
+	\end{cases}
+	\text{.}
+\]
+
+A notação utilizada aqui será $X\sim Exp(\lambda)$. O gráfico da função densidade de probabilidade é visto na Figura \ref{fig:cap0:modelo_exponencial}.
+
+\begin{sidepicture}{2cm}{picture}{Gráfico da função densidade de probabilidade do modelo exponencial}
+	\label{fig:cap0:modelo_exponencial}
+	\begin{tikzpicture}
+		\tkzInit[xmin=-0.5,xmax=2.5,ymin=-0.5,ymax=2.5]
+		\tkzDrawX[noticks]
+		\tkzDrawY[noticks,label={$f(x)$}]
+		\tkzFct[domain=0:2.5, samples=2000, color=ocre, line width=2pt]{2*exp(-2*x)}
+		\tkzDrawArea[color=ocre!30,domain = 0:2.5]
+		\tkzText[color=black](-0.5,2.2){$\lambda$}
+		\tkzDefPoint(-0.05,2){A}
+		\tkzDrawPoint[fill=ocre, size=2](A)
+	\end{tikzpicture}
+\end{sidepicture}
+
+\begin{remark}
+	Perceba que a área delimitada pela curva $y=f(x)$ da Figura \ref{fig:cap0:modelo_exponencial} é sempre a mesma, independente do valor de $\lambda$, pois sua área é dada pela integral
+	\[
+		\int_{0}^{\infty} \lambda e^{-\lambda x}dx
+		\text{,}
+	\]
+	que pode ser, facilmente, resolvida por substituição simples, resultando em
+	\begin{align*}
+		\int_{0}^{\infty} \lambda e^{-\lambda x}dx &= -e^{-\lambda x}\Big|_{0}^{\infty}\\ 
+													&= \lim_{x\to \infty} (-e^{-\lambda x}) + e^0\\
+													&=1
+		\text{,}
+	\end{align*}
+	portanto a área delimitada pela curva $y=f(x)$ é, independente do valor de $\lambda$, igual a 1.
+\end{remark}
+
+\begin{example}
+	\label{ex:exponencial_determine_k}
+	Uma variável aleatória $X$ tem função densidade de probabilidade dada por
+	\[
+		f(x)=\begin{cases}
+			\frac{k}{2}e^{-x}\text{,}&\text{ se }x\geqslant 0\\
+			0\text{,}&\text{ se }x<0
+		\end{cases}
+		\text{.}
+	\]
+	
+	O valor de $k$ pode ser determinado de duas formas. A primeira delas é, relembrando que para $x\geqslant 0$, $f(x)=\lambda e^{-\lambda x}$. Como, na função do exemplo, $-\lambda x=-x$, $\lambda=1$ e, portanto, $\frac{k}{2}=1$, de onde, naturalmente, $k=2$. Outra forma de se encontrar o valor de $k$ é resolvendo a equação
+	\[
+		\int_{0}^{\infty} \frac{k}{2}e^{-x}dx=1
+		\text{,}
+	\]
+	que resultará, também, em $k=2$. Assim, a função, $f(x)$, cuja representação gráfica está na Figura \ref{fig:cap0:modelo_exponencial_exemplo_k}, passa a ser
+	\[
+		f(x)=\begin{cases}
+			e^{-x}\text{,}&\text{ se }x\geqslant 0\\
+			0\text{,}&\text{ se }x<0
+		\end{cases}
+		\text{.}
+	\]
+\end{example}
+
+\begin{sidepicture}{0cm}{picture}{Gráfico da função densidade de probabilidade do Exemplo \ref{ex:exponencial_determine_k}.}
+	\label{fig:cap0:modelo_exponencial_exemplo_k}
+	\begin{tikzpicture}
+		\tkzInit[xmin=-0.5,xmax=2.5,ymin=-0.5,ymax=2.5]
+		\tkzDrawX[noticks]
+		\tkzDrawY[noticks,label={$f(x)$}]
+		\tkzFct[domain=0:2.5, samples=2000, color=ocre, line width=2pt]{exp(-x)}
+		\tkzDrawArea[color=ocre!30,domain = 0:2.5]
+		\tkzText[color=black](-0.5,1.2){1}
+		\tkzDefPoint(-0.05,1){A}
+		\tkzDrawPoint[fill=ocre, size=2](A)
+	\end{tikzpicture}
+\end{sidepicture}
+
+A função distribuição acumulada, por sua vez, é calculada por
+\begin{align*}
+	F(x)&=\int_{0}^{x} \lambda e^{-\lambda t} dt\\
+		&=-e^{-\lambda t}\Big|_{0}^{x}\\
+		&=1-e^{-\lambda x}\text{,}
+\end{align*}
+ou seja, a função distribuição acumulada, cuja representação gráfica está na Figura \ref{fig:cap0:modelo_exponencial_acumulada}, é
+\[
+	F(x)=\begin{cases}
+		1-e^{-\lambda x}\text{,}&\text{ se }x\geqslant 0\\
+		0\text{,}&\text{ se }x<0
+	\end{cases}
+	\text{.}
+\]
+
+\begin{sidepicture}{0cm}{picture}{Gráfico da função distribuição acumulada do modelo exponencial}
+	\label{fig:cap0:modelo_exponencial_acumulada}
+	\begin{tikzpicture}
+		\tkzInit[xmin=-0.5,xmax=2.5,ymin=-0.5,ymax=2.5]
+		\tkzDrawX[noticks]
+		\tkzDrawY[noticks,label={$F(x)$}]
+		\tkzFct[domain=0:2.5, samples=2000, color=ocre, line width=2pt]{2*(1-exp(-2*x))}
+		\tkzHLine{2}
+		\tkzText[color=black](-0.5,2) {1}
+	\end{tikzpicture}
+\end{sidepicture}
+
+\begin{example}
+	Considere a variável aleatória $X$ e a função densidade de probabilidade $f(x)$ do Exemplo \ref{ex:exponencial_determine_k}. A função distribuição acumulada $F(x)$ para essa variável aleatória pode ser determinada, facilmente, utilizando
+	\begin{align*}
+		F(x)&=P(X\leqslant x)\\
+			&=\int_{0}^{x}e^{-t}dt\\
+			&=1-e^{-x}\text{,}
+	\end{align*}
+	de onde conclui-se que a função $F(x)$ é
+	\[
+		F(x)=\begin{cases}
+			1-e^{-x}\text{,}&\text{ se } x \geqslant 0\\
+			0\text{,}&\text{ se } x < 0
+		\end{cases}
+		\text{.}
+	\]
+	
+	A mediana é um valor $Md$ tal que $P(X\leqslant Md)\geqslant 0,5$ e $P(X\geqslant Md)\geqslant 0,5$. Desse modo, $1-e^{-Md}=\frac{1}{2}$, de onde $e^{-Md}=\frac{1}{2}$ e, consequentemente, $e^{Md}=2$ e, concluindo, $Md=\ln 2$.
+\end{example}
+
+A esperança $E(X)$ e a variância $Var(X)$ são, respectivamente:
+\begin{equation}
+	E(x)=\frac{1}{\lambda}
+\end{equation}
+\begin{equation}
+	Var(X)=\frac{1}{\lambda^2}
+\end{equation}
+
+\begin{example}
+	Diversas experiências com determinado tipo de ventilador, usados em motores a diesel, indicam que a distribuição exponencial sugere um bom modelo para o cálculo do tempo até uma falha. Suponha que o tempo médio seja 25.000 horas. Qual é a probabilidade de um ventilador selecionado aleatoriamente durar pelo menos 20.000 horas? No máximo 30.000 horas? Entre 20.000 e 30.000 horas?
+	
+	Lembrando que $E(X)=\frac{1}{\lambda}=25.000$, de onde obtem-se o valor de $\lambda=\frac{1}{25.000}$. Desta forma, a função densidade de probabilidade é
+	\[
+		f(x)=\begin{cases}
+			\frac{1}{25.000}e^{-\frac{1}{25.000}x}\text{,}&\text{ se }x\geqslant 0\\
+			0\text{,}&\text{ se }x<0
+		\end{cases}
+		\text{.}
+	\]
+	
+	Assim, para o primeiro problema, é preciso calcular
+	\begin{align*}
+		P(X\geqslant 20.000)&=\int_{20.000}^{\infty} f(x) dx\\
+							&=-e^{-\frac{x}{25.000}}\Big|_{20.000}^{\infty} = \frac{1}{e^{\frac{20}{25}}} = \frac{1}{e^{0,8}}\\
+							&\approx 0,449329\text{.}
+	\end{align*}
+	
+	A segunda e terceira pergunta tem resolução parecida e dão resultados de $0,6988058$ e $0,0,148135$, respectivamente.
+\end{example}
+
+\begin{pageWidthArea}
+	\begin{exerciseArea}
+		\item Uma industria fabrica lâmpadas especiais que ficam em operação continuamente. A empresa oferece a seus clientes a garantia de reposição, caso a lâmpada dure menos de 50 horas. A vida útil dessas lâmpadas é modelada através da distribuição exponencial com parâmetro $\dfrac{1}{8.000}$. Determine
+	
+		\begin{enumerate}[label=(\alph*)]
+			\item a porcentagem de trocas por defeito de fabricação;
+			\item a duração média das lâmpadas;
+			\item se a indústria fabrica 1.000 lâmpadas por semana, quantas dessas ela espera repor por semana;
+			\item qual deve ser a garantia para que a indústria reponha no máximo 1\% de sua produção.
+		\end{enumerate}
+	\end{exerciseArea}
+\end{pageWidthArea}
+
+\iffalse
+\begin{exerciseInsideArea}
+	\item Uma industria fabrica lâmpadas especiais que ficam em operação continuamente. A empresa oferece a seus clientes a garantia de reposição, caso a lâmpada dure menos de 50 horas. A vida útil dessas lâmpadas é modelada através da distribuição exponencial com parâmetro $\dfrac{1}{8.000}$. Determine
+	
+		\begin{enumerate}[label=(\alph*)]
+			\item a porcentagem de trocas por defeito de fabricação;
+			\item a duração média das lâmpadas;
+			\item se a indústria fabrica 1.000 lâmpadas por semana, quantas dessas ela espera repor por semana;
+			\item qual deve ser a garantia para que a indústria reponha no máximo 1\% de sua produção.
+		\end{enumerate}
+\end{exerciseInsideArea}
+\fi
+
+\section{Modelo Normal - Gauss}
+
+Uma variável aleatória $X$ tem distribuição normal com parâmetros $\mu$ e $\sigma^2$ se a sua função densidade de probabilidade é dada por
+\[
+	f(x)=\frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{(x-\mu)^2}{2\sigma^2}}
+	\text{,}
+\]
+para $-\infty < x < \infty$. Será utilizada a notação $X\sim N(\mu,\sigma^2)$. Um exemplo de gráfico de $f(x)$ pode ser visto na Figura \ref{fig:cap0:modelo_normal}.
+
+\begin{sidepicture}{2cm}{picture}{AAAA}
+	\label{fig:cap0:modelo_normal}
+	\begin{tikzpicture}
+		\tkzInit[xmin=-0.5,xmax=2.5,ymin=-0.5,ymax=2.5]
+		\tkzDrawX[noticks]
+		\tkzDrawY[noticks,label={$f(x)$}]
+		\tkzFct[domain=-0.5:2.5, samples=2000, color=ocre, line width=2pt]{20*(\gauss{10}{4.5}{10})}
+		\tkzDefPointByFct(1)
+		\tkzGetPoint{A}
+		\tkzPointShowCoord[xlabel=$\mu$, xstyle={below=7pt}, noydraw](A)
+	\end{tikzpicture}
+\end{sidepicture}
+
+\begin{note}{Características}
+	O modelo normal, ou gaussiano, apresenta algumas características que serão enunciadas aqui sem sua demonstração.
+	
+	\begin{enumerate}[label=(\alph*)]
+		\item $f(x)$ é simétrica em relação a $\mu$;
+		\item quando $x\to\pm\infty$, $f(x)\to 0$;
+		\item o ponto de máximo de $f(x)$ é $x=\mu$;
+		\item $E(X)=\mu$;
+		\item $Var(X)=\sigma^2$.
+	\end{enumerate}
+\end{note}
+
+Para calcular $P(a\leqslant X\leqslant b)$, como feito nos modelos apresentados anteriormente, basta calcular a integral
+\[
+	\int_{a}^{b}
+		\dfrac{1}{\sigma\sqrt{2\pi}}
+		e^{
+			-\dfrac{(x-\mu)^2}{2\sigma^2}
+		}
+	dx
+	\text{,}
+\]
+entretanto, essa integral é resolvida por métodos numéricos. Para resolver este problema para qualquer $X\sim N(\mu,\sigma^2)$ faremos uma transformação que sempre conduzirá a uma distribuição $N(0, 1)$, chamada de Normal Padronizada.
+
+{\color{red}Falar sobre a tabelinha e incluir a tabelinha em algum anexo.}
+
+\subsection{Normal Padronizada}\index{Normal Padronizada}
+
+Considere $X\sim N(\mu,\sigma^2)$ e seja $Z=\dfrac{x-\mu}{\sigma}$ uma nova variável, teremos
+\begin{align*}
+	E(Z)&=E\left(\frac{X-\mu}{\sigma} \right )\\
+		&=\frac{1}{\sigma}E(X-\mu)\\
+		&=\frac{1}{\sigma}(E(X)-\mu)\\
+		&=\frac{1}{\sigma}(\mu-\mu)\\
+		&=0\text{,}
+\end{align*}
+ou seja, $E(Z)=0$. Trabalhando com a variância de $Z$, tem-se que
+\begin{align*}
+	Var(Z)&=Var\left( \frac{X-\mu}{\sigma} \right )\\
+		  &=\frac{1}{\sigma^2}Var(X-\mu)\\
+		  &=\frac{1}{\sigma^2}Var(X)\\
+		  &=\frac{1}{\sigma^2}\sigma^2\\
+		  &=1\text{,}
+\end{align*}
+portanto, $Var(Z)=1$. Conclui-se, então que $Z\sim N(0,1)$. A representação gráfica de um modelo normal padronizado está na Figura \ref{fig:cap0:modelo_normal_padronizada}.
+
+\begin{remark}
+	Perceba que
+	\begin{align*}
+		P(a\leqslant X \leqslant b)&=P(a-\mu \leqslant X-\mu \leqslant b-\mu)\\
+									&=P\left(\frac{a-\mu}{\sigma}\leqslant \frac{X-\mu}{\sigma} \leqslant \frac{b-\mu}{\sigma}\right )\\
+									&=P\left(\frac{a-\mu}{\sigma}\leqslant Z \leqslant \frac{b-\mu}{\sigma} \right )\text{.}
+	\end{align*}
+\end{remark}
+
+\begin{sidepicture}{4cm}{picture}{Exemplo de representação gráfica de um modelo normal padronizado.}
+	\label{fig:cap0:modelo_normal_padronizada}
+	\begin{tikzpicture}
+		\tkzInit[xmin=-1.5,xmax=1.5,ymin=-0.5,ymax=2.5]
+		\tkzDrawX[noticks]
+		\tkzDrawY[noticks,label={$f(x)$}]
+		\tkzFct[domain=-1.5:1.5, samples=2000, color=ocre, line width=2pt]{20*(\gauss{0}{4.5}{10})}
+		\tkzText[color=black](-0.5,0){$0$}
+	\end{tikzpicture}
+\end{sidepicture}
+
+{\color{red}Fazer exemplos aqui.}
+
+\newpage\nosidepicturearea
+\begin{exercise}\hfill
+	\begin{multicols}{2}
+	\begin{enumerate}[label=\textbf{\color{ocre}\arabic*.}, itemsep=20pt]
+		\item Uma fábrica de carros sabe que os motores de sua fabricação tem distribuição normal com média 150.000km e desvio padrão de 5.000km. Qual a probabilidade de que um carro, escolhido ao acaso, dos fabricados por essa firma, tenha um motor que dure	
+			\begin{enumerate}[label=\textbf{\color{ocre}(\alph*)}]
+				\item menos de 170.000km;
+				\item entre 140.000km e 165.000km;
+			\end{enumerate}
+			
+		\item Com relação ao item anterior, se a fábrica substitui o motor que apresentar duração inferior à garantia, qual deve ser esta garantia para que a porcentagem de motores substituidos seja inferior a 0,2\%?
+		
+		\item O gerente de pessoal de uma grande companhia exige que os candidatos a emprego façam um certo teste e alcancem um escore (pontuação) de 500. Se os escores dos testes são normalmente distribuídos com média de 485 e um desvio padrão de 30, responda
+			\begin{enumerate}[label=\textbf{\color{ocre}(\alph*)}]
+				\item que porcentagem dos candidatos será aprovada no teste?
+				\item se o agente resolver aprovar apenas 10\% dos candidatos, qual deve ser o escore mínimo necessário?
+			\end{enumerate}
+			
+		\item A resistência à compressão de amostras de cimento pode ser modelada por uma distribuição normal com uma média de 6.000 quilogramas por centimetro quadrado e um desvio padrão de 100 $\text{kg/cm}^2$. Responda
+			\begin{enumerate}[label=\textbf{\color{ocre}(\alph*)}]
+				\item qual é a probabilidade da resistência da amostra ser menor do que 6.250 $\text{kg/cm}^2$?
+				\item qual é a probabilidade da resistência da amostra estar entre 5.800 e 5.900 $\text{kg/cm}^2$?
+				\item que resistência é excedida por 95\% das amostras?
+			\end{enumerate}
+		
+		\item A distribuição da resistência de resistores de um tipo específico é normal. 10\% de todos os equipamentos apresentou resistência maior que 10,256 Ohms e 5\% com resistência menor do que 9,672 Ohms. Quais são os valores da média e do desvio padrão da distribuição de resistências?
+	\end{enumerate}
+	\end{multicols}
+\end{exercise}
+\newpage\opensidepicturearea

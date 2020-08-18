@@ -19,7 +19,7 @@ gulp.task('build', shell.task([
 ], opts));
 
 gulp.task('watch', () => {
-    gulp.watch('src/*.tex', shell.task([
+    gulp.watch('src/**/*.tex', shell.task([
         `cd ${root}\n` +
         pdflatex
     ], opts));

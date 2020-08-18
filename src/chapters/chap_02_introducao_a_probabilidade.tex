@@ -1,0 +1,730 @@
+\chapter{Introdução à Probabilidade}
+
+Em probabilidade, estudam-se os experimentos aleatórios. Assim, primeiro, é necessário definir um experimento aleatório, diferenciando o mesmo de um experimento determinístico.
+
+\begin{definition}
+	Os \emphasis{Experimentos Determinísticos} são experimentos que ao serem repetidos "nas mesmas condições" conduzem ao mesmo resultado.
+\end{definition}
+
+\begin{example}
+	Se aquecermos a água a 100 $^{\text{o}}$C, ela entrará em ebulição.
+\end{example}
+
+\begin{definition}
+	Os \emphasis{Experimentos Aleatórios} são experimentos que ao serem repetidos "nas mesmas condições" em geral, não produzem o mesmo resultado.
+\end{definition}
+
+\begin{example}
+	São exemplos de experimentos aleatórios:
+	\begin{itemize}
+		\item O número de grãos produzidos por hectares;
+		\item Tipos de cultivares de milho;
+		\item Tempo de uma reação química;
+		\item Peso de um animal.
+	\end{itemize}
+\end{example}
+
+\section{Espaço Amostral e Eventos}
+
+\begin{definition}
+	Denominaremos espaço amostral associado a um experimento ($E$) o conjunto de seus possíveis resultados, que representaremos por $S$, cujos elementos serão denominados eventos simples ou pontos amostrais.
+\end{definition}
+
+\begin{pageWidthArea}
+	\begin{example}
+		\label{example:pecas_boas_defeituosas}
+		\begin{multicols}{2}
+			\begin{enumerate}\hfill
+				\item Seja o experimento $E$: Lançamento de uma moeda. Então, $S=\{C,\text{ }K\}$, onde $C$ representa cara e $K$ coroa.
+			
+				\item Seja o experimento $E$: três peças são retiradas de uma linha de produção e classificadas em Boa ($B$) ou Defeituosas ($D$). Assim,
+					\label{example:item:pecas_boas_defeituosas}
+					\begin{center}
+						\(S=\{BBB\), \(BBD\), \(BDB\), \(DBB\), \(BDD\), \(DBD\), \(DBD\), \(DDB\), \(DDD\}\).
+					\end{center}
+		
+				\item Seja o experimento $E$: número de plantas doentes em um tomateiro. Então,
+					\[
+						S=\{0, 1, 2, \dots, n\}\text{,}
+					\]
+					onde $n$ é o número máximo de plantas neste tomateiro.
+					
+				\columnbreak
+			
+				\item Seja $E$: uma moeda é lançada sucessivamente até que ocorra cara pela primeira vez. Assim,
+					\[
+						S=\{C, KC, KKC, KKKC, KKKKC, \dots \}\text{.}
+					\]
+			
+				\item Seja $E$: tempo de vida de um animal. Então,
+					\[
+						S=\{t\in\mathbb{R}/ t\geqslant 0\}\text{,}
+					\]
+					ou
+					\[
+						S=\mathbb{R}_{+}\text{.}
+					\]
+			\end{enumerate}
+		\end{multicols}
+	\end{example}
+\end{pageWidthArea}
+
+\begin{definition}
+	Denominaremos de evento a todo resultado ou subconjunto de resultados de um experimento.
+\end{definition}
+
+\begin{remark}
+	Eventos simples são representados por um conjunto unitário.
+\end{remark}
+
+\begin{remark}
+	Diremos que um evento $A$ ocorre quando o resultado do experimento é um evento simples pertencente ao evento $A$.
+\end{remark}
+
+\begin{example}
+	Consideremos o Item \ref{example:item:pecas_boas_defeituosas} do Exemplo \ref{example:pecas_boas_defeituosas} e, seja um evento $A$: "Duas peças são boas". Tem-se
+	\[
+		A=\{BBD, BDB, DBB\}\text{,}
+	\]
+	onde $B$: Boa e $D$: Defeituosa. Então, $A$ ocorre se um dos três eventos simples:
+	\begin{center}
+		$BBD$, $BDB$, $DBB$,
+	\end{center}
+	ocorrer.
+\end{example}
+
+\begin{example}
+	Considere o lançamento de duas moedas e, seja o evento B: "o número de caras é igual ao número de coroas". Assim,
+	\[
+		B=\{CK, KC\}\text{,}
+	\]
+	onde $C$: cara e $K$: coroa.
+\end{example}
+
+\section{Operação entre Eventos}
+
+\begin{definition}
+	\label{def:reuniao_dois_eventos}
+	A reunião de dois eventos $A$ e $B$, denotada por $A\cup B$, é o evento que ocorre se pelo menos um deles ocorre;
+\end{definition}
+
+\begin{definition}
+	\label{def:intercecao_dois_eventos}
+	A intersecção de dois eventos $A$ e $B$, denotada por $A\cap B$, é o evento que ocorre quando $A$ não ocorre.
+\end{definition}
+
+\begin{definition}
+	\label{def:complementar_evento}
+	O complementar do evento $A$, denotado por $A^{c}$, é o evento que ocorre quando $A$ não ocorre.
+\end{definition}
+
+\begin{example}
+	Um fazendeiro com o intuito de fazer uma amostragem simples, enumerou de um a quinze, quinze gado Nelore. Sejam $A$ e $B$ os seguintes eventos:
+	\begin{itemize}
+		\item $A$: "o número do gado sorteado é par" e
+		\item $B$: "o número do gado sorteado é múltiplo de 3".
+	\end{itemize}
+	
+	Determine os eventos $A\cup B$, $A\cap B$ e $A^{c}$.\\
+	
+	Escrevendo o espaço amostral $S=\{1$, $2$, $3$, $4$, $5$, $6$, $7$, $8$, $9$, $10$, $11$, $12$, $13$, $14$, $15\}$ e os eventos $A=\{2$, $4$, $6$, $8$, $10$, $12$, $14\}$ e $B=\{3$, $6$, $9$, $12$, $15\}$, pode-se determinar os conjuntos
+	\begin{itemize}
+		\item $A\cup B=\{2$, $3$, $4$, $6$, $8$, $9$, $10$, $12$, $14$, $15\}$,
+		\item $A\cap B=\{6$, $12\}$ e
+		\item $A^{c}=\{1$, $3$, $5$, $7$, $9$, $11$, $13$, $15\}$.
+	\end{itemize}
+\end{example}
+
+\begin{remark}
+	Os eventos $A$ e $B$ são ditos mutuamente exclusivos, se eles não podem ocorrer simultaneamente. Isto é $A\cap B=\emptyset$.
+\end{remark}
+
+\begin{theorem}
+	A partir das Definições \ref{def:reuniao_dois_eventos}, \ref{def:intercecao_dois_eventos} e \ref{def:complementar_evento}, tem-se as seguintes propriedades:
+	\begin{enumerate}
+		\item $(A\cup B)\cap C = (A\cap C)\cup (B\cap C)$;
+		\item $(A\cap B)\cup C = (A\cup C)\cap (B\cup C)$;
+		\item $(A\cup B)^c = A^c \cap B^c$;
+		\item $(A\cap B)^c= A^c\cup B^c$.
+	\end{enumerate}
+	
+	\begin{proof}
+		Essas propriedades são propriedades de conjuntos e, portanto, não serão demonstradas aqui. \todo{Adicionar alguma referência aqui}.
+	\end{proof}
+\end{theorem}
+
+\begin{definition}
+	O evento $\displaystyle\bigcup_{i=1}^{n} A_i$ é o evento que ocorre quando pelo menos um dos eventos $A_i$ ocorre, $i=1,2,\dots, n$.
+\end{definition}
+
+\begin{definition}
+	O evento $\displaystyle\bigcap_{i=1}^{n} A_i$ é o evento que ocorre quando todos os eventos $A_i$ ocorrem simultaneamente, $i=1,2,\dots, n$.
+\end{definition}
+
+\section{Definição Clássica de Probabilidade}
+
+Seja $S$ com $n$ eventos simples igualmente possíveis e seja $A$ um evento de $S$ formado de $m$ eventos simples. A probabilidade de ocorrer $A$, é definida por
+\begin{equation}
+	P(A)=\frac{m}{n}\text{.}
+\end{equation}
+
+\begin{example}
+	Joga-se um dado, qual a probabilidade de ocorrer:
+	\begin{enumerate}[label=\alph*)]
+		\item Evento A: "Face 4"\\
+		
+		tem-se $A=\{4\}$, logo $m=1$ e $n=6$, pois $S=\{1$, $2$, $3$, $4$, $5$, $6\}$, então
+		\[
+			P(A)=\frac{1}{6}\text{.}
+		\]
+		
+		\item Evento B: "Face Ímpar"\\
+		
+		tem-se $B=\{1$, $3$, $5\}$, logo $m=3$, então
+		\[
+			P(B)=\frac{3}{6}=\frac{1}{2}\text{.}
+		\]
+	\end{enumerate}
+\end{example}
+
+\section{Definição Frequentista de Probabilidade}
+
+Repete-se o experimento $n$ vezes e anota quantas vezes o evento $A$ associado a esse experimento ocorre. Assim a probabilidade de ocorrer o evento $A$ é dado por:
+\begin{equation}
+	P(A)=\frac{n(A)}{n}\text{,}
+\end{equation}
+onde $n(A)$ é o número de vezes que o evento $A$ ocorre.
+
+\begin{sidepicture}{0cm}{table}{AAAA}
+	\label{table:resistencia_choque_arranhao}
+	\begin{tabular}{ccc}\\\toprule
+		\multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Resistência\\ a arranhão\end{tabular}} & \multicolumn{2}{c}{Resistência a choque} \\ \cline{2-3} 
+			  & alta & baixa\\ \midrule
+		alta  & 80   & 9 \\
+		baixa & 6    & 5 \\ \bottomrule
+	\end{tabular}
+\end{sidepicture}
+
+\begin{example}
+	Amostras de plástico policarbonato são analisadas com relação à resistência a arranhões e a choque. Considerando os dados da Tabela \ref{table:resistencia_choque_arranhao}, calcule a probabilidade de uma unidade ter:
+	
+	\begin{enumerate}[label=\alph*)]
+		\item baixa resistência a arranhão (bra):
+		\[
+			P(bra)=\frac{n(bra)}{n}=\frac{11}{100}=0,11\text{.}
+		\]
+		
+		\item alta resistência a choque (arc):
+		\[
+			P(arc)=\frac{n(arc)}{n}=\frac{86}{100}=0,86\text{.}
+		\]
+		
+		\item baixa resistência em ambos:
+		\[
+			P(bra\cap brc)=\frac{n(bra\cap brc)}{n}=\frac{5}{100}=0,05\text{.}
+		\]
+	\end{enumerate}
+\end{example}
+
+\section{Definição Axiomática de Probabilidade}
+
+A probabilidade será definida numa classe de eventos ($A$) do espaço amostral ($S$) que satisfaz certas propriedades:
+\begin{enumerate}
+	\item $0\leqslant P(A)\leqslant 1$;
+	\item $P(S)=1$;
+	\item $P(\emptyset)=0$;
+	\item $P(A^c)=1-P(A)$;
+	\item $P(A\cup A^c)=P(S)$;
+	\item $P\left ( \displaystyle \bigcup_{i=1}^{n} A_i \right ) = \displaystyle\sum_{i=1}^{n}P(A_i)$, com os $A_i$ mutuamente exclusivos.
+\end{enumerate}
+
+\section{Regra de adição de probabilidade}
+
+Sejam $A$ e $B$ eventos de $S$, então a probabilidade de que ocorra um destes dois eventos, $A$ ou $B$ (Figura \ref{picture:eventos_intersessao}), é dada por
+\begin{equation}
+	P(A\cup B)=P(A)+P(B)-P(A\cap B)\text{.}
+\end{equation}
+
+\begin{remark}
+	Se os dois eventos, $A$ e $B$, forem mutuamente exclusivos (Figura \ref{picture:eventos_mutuamente_exclusivos}), então
+	\begin{equation}
+		P(A\cup B)=P(A)+P(B)\text{,}
+	\end{equation}
+	pois $A\cap B=\emptyset$, então, $P(A\cap B)=0$.
+\end{remark}
+
+\begin{sidepicture}{5cm}{picture}{QQQQQ.}
+	\label{picture:eventos_intersessao}
+	\begin{tikzpicture}
+		\scope
+			\draw[pattern=horizontal lines, distance=25pt, pattern color=ocre!50] (-0.3,0) circle (1);
+		\endscope
+		% right hand
+		\scope
+			\draw[pattern=vertical lines, distance=25pt, pattern color=ocre!50] (1.3,0) circle (1);
+		\endscope
+		% outline
+		\draw[color=ocre] (-0.3,0) circle (1) (-0.3,1)  node [text=ocre,above] {$A$}
+		      (1.3,0) circle (1) (1.3,1)  node [text=ocre,above] {$B$}
+		      (-2,-2) rectangle (3,2) node [text=black,above] { };
+	\end{tikzpicture}
+\end{sidepicture}
+
+\begin{sidepicture}{0cm}{picture}{QQQQQ.}
+	\label{picture:eventos_mutuamente_exclusivos}
+	\begin{tikzpicture}
+		\scope
+			\draw[pattern=horizontal lines, distance=25pt, pattern color=ocre!50] (-0.7,0) circle (1);
+		\endscope
+		% right hand
+		\scope
+			\draw[pattern=vertical lines, distance=25pt, pattern color=ocre!50] (1.7,0) circle (1);
+		\endscope
+		% outline
+		\draw[color=ocre] (-0.7,0) circle (1) (-0.7,1)  node [text=ocre,above] {$A$}
+		      (1.7,0) circle (1) (1.7,1)  node [text=ocre,above] {$B$}
+		      (-2,-2) rectangle (3,2) node [text=black,above] { };
+	\end{tikzpicture}
+\end{sidepicture}
+
+\begin{example}
+	A probabilidade de um indivíduo ser obeso num grupo de pacientes é de 30\% e de ser sedentário é de 60\%. Sabe-se, ainda, que a probabilidade de um individuo ser obeso e sedentário é de 28\%. Determine a probabilidade de selecionar um individuo desse grupo e ele:
+	
+	\begin{enumerate}[label=\alph*)]
+		\item ser obeso ou sedentário.
+		
+			\begin{align*}
+				P(A\cup B)&=P(A)+P(B)-P(A\cap B)\\
+						  &=0,3+0,6-0,28\\
+						  &=0,9-0,28\\
+						  &=0,62\text{.}
+			\end{align*}
+			
+		\item Não ser obeso e nem sedentário.
+		
+			\begin{align*}
+				P(A^c\cap B^c)&=P((A\cup B)^c)\\
+							  &=1-P(A\cup B)\\
+							  &=1-0,62\\
+							  &=0,28\text{.}
+			\end{align*}
+	\end{enumerate}
+\end{example}
+
+\begin{example}
+	No atendimento de uma fila são considerados dois casos: $A$: "grávidas" e $B$: "pessoas com mais de 60 anos". Seja $P(A)=0,06$ e $P(B)=0,12$. Qual é a probabilidade de que seja necessário dar prioridade no atendimento?
+	
+	Considerando $A\cap B=\emptyset$, tem-se $P(A\cap B)=0$, e, então
+	\begin{align*}
+		P(A\cup B)&=P(A)+P(B)\\
+				  &=0,06+0,12\\
+				  &=0,18\text{.}
+	\end{align*}
+\end{example}
+
+\section{Probabilidade Condicional}
+
+Dados dois eventos $A$ e $B$, a probabilidade condicional de $A$ dado que ocorreu $B$ é representada por $P(A\setminus B)$ e é dada por
+\begin{equation}
+	P(A\setminus B)=\frac{P(A\cap B)}{P(B)}\text{,}
+\end{equation}
+com $P(B)>0$.
+
+\begin{example}
+	Em um lançamento de um dado, de 6 faces, $F_1$, $F_2$, $F_3$, $F_4$, $F_5$ e $F_6$, tem-se a probabilidade de se obter a face 2:
+	\[
+		P(F_2)=\frac{1}{6}\text{.}
+	\]
+	
+	A probabilidade, entretanto, de se ter a face 2, visto que o lançamento terminou com face par, é dado por
+	\begin{align*}
+		P(F_2\setminus F_{\text{par}})&=\frac{P(F_2 \cap F_{\text{par}})}{P(F_{\text{par}})}\\
+									   &=\frac{P(F_2)}{P(F_{\text{par}})}\\
+									   &=\frac{1/6}{1/2}\\
+									   &=\frac{1}{6}\cdot \frac{2}{1}\\
+									   &=\frac{1}{3}\text{.}
+	\end{align*}
+\end{example}
+
+\newpage
+
+\begin{pageWidthArea}
+	\begin{pageWidthAreaPicture}{frame}{Quadro contendo dados de filmes para o Exemplo.}
+		\label{quadro:dados_filmes_exemplo_pc}
+		\hspace{-15pt}
+		\resizebox{\textwidth}{!}{%
+		\begin{tabular}{|c|c|c|c|c|}
+			\hline
+			Filme     & \multirow{2}{*}{\emphasis{A}ventura} & \multirow{2}{*}{\emphasis{C}omédia} & \multirow{2}{*}{\emphasis{R}omance} & \multirow{2}{*}{Total} \\ \cline{1-1}
+			Sexo      &                           &                          &                          &                        \\ \hline
+			\emphasis{M}asculino & 50                        & 30                       & 10                       & 90                     \\ \hline
+			\emphasis{F}eminino  & 20                        & 30                       & 60                       & 110                    \\ \hline
+			Total     & 70                        & 60                       & 70                       & 200                    \\ \hline
+		\end{tabular}%
+		}
+	\end{pageWidthAreaPicture}
+	
+	\vspace{20pt}
+
+	\begin{example}
+		\begin{multicols}{2}
+			Analisando os dados do Quadro \ref{quadro:dados_filmes_exemplo_pc}, é possível determinar\\
+	
+			\begin{enumerate}[label=\alph*), itemsep=10pt]
+				\item $P(A)=\dfrac{70}{200}=0,35$.
+		
+				\item $P(A\setminus M)=\dfrac{50}{90}=0,5556$, ou, ainda,
+				\begin{align*}
+					P(A\setminus M)&=\frac{P(A\cup M)}{P(M)}\\
+							&=\frac{50}{200}\cdot \frac{200}{90}\\
+							&=\frac{50}{90}\\
+							&=0,5556\text{.}
+				\end{align*}
+		
+				\item $P(M\setminus A)=\dfrac{50}{70}=0,7143$.
+		
+				\item $P(R^c)=1-P(R)=1-\dfrac{70}{200}=0,65$.
+		
+				\item $P(F\cap C)=\dfrac{30}{200}=0,15$.
+				
+				\item $P(F\cup A) = P(F) + P(A) - P(F\cap A)$, assim,
+				\begin{align*}
+					P(F\cup A) &= \frac{110}{200}+\frac{70}{200}-\frac{20}{200}\\
+							   &= \frac{110+70-20}{200}\\
+							   &= \frac{160}{200}\\
+							   &=0,80\text{.}
+				\end{align*}
+				
+				\item $P(M\setminus R^c)$, que é dado por
+				\begin{align*}
+					P(M\setminus R^c) &= \frac{P(M\cap R^c)}{P(R^c)}\\
+									  &= \frac{80}{200}\cdot \frac{200}{130}\\
+									  &= \frac{80}{130}\\
+									  &= 0,6154\text{.}
+				\end{align*}
+			\end{enumerate}
+		\end{multicols}
+	\end{example}
+\end{pageWidthArea}
+
+\section{Regra do Produto}
+
+Sabendo que
+\[
+	P(A\setminus B)=\frac{P(A \cap B)}{P(B)}\text{,}
+\]
+tem-se
+\begin{equation}
+	P(A\cap B)=P(A\setminus B)\cdot P(B)\text{.}
+\end{equation}
+
+\begin{example}
+	A probabilidade de que uma bateria de automóvel, sujeita a alta temperatura no compartimento do motor, sofra baixa corrente de carga é de 0,7. A probabilidade da bateria estar sujeita a alta temperatura no comportamento do motor é de 0,05. Determine a probabilidade da bateria estar sujeita a baixa corrente de carga e a alta temperatura do motor.
+	
+	Sejam os eventos BC: "baixa corrente"; AT: "Alta temperatura", então $P(BC\cap AT)=P(BC\setminus AT)\cdot P(AT)$, ou seja,
+	\begin{align*}
+		P(BC\cap AT)&=0,7\cdot 0,05\\
+					&=0,035\text{.}
+	\end{align*}
+\end{example}
+
+\section{Independência de Eventos}
+
+Dois eventos $A$ e $B$ são independentes se a informação da ocorrência ou não de $B$ não altera a probabilidade da ocorrência de $A$, isto é:
+\[
+	P(A\setminus B)=P(A)\text{,}
+\]
+ou, ainda,
+\[
+	P(A\cap B)=P(A)\cdot P(B)\text{.}
+\]
+
+\begin{sidepicture}{6cm}{picture}{AAAA}
+	\label{picture:prob_independ_ex1}
+	\begin{tikzpicture}[
+		grow=right,
+		level 1/.style ={level distance=2cm, sibling distance=2.6cm},
+		level 2/.style ={level distance=2cm, sibling distance=1.2cm},
+	]
+		\node [prob_tree_origin] {}
+		child {
+			node [prob_tree_node] {$V_1$}
+			child {
+				node [prob_tree_node] {$V_2$}
+				edge from parent
+				node[below, prob_tree_text]  {$\frac{2}{4}$}
+			} child {
+				node [prob_tree_node] {$B_2$}
+				edge from parent
+				node[above, prob_tree_text]  {$\frac{2}{4}$}
+			}
+			edge from parent
+			node[below, prob_tree_text]  {$\frac{3}{5}$}
+		} child {
+			node [prob_tree_node] {$B_1$}
+			child {
+				node [prob_tree_node]{$V_2$}
+				edge from parent
+				node[below, prob_tree_text]  {$\frac{3}{4}$}
+			} child {
+				node [prob_tree_node]{$B_2$}
+				edge from parent
+				node[above, prob_tree_text]  {$\frac{1}{4}$}
+			}
+			edge from parent
+			node[above, prob_tree_text]  {$\frac{2}{5}$}
+		};
+	\end{tikzpicture}
+\end{sidepicture}
+
+\begin{sidepicture}{0cm}{table}{AAAA}
+	\label{table:prob_independ_ex1}
+	\begin{tabular}{cc}\\\toprule
+		Resultados & Probabilidades\\  \midrule
+		$B_1 B_2$ & \vspace{5pt}$\dfrac{2}{5}\cdot\dfrac{1}{4}=\dfrac{2}{20}$ \\ 
+		$B_1 V_2$ & \vspace{5pt}$\dfrac{2}{5}\cdot\dfrac{3}{4}=\dfrac{6}{20}$\\
+		$V_1 B_2$ & \vspace{5pt}$\dfrac{3}{5}\cdot\dfrac{2}{4}=\dfrac{6}{20}$\\
+		$V_1 V_2$ & \vspace{5pt}$\dfrac{3}{5}\cdot\dfrac{2}{4}=\dfrac{6}{20}$\\ \midrule
+		Total & 1 \\ \bottomrule
+	\end{tabular}
+\end{sidepicture}
+
+
+\begin{example}
+	Uma urna contém duas bolas brancas e três vermelhas. Sorteamos ao acaso duas delas, sem reposição. Assim, tem-se os possíveis resultados na Figura \ref{picture:prob_independ_ex1} e na Tabela \ref{table:prob_independ_ex1}. Deste modo,
+	\[
+		P(B_2\setminus V_1)=\frac{2}{4}\text{,}
+	\]
+	e
+	\[
+		P(B_2\cap V_1)=P(B_2\setminus V_1)P(V_1)=\frac{2}{4}\cdot \frac{3}{5}=\frac{6}{20}\text{,}
+	\]
+	onde, nesse caso, os eventos são dependentes.
+\end{example}
+
+\newpage
+
+\begin{sidepicture}{0cm}{picture}{AAAA}
+	\label{picture:prob_independ_ex2}
+	\begin{tikzpicture}[
+		grow=right,
+		level 1/.style ={level distance=2cm, sibling distance=2.6cm},
+		level 2/.style ={level distance=2cm, sibling distance=1.2cm},
+	]
+		\node [prob_tree_origin] {}
+		child {
+			node [prob_tree_node] {$V_1$}
+			child {
+				node [prob_tree_node] {$V_2$}
+				edge from parent
+				node[below, prob_tree_text]  {$\frac{3}{5}$}
+			} child {
+				node [prob_tree_node] {$B_2$}
+				edge from parent
+				node[above, prob_tree_text]  {$\frac{2}{5}$}
+			}
+			edge from parent
+			node[below, prob_tree_text]  {$\frac{3}{5}$}
+		} child {
+			node [prob_tree_node] {$B_1$}
+			child {
+				node [prob_tree_node]{$V_2$}
+				edge from parent
+				node[below, prob_tree_text]  {$\frac{3}{5}$}
+			} child {
+				node [prob_tree_node]{$B_2$}
+				edge from parent
+				node[above, prob_tree_text]  {$\frac{2}{5}$}
+			}
+			edge from parent
+			node[above, prob_tree_text]  {$\frac{2}{5}$}
+		};
+	\end{tikzpicture}
+\end{sidepicture}
+
+\begin{sidepicture}{-6cm}{table}{AAAA}
+	\label{table:prob_independ_ex2}
+	\begin{tabular}{cc}\\\toprule
+		Resultados & Probabilidades\\  \midrule
+		$B_1 B_2$ & \vspace{5pt}$\dfrac{2}{5}\cdot\dfrac{2}{5}=\dfrac{4}{25}$ \\ 
+		$B_1 V_2$ & \vspace{5pt}$\dfrac{2}{5}\cdot\dfrac{3}{5}=\dfrac{6}{25}$\\
+		$V_1 B_2$ & \vspace{5pt}$\dfrac{3}{5}\cdot\dfrac{2}{5}=\dfrac{6}{25}$\\
+		$V_1 V_2$ & \vspace{5pt}$\dfrac{3}{5}\cdot\dfrac{3}{5}=\dfrac{9}{25}$\\ \midrule
+		Total & 1 \\ \bottomrule
+	\end{tabular}
+\end{sidepicture}
+
+\begin{example}
+	Uma urna contém duas bolas brancas e três vermelhas. Sorteamos ao acaso duas delas, com reposição. Assim, tem-se os possíveis resultados na Figura \ref{picture:prob_independ_ex2} e na Tabela \ref{table:prob_independ_ex2}. Deste modo,
+	\[
+		P(B_2\setminus V_1)=\frac{2}{5}\text{,}
+	\]
+	e
+	\[
+		P(B_2\cap V_1)=P(B_2)P(V_1)=\frac{2}{5}\cdot \frac{3}{5}=\frac{6}{25}\text{,}
+	\]
+	onde, nesse caso, os eventos são independentes.
+\end{example}
+
+\section{Partição do Espaço Amostral}
+
+Os eventos $E_1$, $E_2$, $\dots$, $E_k$ formam uma partição do espaço amostral, $S$, quando eles são mutuamente exclusivos e sua reunião é igual ao espaço amostral, isto é
+\[
+	E_1\cap E_2\cap \dots \cap E_k=\emptyset
+\]
+e
+\[
+	E_1\cup E_2\cup \dots \cup E_k=S\text{.}
+\]
+
+Um exemplo gráfico, com $k=4$, pode ser visto na Figura \ref{picture:prob_part_espaco_amostral}, onde $E_1\cap E_2 \cap E_3 \cap E_4=\emptyset$ e $E_1\cup E_2\cup E_3 \cup E_4=S$.
+
+\begin{sidepicture}{0}{picture}{AAAA}
+	\label{picture:prob_part_espaco_amostral}
+	\begin{tikzpicture}
+		\begin{scope}[local bounding box=graph1]
+			\node[inner sep=0pt](large) at (0,0){
+				\includegraphics[scale=0.35]{probabilidade/particao4.png}
+			};
+		\end{scope}
+		\node[align=left, color=ocre] at ($(graph1.west)+(0.6cm, 1.7cm)$) {$E_1$};
+		\node[align=left, color=ocre] at ($(graph1.west)+(0.8cm, -0.7cm)$) {$E_2$};
+		\node[align=left, color=ocre] at ($(graph1.west)+(3.2cm, 1cm)$) {$E_3$};
+		\node[align=left, color=ocre] at ($(graph1.west)+(3.2cm, -1.1cm)$) {$E_4$};
+	\end{tikzpicture}
+\end{sidepicture}
+
+\section{Regra da Probabilidade Total}
+
+A regra da probabilidade total é enunciado no Teorema \ref{theorem:prob_total}.
+
+\begin{theorem}
+\label{theorem:prob_total}
+	Sejam $E_1$, $E_2$, $\dots$, $E_k$ uma partição de $S$ e $B$ um evento qualquer, então tem-se
+	\[
+		P(B) = P(B\setminus E_1)P(E_1)
+		+ \cdots
+		+ P(B\setminus E_k)P(E_k)
+		\text{.}
+	\]
+
+	\begin{proof}
+	O evento $B$ pode ser escrito como
+	\[
+		B = (B\cap E_1)\cup \dots \cup (B\cap E_k)\text{,}
+	\]
+	logo,
+	\[
+		P(B)=P(B\cap E_1)+\cdots+P(B\cap E_k)\text{,}
+	\]
+	onde, utilizando a regra do produto, tem-se
+	\[
+		P(B)=P(B\setminus E_1)P(E_1)+\cdots+P(B\setminus E_k)P(E_k)\text{.}
+	\]
+	\end{proof}
+\end{theorem}
+
+\section{Teorema de Bayes}
+
+O Teorema de Bayes é enunciado no Teorema \ref{theorem:bayes}.
+
+\begin{theorem}
+	\label{theorem:bayes}
+	Sejam $E_1$, $E_2$, $\dots$, $E_k$ uma partição do espaço amostral $S$ e, seja $B$ um evento qualquer de $S$ e, ainda, considere conhecidas $P(E_i)$ e $P(B\setminus E_i)$, para $i=1$, $2$, $\dots$, $k$, então a probabilidade de ocorrência de um dos eventos $E_i$, dado que ocorreu o evento $B$ é dada por
+	\[
+		P(E_i\setminus B)=\frac{
+			P(B\setminus E_i)P(E_i)
+		} {
+			\displaystyle \sum_{j=1}^{k} P(B\setminus E_j)P(E_j)
+		}
+		\text{,}
+	\]
+	ou, ainda,
+	\[
+		P(E_i\setminus B)=\frac{
+			P(B\setminus E_i)P(E_i)
+		}{
+			P(B\setminus E_1)P(E_1)
+			+
+			\cdots
+			+
+			P(B\setminus E_k)P(E_k)
+		}
+		\text{.}
+	\]
+	
+	\begin{proof}
+		Pela probabilidade condicional, tem-se que
+		\[
+			P(E_i\setminus B)=\frac{P(E_1\cap B)}{P(B)}\text{,}
+		\]
+		e, pela regra do produto, tem-se
+		\[
+			P(E_i\cap B) = P(B\cap E_i)=P(B\setminus E_i)P(E_i)\text{.}
+		\]
+		
+		Pela regra da probabilidade total (Teorema \ref{theorem:prob_total}), tem-se
+		\[
+			P(B) = P(B\setminus E_1)P(E_1)+\cdots + P(B\setminus E_k)P(E_k)\text{,}
+		\]
+		portanto, tem-se
+		\[
+			P(E_i\setminus B)=\frac{
+				P(B\setminus E_i)P(E_i)
+			}{
+				P(B\setminus E_1)P(E_1)
+				+
+				\cdots
+				+
+				P(B\setminus E_k)P(E_k)
+			}
+			\text{.}
+		\]
+	\end{proof}
+\end{theorem}
+
+\begin{pageWidthArea}
+	\begin{example}
+			Em uma fábrica de parafusos, as máquinas A, B e C produzem 25\%, 35\% e 40\% do total produzido, respectivamente. Da produção de cada máquina, 5\%, 4\% e 2\%, respectivamente, são parafusos defeituosos. Determine:\\
+	
+			\begin{enumerate}[label=\alph*), itemsep=10pt]
+				\item A probabilidade de que o parafuso seja fabricado na máquina A, sabendo que ele é defeituoso.\\
+				
+				Representando por A, B e C as três máquinas e, ainda, por D os parafusos defeituosos. As probabilidades são $P(A)=0,25$, $P(B)=0,35$ e $P(C)=0,4$, $P(D\setminus A)=0,05$, $P(D\setminus B)=0,04$, $P(D\setminus C)=0,02$. Assim, pelo teorema de Bayes (Teorema \ref{theorem:bayes}), tem-se
+				\begin{align*}
+					P(A\setminus D) &=
+					\frac{
+						P(D\setminus A)P(A)
+					}{
+						P(D\setminus A)P(A)+P(D\setminus B)P(B)+P(D\setminus C)P(C)
+					}\\
+					&=\frac{0,05\cdot 0,25}{
+						0,05\cdot 0,25
+						+
+						0,04\cdot 0,35
+						+
+						0,02\cdot 0,40
+					}\\
+					&=0,3623\text{.}
+				\end{align*}
+				
+				\item A probabilidade de que o parafuso não seja defeituoso.\\
+				
+				Considerando as probabilidades $P(D^C\setminus A)=0,95$, $P(D^C\setminus B)=0,96$ e $P(D^C\setminus C)=0,98$. Deste modo,
+				\begin{align*}
+					P(D^C) &= P(D^C\setminus A)P(A)+P(D^C\setminus B)P(B)+P(D^C\setminus C)P(C)\\
+					&=0,95\cdot 0,25+0,96\cdot 0,35+0,98\cdot 0,40\\
+					&=0,9655\text{.}
+				\end{align*}
+				
+				\item A probabilidade de que o parafuso seja fabricado na máquina C sabendo que ele não é defeituoso.\\
+				
+				Fazendo
+				\begin{align*}
+					P(C\setminus D^C)&=\frac{P(D^C\setminus C)P(C)}{P(D^C)}\\
+					&=\frac{0,98\cdot 0,40}{0,9655}\\
+					&=0,4060\text{.}
+				\end{align*}
+			\end{enumerate}
+	\end{example}
+\end{pageWidthArea}

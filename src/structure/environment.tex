@@ -1,0 +1,141 @@
+\usepackage{environ}
+\usepackage{ifthen}
+
+\NewEnviron{exercisePage}{
+	\newpage\nosidepicturearea
+	\begin{exercise}\hfill
+		\begin{multicols}{2}
+    		\begin{enumerate}[label=\textbf{\color{ocre}\arabic*.}, itemsep=20pt]
+    			\BODY
+	        \end{enumerate}
+		\end{multicols}
+	\end{exercise}
+	\newpage\opensidepicturearea
+}
+
+\NewEnviron{exerciseArea}{
+	\begin{exercise}\hfill
+    	\begin{enumerate}[label=\textbf{\color{ocre}\arabic*.}, itemsep=20pt]
+    		\BODY
+		\end{enumerate}
+	\end{exercise}
+}
+
+\newlength{\boxshift}
+\NewEnviron{pageWidthArea}{%
+	\ifodd\thepage%
+		\setlength{\boxshift}{0.9cm}%
+	\else%
+		\setlength{\boxshift}{15.5cm}%
+	\fi%
+	\makebox[\boxshift]{%
+		\begin{minipage}{16.7cm}%
+			\BODY%
+		\end{minipage}%
+	}%
+}
+
+\newcounter{mpicture}[chapter]
+\numberwithin{mpicture}{chapter}
+\newcounter{mtable}[chapter]
+\numberwithin{mtable}{chapter}
+\newcounter{mframe}[chapter]
+\numberwithin{mframe}{chapter}
+
+\NewEnviron{pageWidthAreaPicture}[2]{
+	\ifthenelse{\equal{\detokenize{#1}}{\detokenize{picture}}}{
+		\refstepcounter{mpicture}
+	} {
+		\ifthenelse{\equal{\detokenize{#1}}{\detokenize{frame}}}{
+			\refstepcounter{mframe}
+		} {
+			\refstepcounter{mtable}
+		}
+	}
+	\hfill
+	\ifodd\thepage
+		\begin{minipage}{6cm}
+			{
+				\color{ocre}
+				\ifthenelse{\equal{\detokenize{#1}}{\detokenize{picture}}}{
+					\textbf{Figura \thempicture}
+				} {
+					\ifthenelse{\equal{\detokenize{#1}}{\detokenize{frame}}}{
+						\textbf{Quadro \themframe}
+					} {
+						\textbf{Tabela \themtable}
+					}
+				}
+			}
+			\hspace{5pt} #2
+		\end{minipage}
+		\hspace{0.5cm}
+		\begin{minipage}{9.5cm}
+			\BODY
+		\end{minipage}
+	\else
+		\begin{minipage}{9.5cm}
+			\BODY
+		\end{minipage}
+		\hspace{0.5cm}
+		\begin{minipage}{6cm}
+			{
+				\color{ocre}
+				\ifthenelse{\equal{\detokenize{#1}}{\detokenize{picture}}}{
+					\textbf{Figura \thempicture}
+				} {
+					\ifthenelse{\equal{\detokenize{#1}}{\detokenize{frame}}}{
+						\textbf{Quadro \themframe}
+					} {
+						\textbf{Tabela \themtable}
+					}
+				}
+			}
+			\hspace{5pt} #2
+		\end{minipage}
+	\fi
+}
+
+
+\newlength{\leftshift}
+\NewEnviron{sidepicture}[3]{%
+	\ifodd\thepage 
+		\setlength{\leftshift}{-8cm} 
+	\else 
+		\setlength{\leftshift}{10cm}
+	\fi
+	\begin{tikzpicture}[remember picture, overlay]
+		\node[anchor=north west,xshift=\leftshift,yshift=#1]{
+			\parbox[t]{5.8cm} {
+				\centering
+				\ifthenelse{\equal{\detokenize{#2}}{\detokenize{picture}}}{
+					\refstepcounter{mpicture}
+				} {
+					\ifthenelse{\equal{\detokenize{#1}}{\detokenize{frame}}}{
+						\refstepcounter{mframe}
+					} {
+						\refstepcounter{mtable}
+					}
+				}
+				\BODY
+				{
+					\begin{flushleft}
+						{
+							\color{ocre}
+							\ifthenelse{\equal{\detokenize{#2}}{\detokenize{picture}}}{
+								\textbf{Figura \thempicture}
+							} {
+								\ifthenelse{\equal{\detokenize{#1}}{\detokenize{frame}}}{
+									\textbf{Quadro \themframe}
+								} {
+									\textbf{Tabela \themtable}
+								}
+							}
+						}
+						\hspace{5pt} #3
+					\end{flushleft}
+				}
+			}
+		};
+   \end{tikzpicture}
+}
