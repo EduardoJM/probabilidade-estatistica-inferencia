@@ -1,0 +1,264 @@
+% For math equations, theorems, symbols, etc
+\usepackage{amsmath, amsfonts, amssymb, amsthm}
+
+\newcommand{\intoo}[2]{\mathopen{]}#1\,;#2\mathclose{[}}
+\newcommand{\ud}{\mathop{\mathrm{{}d}}\mathopen{}}
+\newcommand{\intff}[2]{\mathopen{[}#1\,;#2\mathclose{]}}
+\renewcommand{\qedsymbol}{$\blacksquare$}
+\newtheorem{notation}{Notation}[chapter]
+
+% Boxed/framed environments
+\newtheoremstyle{ocrenumbox} % Theorem style name
+	{0pt} % Space above
+	{0pt} % Space below
+	{\normalfont} % Body font
+	{} % Indent amount
+	{\small\bf\sffamily\color{ocre}} % Theorem head font
+	{\;}% Punctuation after theorem head
+	{0.25em}% Space after theorem head
+	{
+		% Theorem text (e.g. Theorem 2.1)
+		\small\sffamily\color{ocre}\thmname{#1}\nobreakspace\thmnumber{\@ifnotempty{#1}{}\@upn{#2}}
+		% Optional theorem note
+		\thmnote{\nobreakspace\the\thm@notefont\sffamily\bfseries\color{black}---\nobreakspace#3.}
+	}
+
+\newtheoremstyle{blacknumex} % Theorem style name
+	{5pt} % Space above
+	{5pt} % Space below
+	{\normalfont} % Body font
+	{} % Indent amount
+	{\small\bf\sffamily} % Theorem head font
+	{\;} % Punctuation after theorem head
+	{0.25em}% Space after theorem head
+	{
+		% Theorem text (e.g. Theorem 2.1)
+		\small\sffamily{\tiny\ensuremath{\blacksquare}}\nobreakspace\thmname{#1}\nobreakspace\thmnumber{\@ifnotempty{#1}{}\@upn{#2}}
+		% Optional theorem note
+		\thmnote{\nobreakspace\the\thm@notefont\sffamily\bfseries---\nobreakspace#3.}
+	}
+
+\newtheoremstyle{blacknumbox} % Theorem style name
+	{0pt} % Space above
+	{0pt} % Space below
+	{\normalfont} % Body font
+	{} % Indent amount
+	{\small\bf\sffamily} % Theorem head font
+	{\;} % Punctuation after theorem head
+	{0.25em} % Space after theorem head
+	{
+		% Theorem text (e.g. Theorem 2.1)
+		\small\sffamily\thmname{#1}\nobreakspace\thmnumber{\@ifnotempty{#1}{}\@upn{#2}}
+		% Optional theorem note
+		\thmnote{\nobreakspace\the\thm@notefont\sffamily\bfseries---\nobreakspace#3.}
+	}
+
+% Non-boxed/non-framed environments
+\newtheoremstyle{ocrenum} % Theorem style name
+	{5pt} % Space above
+	{5pt} % Space below
+	{\normalfont} % Body font
+	{} % Indent amount
+	{\small\bf\sffamily\color{ocre}} % Theorem head font
+	{\;} % Punctuation after theorem head
+	{0.25em} % Space after theorem head
+	{
+		% Theorem text (e.g. Theorem 2.1)
+		\small\sffamily\color{ocre}\thmname{#1}\nobreakspace\thmnumber{\@ifnotempty{#1}{}\@upn{#2}}
+		% Optional theorem note
+		\thmnote{\nobreakspace\the\thm@notefont\sffamily\bfseries\color{black}---\nobreakspace#3.}
+	}
+
+\makeatother
+
+% Defines the theorem text style for each type of theorem to one of the three styles above
+\newcounter{dummy}
+\numberwithin{dummy}{chapter}
+\theoremstyle{ocrenumbox}
+\newtheorem{theoremeT}[dummy]{Teorema}
+\newtheorem{problem}{Problema}[chapter]
+\newtheorem{exerciseT}{Exercícios}[chapter]
+%\theoremstyle{blacknumex}
+\newtheorem{exampleT}{Exemplo}[chapter]
+\theoremstyle{blacknumbox}
+\newtheorem{vocabulary}{Vocabulary}[chapter]
+\newtheorem{definitionT}{Definição}[chapter]
+\newtheorem{corollaryT}[dummy]{Corolário}
+\theoremstyle{ocrenum}
+\newtheorem{proposition}[dummy]{Proposição}
+
+% Required for creating the theorem, definition, exercise and corollary boxes
+\RequirePackage[framemethod=default]{mdframed}
+% Theorem box
+\newmdenv[
+	skipabove=7pt,
+	skipbelow=7pt,
+	backgroundcolor=black!5,
+	linecolor=ocre,
+	innerleftmargin=5pt,
+	innerrightmargin=5pt,
+	innertopmargin=5pt,
+	leftmargin=0cm,
+	rightmargin=0cm,
+	innerbottommargin=5pt
+]{tBox}
+
+% Exercise box	  
+\newmdenv[
+	skipabove=7pt,
+	skipbelow=7pt,
+	rightline=false,
+	leftline=true,
+	topline=false,
+	bottomline=false,
+	backgroundcolor=ocre!10,
+	linecolor=ocre,
+	innerleftmargin=5pt,
+	innerrightmargin=5pt,
+	innertopmargin=5pt,
+	innerbottommargin=5pt,
+	leftmargin=0cm,
+	rightmargin=0cm,
+	linewidth=4pt
+]{eBox}
+
+% Example box	  
+\newmdenv[
+	skipabove=7pt,
+	skipbelow=7pt,
+	rightline=false,
+	leftline=true,
+	topline=false,
+	bottomline=false,
+	backgroundcolor=ocre!10,
+	linecolor=ocre,
+	innerleftmargin=5pt,
+	innerrightmargin=5pt,
+	innertopmargin=5pt,
+	innerbottommargin=5pt,
+	leftmargin=0cm,
+	rightmargin=0cm,
+	linewidth=4pt
+]{exampleBox}	
+
+% Definition box
+\newmdenv[
+	skipabove=7pt,
+	skipbelow=7pt,
+	rightline=false,
+	leftline=true,
+	topline=false,
+	bottomline=false,
+	linecolor=ocre,
+	innerleftmargin=5pt,
+	innerrightmargin=5pt,
+	innertopmargin=0pt,
+	leftmargin=0cm,
+	rightmargin=0cm,
+	linewidth=4pt,
+	innerbottommargin=0pt
+]{dBox}	
+
+% Corollary box
+\newmdenv[
+	skipabove=7pt,
+	skipbelow=7pt,
+	rightline=false,
+	leftline=true,
+	topline=false,
+	bottomline=false,
+	linecolor=gray,
+	backgroundcolor=black!5,
+	innerleftmargin=5pt,
+	innerrightmargin=5pt,
+	innertopmargin=5pt,
+	leftmargin=0cm,
+	rightmargin=0cm,
+	linewidth=4pt,
+	innerbottommargin=5pt
+]{cBox}
+
+% Remark box	  
+\newmdenv[
+	skipabove=7pt,
+	skipbelow=7pt,
+	rightline=false,
+	leftline=false,
+	topline=true,
+	bottomline=true,
+	backgroundcolor=ocre!10,
+	linecolor=ocre,
+	innerleftmargin=5pt,
+	innerrightmargin=5pt,
+	innertopmargin=5pt,
+	innerbottommargin=5pt,
+	leftmargin=0cm,
+	rightmargin=0cm,
+	linewidth=8pt
+]{remBox}
+
+% Theorem Environment
+\newenvironment{theorem}{
+	\begin{tBox}\begin{theoremeT}
+}{
+	\end{theoremeT}\end{tBox}
+}
+% Exercise Environment
+\newenvironment{exercise}{
+	\begin{eBox}\begin{exerciseT}
+}{
+	\end{exerciseT}\end{eBox}
+}
+% Definition Environment
+\newenvironment{definition}{
+	\begin{dBox}\begin{definitionT}
+}{
+	\end{definitionT}\end{dBox}
+}	
+% Example Environment
+\newenvironment{example}{
+	\begin{exampleBox}\begin{exampleT}
+}{
+	\hfill{\color{ocre}\tiny\ensuremath{\blacksquare}}\end{exampleT}\end{exampleBox}
+}
+% Corollary Environment
+\newenvironment{corollary}{
+	\begin{cBox}\begin{corollaryT}
+}{
+	\end{corollaryT}\end{cBox}
+}
+% Note Environment
+\newenvironment{note}[1]{
+	\begin{remBox}
+	\textbf{#1}\par\vspace{10pt}
+}
+{
+	\end{remBox}
+}
+
+% Remark Environment
+\newenvironment{remark}{
+	\par\vspace{10pt}\small % Vertical white space above the remark and smaller font size
+	\begin{list}{}{
+		\leftmargin=35pt % Indentation on the left
+		\rightmargin=25pt
+	}
+		\item
+			\ignorespaces % Indentation on the right
+			\makebox[-2.5pt]{
+				\begin{tikzpicture}[overlay]
+					\node[
+						draw=ocre!60,
+						line width=1pt,
+						circle,
+						fill=ocre!25,
+						font=\sffamily\bfseries,
+						inner sep=2pt,
+						outer sep=0pt
+					] at (-15pt,0pt){\textcolor{ocre}{R}};
+				\end{tikzpicture}
+			}
+			\advance\baselineskip -1pt
+}{
+	\end{list}\vskip5pt
+}
